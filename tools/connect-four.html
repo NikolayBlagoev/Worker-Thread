@@ -1,0 +1,36 @@
+   <h1>Connect Four</h1>
+   <div style="margin-top: 20px;"></div>
+   <p>Connect Four agents as explained in <a href="/article/chess-solvers">[Chess Solvers]</a> </p>
+   <div style="margin-top: 20px;"></div>
+   <div class="d-block">
+        <label for="p1">Player 1:</label>
+        <select id="p1" name="p1list" onchange="changep1();" class="d-inline">
+            <option value="human">Human</option>
+            <option value="sma">Smart Agent</option>
+            <option value="dla">Deep Learning Agent</option>
+
+        </select>
+        <p style="display: none;" id="p1text">Difficulty: </p>
+        <input style="display: none;" type="range" min="1" max="6" value="4" id="pl1range">
+        </div>
+        <div style="margin-top: 20px;"></div>
+        <div class="d-block">
+        <label for="p2">Player 2:</label>
+        <select id="p2" name="p2list" onchange="changep2();" class="d-inline">
+            <option value="human">Human</option>
+            <option value="sma">Smart Agent</option>
+            <option value="dla">Deep Learning Agent</option>
+
+        </select>
+        <p id="p2text" style="display: none;">Difficulty: </p>
+        <input type="range" min="1" max="6" value="4" id="pl2range" style="display: none;">
+    </div>
+    
+    <div style="margin-top: 20px;"></div>
+    <input type="button" onclick="start()" value="START"></input>
+    <div style="margin-top: 20px;"></div>
+    <canvas class="bg-blue" style="width: 100%; height: 1000px;"></canvas>
+    <img id="tile" src="/imgs/tile.png" style="display: none;" />
+    <img id="yellow" src="/imgs/yellow.png" style="display: none;" />
+    <img id="red" src="/imgs/red.png" style="display: none;" />
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>

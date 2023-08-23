@@ -1,0 +1,156 @@
+			<h1>Caesar cipher</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    The Caesar Cipher is perhaps one of the most well-known ciphers, due to its rather simple nature. Named after Julius Caesar, dictator of the Roman Empire, it works as a very simple shift cipher.
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    As with any encryption system we have a method for encrypting, a method for decrypting, a secret key (think of it as the password with which the message can be obtained), and an alphabet. Since the Caesar Cipher is symmetric, we have the same key for both encryption and decryption.
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    For the Cesar Cipher the key is merely a number (from 1 to the length of the alphabet). The encryption is performed by taking a letter from the message and substituting it with the letter which comes in the alphabet after key steps.
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Let us consider the case where we have the English alphabet with a key of 3 and the message "ATTACK ROME".
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 We begin by writing out the alphabet twice:
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<table><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr></table>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Then we shift the bottom row by 3 steps to the left (which is equivalent to looking for which letter is 3 letters ahead):
+
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<table><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr><tr><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td><td>A</td><td>B</td><td>C</td></tr></table>
+			
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Thus in this example, A will be substituted by D (as it come 3 letters later), B with E, and so on.
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 So our message of ATTACK ROME will now become DWWDFN URPH.
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Decrypting is performed by having the key, taking each letter in the encrypted message and looking which letter came key steps before it. For our example with key of 3, we have for decryption:
+
+
+			</div>
+			<div style="margin-top: 20px;"></div>			
+			<table><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr><tr><td>X</td><td>Y</td><td>Z</td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td></tr></table>				
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 You can see that this is equivalent to the previous table, however the bottom and top row are switched (in the encryption table A maps to D, in the decryption D maps to A).
+
+
+			</div>
+			
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Thus the decrypted message becomes: <br/>
+			 
+D -> A <br/>
+W -> T <br/>
+W -> T <br/>
+D -> A <br/>
+F -> C <br/>
+N -> K <br/>
+U -> R <br/>
+R -> O <br/>
+P -> M <br/>
+H -> E <br/>
+
+			</div>
+<hr class="mt-2 mb-2"/>
+	<div style="margin-top: 20px;">
+  <p>Normal Text:</p>
+  <textarea  id="val1" rows="4" style = "width: 100%">attack rome</textarea>
+  </div>
+  <div style="display:inline">
+  <input type="button" onclick="onClickEncr()" value="ENCRYPT"></input>
+  <p>Shift:</p>
+  <input type="text" id="key1" size="3" value="3"></input>
+  
+  <input type="button" onclick="onClickDecr()" value="DECRYPT"></input>
+ </div>
+ <div>
+  
+  <p>Encrypted Text:</p>
+  <textarea  id="val2" rows="4" style = "width: 100%"></textarea>
+</div>
+
+<hr class="mt-2 mb-2"/>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 <h3>Breaking the Cipher</h3>
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 When breaking a cipher traditionally we assume an adversary who has the goal of uncovering the secret password given some messages (and sometimes pairs of unencrypted and encrypted messages). When breaking the Caesar Cipher we will assume the adversary has access to some encrypted messages and their goal is to uncover the key by finding the original message.
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The Caesar Cipher is unfortunately too simple of a cipher to be used for any practical application in our digital world. There are only 26 possible keys (passwords) one can choose - if you choose a key of 26 shifts, each letter will be encrypted by itself, so the two messages will be identical. If you choose a key of 27 or higher, your key is equivalent to some other one less than 26 (simply take modulo 26). Even a human can attempt all shifts within a day and find which decryption creates a coherent message. Computers can do this within a second. Such an approach is called a Brute Force attack, as we try every possible key in an exhaustive search, without using some smarter strategy.
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Below you can find an example of a brute force solver, which assumes the original message was written in English.
+
+
+			</div>
+
+
+<hr class="mt-2 mb-2"/>
+<form>
+  <div>
+  
+  </div>
+
+ <div>
+  
+  <p>Encrypted Text:</p>
+  <textarea  id="val2_2" rows="4" style = "width: 100%">dwwdfn urph</textarea>
+<input type="button" onclick="onClickBreak()" value="BREAK"></input>
+  <p>Normal Text:</p>
+  <textarea  id="val1_2" rows="4" style = "width: 100%"></textarea>
+</div>
+  
+</form>
+
+<hr class="mt-2 mb-2"/>

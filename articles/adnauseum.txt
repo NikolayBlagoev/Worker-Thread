@@ -1,0 +1,32 @@
+			<h1>AdNauseum</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			
+			<p>In <a href="/article/privacy-through-obfuscation">Privacy Through Obfuscation</a> we express the need and usefulness of noise to mask out the real messages/activity of a user and thus ensure their privacy. A great tool that employs this very strategy to hide user's interest is AdNauseum.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>As described in their website, the tool "quietly clicks on every blocked ad, registering a visit on ad networks' databases. As the collected data gathered shows an omnivorous click-stream, user tracking, targeting and surveillance become futile." <a href = "https://adnauseam.io/">[1]</a></p>
+			<div style="margin-top: 20px;"></div>
+			<p>The desciption makes the two applications of AdNauseum apparent. The first one is that of a simple ad blocker. As it is built on top of uBlock Origin, the success of AdNauseum is directly tied to the performance of the latter. The second is that of generating fake clicks on these ads (which does not disturb the user's browsing), so that tracking ads are blinded by the traffic coming from the user. This can help in both obfuscating one's preferences (as algorithms may become confused what the user is interested in, because of the fake clicks) and it also bleads company's money due to the Pay-Per-Click strategy.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>The extension is blocked on Google Chrome (don't worry it is perfectly safe, you can check their code yourself here <a href="https://github.com/dhowe/AdNauseam]">[2]</a>), which means you have to jump through a few extra hoops to get it for that browser. It is also available for Opera, MozillaFirefox, and Edge, but unlike the Chrome, for these it is available on their official extension store.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>As with all adblocking extensions, page loading time improves drastically, since there is no need to visualise all the graphic ads. On top of its functionality. AdNauseum comes packed with a beautiful interface, which makes interacting with the extension very pleasant. It also comes with a nice visualisation of all the blocked and clicked ads over time, called the AdVault, where you can see how your preference profile might have changed over time.</p>
+			<div style="margin-top: 20px;"></div>
+			<img class="img-fluid" src="/imgs/articles/adnauseum.png" />
+			<div style="margin-top: 20px;"></div>
+			<h3>Evaluation</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>Whenever someone reads an article like that, the should <i>always</i> ask themselves: Does it actually work? Does it do the things it promises it will?</p>
+			<div style="margin-top: 20px;"></div>
+			<p> 
+First metric it needs to be evaluated by is whether it successfully blocks ads. To this end you can read the comparative study in <a href="https://ceur-ws.org/Vol-1873/IWPE17_paper_23.pdf">[3]</a>. AdNauseum there is shown to contact less third-party websites compared to other adblockers. On <a href = "https://adblock-tester.com/">[4]</a>, AdNauseum scores 78/100, while AdBlock scores 86/100. From personal experience - on most sites, regardless of the ad volume, AdNauseum has successfully blocked all ads.  </p>
+			<div style="margin-top: 20px;"></div>
+			<p>Second - does it actually alter ones preference profile (what advertising agencies think you will like). This is harder to verify, as we do not have access to said profiles. While using the extension in the past two weeks, I have indeed noticed a slight shift in the ads shown. Initially, I was getting a lot more technology-related ads, which can be considered targeted. But due to the random clicks employed by Nauseum, I have started receiving much more ads for shoes, real estate, and even some in Turkish (a language I do not speak and have never interacted with). It is important to remember, though, that preference profiling employed by Google or other advertising agencies does not focus only on ads clicked (even if that has some contribution). Pages visited, content interacted with, search engine queries, location, etc. play a much bigger role for determining what targeted ads to show. And if you have set your click rate too high (which can be controlled via the settings in AdNauseum), your clicks can quickly be flagged as fraudulent and thus ignored.</p>
+			
+			<div style="margin-top: 20px;"></div>
+			<p>Lastly, does it indeed bleed money from companies? As Google employs a Pay-per-Click strategies, advertisers pay when a person clicks on their ad, not when it is shown to them. In this MIT article <a href="https://rednoise.org/AdNauseamVsGoogle.pdf">[5]</a>, they evaluated whether clicks are indeed charged even if they are through AdNauseum. Their conclusion? It works sometimes. They do not provide a breakdown of which test groups brought in how much money, nor do they provide a control group to compare to. Additionally, the author of the article is from the same research group as one of the people behind this tool, so do take their evaluation with a grain of salt.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>Still, AdNauseum does work in blocking and clicking ads. What effect does this have? Probably will depend on your settings. At the very least, your ad clicks will be ignored by the algorithm.</p>
+			</div>

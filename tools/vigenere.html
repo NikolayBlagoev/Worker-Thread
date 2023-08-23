@@ -1,0 +1,25 @@
+
+   <h1>Vigenere Cipher</h1>
+   <div style="margin-top: 20px;"></div>
+   <p>Vigenere cipher encryption and decryption from <a href="/article/symmetric-key-cryptography">[Symmetric-Key Cryptography]</a> </p>
+   <div style="margin-top: 20px;"></div>
+<form>
+    <div>
+    <p>Normal Text:</p>
+    <textarea  id="vign1_e" rows="4" cols="50">ducks are evil</textarea>
+    </div>
+    <div style="display: inline;">
+    <input type="button" onclick="onClickEncrVign1()" value="ENCRYPT"></input>
+    <p>Key:</p>
+    <input type="text" id="keyVign1" size="7" value="goose"></input>
+    
+    <input type="button" onclick="onClickDecrVign1()" value="DECRYPT"></input>
+   </div>
+   <div>
+    
+    <p>Encrypted Text:</p>
+    <textarea  id="vign1_d" rows="4" cols="50"></textarea>
+  </div>
+    
+  </form>
+  

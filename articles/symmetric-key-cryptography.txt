@@ -1,0 +1,424 @@
+			<h1>Symmetric-Key Cryptography</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    As explained in [Introduction to Cryptography], symmetric-key cryptography deals with concealing the contents of a message via some function, where the encryption and decryption process use the same key. It is possible that the encryption and decryption key are different, however it is possible to derive one from the other. There exist two types of functions which can be used in the encryption-decryption process - Substitution and Permutation.
+                  </div>
+
+			<div style="margin-top: 20px;"></div>
+
+			<div class="text-left">
+				<h3>Substitution</h3>
+			</div>
+
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    Substitution ciphers are what people imagine when they think about cryptography. All substitution ciphers perform the same operation - replace each symbol or a group of symbols from the unencrypted message with something else based on the secret key. A simple example would be translating your original message into a language noone else understands, but you and your friend. The dictionary (which addmittedly is usually not secret) becomes your key, and the translation - your encryption and decryption. Let us consider a concrete example - the Vigenère cipher. 
+                  	</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    	In order to understand how the Vigenère cipher works, we need to understand the letter addition operation (which is essentially the [Ceasar Cipher]). Here each letter is associated with a number - its position in the alphabet starting from 0.
+                  	</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="table-responsive">
+			<table class="table table-bordered table-responsive"><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr><tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr></table>
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    	Adding two letters together (for example C and D) is equivalent to taking their corresponding numbers (2 and 3), summing them (2 + 3 = 5) and looking in the table to which letter this number corresponds (5 is F). If the addition goes above 26 (for example V and Y - 21 + 24 = 45), we take the result modulo 26, which in this case can be performed by simply subtracting 26 (45 - 26 = 19, which gives us the letter T). If you have read the [Ceasar Cipher] article, you will know that adding C with D is equivalent to writing the alphabet twice, then aligning the A from the top row with D from the bottom row, and checking which letter is now under C.
+                  	</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="table-responsive">
+			
+			<table class="table table-bordered table-responsive"><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr><tr><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td><td>A</td><td>B</td><td>C</td></tr></table>
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    	Subtracting two letters works in the same manner, however now, if the result is under 0, we add 26.
+                  	</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                   	The Vignere Cipher works as follows:
+			<div class="row .me-5">
+			<div class="col-xs-1 col-md-1"></div>
+                	<div class="col-xs-10 col-md-10"><ol class="list-group list-group-numbered">
+  				<li >Write out the original message</li>
+  				<li >Repeat the secret key under it, repeating it until you match the message length (ignoring spaces)</li>
+  				<li >Add each letter from the top row with the corresponding letter in the bottom row, which will give you the encrypted message</li>
+			  </ol></div>
+			<div class="col-xs-1 col-md-1"></div>
+			</div>
+			  
+                       </div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				For example let us consider the message "ducks are evil" with the secret key "goose". We first write out the message and repeat under it the keyword.
+			</div>
+
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td>d</td>
+<td>u</td>
+<td>c</td>
+<td>k</td>
+<td>s</td>
+<td>a</td>
+<td>r</td>
+<td>e</td>
+<td>e</td>
+<td>v</td>
+<td>i</td>
+<td>l</td>
+</tr>
+<tr>
+<td>g</td>
+<td>o</td>
+<td>o</td>
+<td>s</td>
+<td>e</td>
+<td>g</td>
+<td>o</td>
+<td>o</td>
+<td>s</td>
+<td>e</td>
+<td>g</td>
+<td>o</td>
+
+</tr>
+</tbody>
+</table>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				We then perform the addition operation per column. So from the start, d + g is 3 + 6 = 9, which is j. Then we have u + o which is 20 + 14 = 34 - 26 = 8, which is i. Next is c + o, 2 + 14 = 16, which is q, and so on. This gives us the encrypted message "jiqcw gfs wzoz":
+			</div>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td>d</td>
+<td>u</td>
+<td>c</td>
+<td>k</td>
+<td>s</td>
+<td>a</td>
+<td>r</td>
+<td>e</td>
+<td>e</td>
+<td>v</td>
+<td>i</td>
+<td>l</td>
+</tr>
+<tr>
+<td>g</td>
+<td>o</td>
+<td>o</td>
+<td>s</td>
+<td>e</td>
+<td>g</td>
+<td>o</td>
+<td>o</td>
+<td>s</td>
+<td>e</td>
+<td>g</td>
+<td>o</td>
+
+</tr>
+<tr>
+<td>j</td>
+<td>i</td>
+<td>q</td>
+<td>c</td>
+<td>w</td>
+<td>g</td>
+<td>f</td>
+<td>s</td>
+<td>w</td>
+<td>z</td>
+<td>o</td>
+<td>z</td>
+
+</tr>
+</tbody>
+</table>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				As you can see this process is very similar to the Ceasar Cipher, except that now letters are shifted with different keys. The Ceasar Cipher is equivalent to one character key Vignere Cipher.
+			</div>
+
+		
+			<form>
+  <div>
+  <p>Normal Text:</p>
+  <textarea  id="vign1_e" rows="4" style = "width: 100%">ducks are evil</textarea>
+  </div>
+  <div style="display: inline;">
+  <input type="button" onclick="onClickEncrVign1()" value="ENCRYPT"></input>
+  <p>Key:</p>
+  <input type="text" id="keyVign1" size="7" value="goose"></input>
+  
+  <input type="button" onclick="onClickDecrVign1()" value="DECRYPT"></input>
+ </div>
+ <div>
+  
+  <p>Encrypted Text:</p>
+  <textarea  id="vign1_d" rows="4" style = "width: 100%"></textarea>
+</div>
+  
+</form>
+
+
+			<div style="margin-top: 20px;"></div>
+
+			<div class="text-left">
+				<h3>Permutation</h3>
+			</div>
+
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			Permutation ciphers, in contrast to substitution ones, do not change the contents of the message, but instead shift around symbols or groups of them based on the secret key. Some statistical measures will remain the same as to the original unencrypted message. The secrecy lies in the fact that an attacker would need to try all possible permutations of the text, in hopes of finding the correct one, which for really large ones becomes infeasible. Though, via some clever anagramming and evolutionary algorithms, some simple transposition ciphers can be easily broken. As an example for such a cipher we will consider the columnar transposition cipher, a variation of which was used well into the second World War [The Codebreakers: The Story of Secret Writing].
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+			The Encryption process of the columnar transposition cipher is rather straightforward. First we write out the key on top of our table. Then we write the message in rows under the key, by wrapping around to the next row, if our message exceeds the length of the key. For example, with the key goose, the message "ducks are evil" would have "ducks" in the first row, " are " in the second, and "evil" in the last. If we wanted to encrypt the word "onomatopoeia" with the key "word", we would have "onom" in the first row, "atop" in the second, and "oeia" in the last. There exists a variation of this cipher where the last row is padded until full (so for the first example to the last row "evil" we would add some random character). It is not recommended you use this method, as then each message will have length with a factor the key length. An attacker can then quickly discern you key length and have a better chance of cracking your message.
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+			The next step in the process is enumerating the columns based on the alphabetical order of the letters in the key. For example, the key "word", would produce the order "4 2 3 1", as 'd' comes first of those in the alphabet, then is 'o','r', and finally 'w'. The original cipher does not specify what is done if the a word contains the same letter multiple times. This greatly reduces the number of available keys. For this article we deal with repeated letters by also ordering them based on their place in the word. So for example, the key "goose", would produce the order "2 3 4 5 1", as the first 'o' comes before the second one in the word. Hence this becomes our tie breaker rule. Now that we have enumerated the columns, we write them out in the order specified by the key. So with the key "goose" and message "ducks are evil", we will have the following table:
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+
+<table class="table table-bordered">
+<tbody>
+<tr>
+<b>
+<td><b>2</b></td>
+<td><b>3</b></td>
+<td><b>4</b></td>
+<td><b>5</td>
+<td><b>1</b></td>
+</b>
+</tr>
+<tr>
+<b>
+<td><b>g</b></td>
+<td><b>o</b></td>
+<td><b>o</td>
+<td><b>s</td>
+<td><b>e</td>
+</b>
+</tr>
+
+<tr>
+<td>d</td>
+<td>u</td>
+<td>c</td>
+<td>k</td>
+<td>s</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>a</td>
+<td>r</td>
+<td>e</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>e</td>
+<td>v</td>
+<td>i</td>
+<td>l</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				The capital 'X' here marks an empty cell. We would then read the columns in the order specified on top - first we read the last column: "s ", which contains only one space (since the last cell there is empty). Then we write the first column: "d e". At the end we obtain the message: "s d euavcrikel"
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Decryption is a bit more involved as it requires finding out how many rows there were originally and figuring out which columns were not filled at the end. So for our example, we would calculate 14 / 5 = 3 rows with 1 empty cell. We would then begin filling the table, starting with the first part of the message "s " (here we would need to know NOT to take the 'd' as well as the last cell should be empty).
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+
+<table class="table table-bordered">
+<tbody>
+<tr>
+<b>
+<td><b>2</b></td>
+<td><b>3</b></td>
+<td><b>4</b></td>
+<td><b>5</td>
+<td><b>1</b></td>
+</b>
+</tr>
+<tr>
+<b>
+<td><b>g</b></td>
+<td><b>o</b></td>
+<td><b>o</td>
+<td><b>s</td>
+<td><b>e</td>
+</b>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>s</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Next we will fill the first column (as it comes second based on the key). Here we take 3 symbols for three rows "d e":
+			<table class="table table-bordered">
+<tbody>
+<tr>
+<b>
+<td><b>2</b></td>
+<td><b>3</b></td>
+<td><b>4</b></td>
+<td><b>5</td>
+<td><b>1</b></td>
+</b>
+</tr>
+<tr>
+<b>
+<td><b>g</b></td>
+<td><b>o</b></td>
+<td><b>o</td>
+<td><b>s</td>
+<td><b>e</td>
+</b>
+</tr>
+
+<tr>
+<td>d</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>s</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>e</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+
+
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				We continue this process until we have filled the entire table. We can then read the message row by row.
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+
+<form>
+  <div>
+  <p>Normal Text:</p>
+  <textarea  id="enc_transp_1" rows="4" style = "width: 100%">ducks are evil</textarea>
+  </div>
+  <div style="display:inline">
+  <input type="button" onclick="onClickEncr_transp1()" value="ENCRYPT"></input>
+  <p>Key:</p>
+  <input type="text" id="key_transp_1" size="7" value="goose"></input>
+  
+  <input type="button" onclick="onClickDecr_transp1()" value="DECRYPT"></input>
+ </div>
+ <div>
+  
+  <p>Encrypted Text:</p>
+  <textarea  id="dec_transp_1" rows="4" style = "width: 100%"></textarea>
+</div>
+  
+</form>
+
+			<div class="text-left">
+				<h3>Substitution-Permutation Schemes</h3>
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				As observed by Claude Shanon in his seminal work [Communication Theory of Secrecy Systems], aggregating together transposition and substitution operations makes the ciphertext more resistant to cryptanalysis. By chaining together the different ciphers the relationship between the original text and the final encrypted one (or equivalently between the ciphertext and the secret key) becomes increasingly more complex. As observed by Shanon, substitution provides confusion - the relationship between key and ciphertext is complex. Transposition provides diffusion - the statistics (and changes) are distributed across the entire ciphertext. In simple terms, the goal is that, even if a small part of the key changes, the entire ciphertext should be drastically and almost imposibbly to predict different. Modern ciphers, e.g. AES, employ such a complex network of Substitution and Permutations which deterministically modify the original text before encrypting it with the secret key. This is performed for several rounds (of substitution, permutation, encryption), which makes breaking the code near impossible.
+			</div>
+			
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				You can experiment here by applying both the Vignere cipher and the Columnar Transposition together to see whether you can decipher the text:
+			</div>
+
+<form>
+  <div>
+  <p>Normal Text:</p>
+  <textarea  id="enc_2" rows="4" cols="50">ducks are evil</textarea>
+  </div>
+  <div style="display:inline">
+  <input type="button" onclick="onClickEncr_2()" value="ENCRYPT"></input>
+  <p>Key:</p>
+  <input type="text" id="key_2" size="7" value="goose"></input>
+  
+  <input type="button" onclick="onClickDecr_2()" value="DECRYPT"></input>
+ </div>
+ <div>
+  
+  <p>Encrypted Text:</p>
+  <textarea  id="dec_2" rows="4" cols="50"></textarea>
+</div>
+  
+</form>

@@ -1,0 +1,71 @@
+			<h1>Crypto Anarchist Manifesto</h1>
+			<div style="margin-top: 20px;"></div>
+			<h3>Foreword</h3>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    The Cypherpunks were one of the most influential cyber groups in the early 90s, dedicated to activism in protecting digital privacy, supporting unregulated cryptography, and exploration of emerging technologies. The essay below, originally written in 1988 by Timothy C. May, who was the main ideological driving force of the movement, served as the catalyst for the groups formation. While the cyperpunks published their own manifesto in 1993, much of the ideas expressed in it were shared in the "Crypto Anarchist Manifesto".
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    The Manifesto takes great inspiration from the "Communist Manifesto" by Karl Marx, sharing some of the lines as "a specter is haunting..." and "you have nothing to lose, but...". While Karl Marx concerns himself with class struggle, private property, and capital, Timothy May concerns himself with digital cryptography. 
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    The manifesto envisions a future, where through different protocols, user's anonymity and their privacy is guaranteed. May argues that, similar to how the printing press altered essentially brought an end to the Medieval Period, the new digital cryptography tools will serve as a liberation from government interference and jurisdiction. People will be able to freely exchange information and digital currency, without third parties' knowledge of them.
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<h3>Crypto Anarchist Manifesto</h3>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Timothy C. May, 1988</footer>
+			<div style="margin-top: 10px;"></div>
+
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				A specter is haunting the modern world, the specter of crypto anarchy.
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Computer technology is on the verge of providing the ability for individuals and groups to communicate and interact with each other in a totally anonymous manner. Two persons may exchange messages, conduct business, and negotiate electronic contracts without ever knowing the True Name, or legal identity, of the other. Interactions over networks will be untraceable, via extensive re-routing of encrypted packets and tamper-proof boxes which implement cryptographic protocols with nearly perfect assurance against any tampering. Reputations will be of central importance, far more important in dealings than even the credit ratings of today. These developments will alter completely the nature of government regulation, the ability to tax and control economic interactions, the ability to keep information secret, and will even alter the nature of trust and reputation.
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				The technology for this revolution--and it surely will be both a social and economic revolution--has existed in theory for the past decade. The methods are based upon public-key encryption, zero-knowledge interactive proof systems, and various software protocols for interaction, authentication, and verification. The focus has until now been on academic conferences in Europe and the U.S., conferences monitored closely by the National Security Agency. But only recently have computer networks and personal computers attained sufficient speed to make the ideas practically realizable. And the next ten years will bring enough additional speed to make the ideas economically feasible and essentially unstoppable. High-speed networks, ISDN, tamper-proof boxes, smart cards, satellites, Ku-band transmitters, multi-MIPS personal computers, and encryption chips now under development will be some of the enabling technologies.
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				The State will of course try to slow or halt the spread of this technology, citing national security concerns, use of the technology by drug dealers and tax evaders, and fears of societal disintegration. Many of these concerns will be valid; crypto anarchy will allow national secrets to be trade freely and will allow illicit and stolen materials to be traded. An anonymous computerized market will even make possible abhorrent markets for assassinations and extortion. Various criminal and foreign elements will be active users of CryptoNet. But this will not halt the spread of crypto anarchy.
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Just as the technology of printing altered and reduced the power of medieval guilds and the social power structure, so too will cryptologic methods fundamentally alter the nature of corporations and of government interference in economic transactions. Combined with emerging information markets, crypto anarchy will create a liquid market for any and all material which can be put into words and pictures. And just as a seemingly minor invention like barbed wire made possible the fencing-off of vast ranches and farms, thus altering forever the concepts of land and property rights in the frontier West, so too will the seemingly minor discovery out of an arcane branch of mathematics come to be the wire clippers which dismantle the barbed wire around intellectual property.
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Arise, you have nothing to lose but your barbed wire fences!
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+
+			</div>
+
+			
