@@ -1,0 +1,75 @@
+.navbar {
+    background-color: black;
+}
+html{
+	margin: 0;
+}
+@media (max-width: 1400px) {
+.side-left-items{
+display: none;
+}
+.non-side-left-items{
+display: visible;
+}
+}
+.carousel-control-prev-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+   
+.carousel-control-next-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-prev:hover{
+	background-color: rgba(255, 255, 255, 0.3);	
+}
+   
+.carousel-control-next:hover{
+	background-color: rgba(255, 255, 255, 0.3);	
+}
+@media (min-width: 1401px) {
+.side-left-items{
+display: visible;
+}
+.non-side-left-items{
+display: none;
+}
+}
+ a:link {
+      text-decoration: none;
+	color: inherit;
+}
+.thumbnail {
+      text-decoration: none;
+	color: inherit;
+}
+
+.row{
+
+	margin: 0;
+}
+
+.thumbnail:hover {
+	color: inherit;
+	
+	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}
+
+.card:hover {
+	color: inherit;
+	background-color: rgba(0,0,0,0.1);
+	box-shadow: 0 6px 10px rgba(0,0,0,.2);
+}
+
+.card {
+	border: none;
+}
+
+
+
+  .img-inner{
+	object-fit: cover;
+	object-position: center;
+	aspect-ratio: 12/9;
+	/* height: 15vh; */
+  }

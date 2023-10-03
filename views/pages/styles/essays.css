@@ -1,8 +1,7 @@
-.navbar {
-    background-color: black;
-}
+
 html{
 	margin: 0;
+  padding: 0;
 }
 a:link {
       text-decoration: none;
@@ -45,39 +44,82 @@ a:link {
 	background-color: rgba(0,0,0,0.1);
 	box-shadow: 0 6px 10px rgba(0,0,0,.2);
 }
-.card {
-	border: none;
-}
 
 @media (min-width: 768px) {
     
-    .carousel-inner .carousel-item-end.active,
-    .carousel-inner .carousel-item-next {
-      transform: translateX(33%);
+    .nxt-itm {
+      transform: translateX(66.6666%);
+      display: flex;
+      
+    }
+    .prev-itm {
+      transform: translateX(0%);
+      display: flex;
+     
+    }
+
+    .after-nxt-itm {
+      transform: translateX(100%);
+      display: flex;
+    }
+    
+    .before-prev-itm {
+      transform: translateX(-33.3333%);
+      display: flex;
     }
     
     .carousel-inner .carousel-item-start.active, 
-    .carousel-inner .carousel-item-prev {
-      transform: translateX(-33%);
+    .carousel-inner .active {
+      transform: translateX(33.33333%);
+      /* transform: translateX(33.33333%); */
     }
 }
 
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-  transform: translateX(0);
-  
-}
-@media (max-width: 1000px) {
+
+@media (max-width: 767px) {
 .card-text {
 	display: none;
 }
+  .img-inner{
+    height: 40vh;
+  }
+  .carousel-item > div{
+    width: 100%;
+  }
+
+  .nxt-itm {
+    transform: translateX(100%);
+    display: flex;
+    
+  }
+  .prev-itm {
+    transform: translateX(-100%);
+    display: flex;
+   
+  }
+
+
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 768px) {
 	.card-text {
 		display: visible;
 	}
+  .img-inner{
+    height: 25vh;
+  }
+  .carousel-item > div{
+    width: 33.33333%;
+  }
+  /* .img-wrapper {
+    max-height: 15vh;
+  } */
+  .img-list{
+    aspect-ratio: 1.5;
+  }
 }
+
+
 @media (max-width: 767px) {
     .carousel-inner .carousel-item > div {
         display: none;
@@ -85,9 +127,46 @@ a:link {
     .carousel-inner .carousel-item > div:first-child {
         display: block;
     }
+    /* .img-wrapper {
+      max-height: 50vh;
+    } */
+    .img-list{
+      aspect-ratio: 1.4;
+    }
 }
-
+.card {
+	border: none;
+}
 .spc{
 	border: none;
 }
 
+.img-inner{
+	object-fit: cover;
+  width: 100%;
+	object-position: center;
+	overflow: hidden;
+	/* height: 25vh;
+  width: 100 vh; */
+}
+
+.carousel-item {
+	object-fit: cover;
+	object-position: center;
+	height: 50vh;
+  
+	width: 100%!important;
+}
+.img-list{
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  
+  object-fit: fill;
+}
+.img-wrapper {
+  min-height: 100%;
+  display: flex;
+  
+  overflow: hidden
+}

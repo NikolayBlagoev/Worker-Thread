@@ -218,16 +218,17 @@ async function render(time) {
     resize(ctx.canvas);
     let sz = Math.min(ctx.canvas.width / 7, ctx.canvas.height / 7);
     ctx.clearRect(-ctx.canvas.width/2, - ctx.canvas.height/2, ctx.canvas.width*2,  ctx.canvas.height*2);
+    ctx.font = `${sz}px serif`;
     if(is_won){
-        ctx.font = "48px serif";
         
-        ctx.fillText(`Player ${(turn-1) % 2 + 1} won!`, sz, sz-4);
+        
+        ctx.fillText(`Player ${(turn-1) % 2 + 1} won!`, sz/2, sz-4);
         
     }
-    if(turn==42){
-        ctx.font = "48px serif";
+    if(!is_won && turn==42){
         
-        ctx.fillText(`IT IS A DRAW!`, sz, sz-4);
+        
+        ctx.fillText(`IT IS A DRAW!`, sz/2, sz-4);
         
     }
     
@@ -258,9 +259,9 @@ async function render(time) {
                 ctx.drawImage(disc, Math.floor((msx) / sz)*sz, 0, sz, sz)
             }else if (players[turn%2]=="sma"){
                 if(once_flag){
-                    ctx.font = "48px serif";
+                    
         
-                    ctx.fillText(`THINKING...`, sz, sz-4);
+                    ctx.fillText(`THINKING...`, sz/2, sz-4);
                     once_flag = false;
                 }else{
                     once_flag = true;
@@ -270,9 +271,9 @@ async function render(time) {
                 
             }else if (players[turn%2]=="dla"){
                 if(once_flag){
-                    ctx.font = "48px serif";
+                    
         
-                    ctx.fillText(`THINKING...`, sz, sz-4);
+                    ctx.fillText(`THINKING...`, sz/2, sz-4);
                     once_flag = false;
                 }else{
                     once_flag = true;
@@ -302,7 +303,7 @@ async function render(time) {
 
 
 
-  function evaluateSMA(board){
+function evaluateSMA(board){
     var score_sums = 0;
     for (let y = 0; y < 6; y++){
       for (let x = 0; x < 7; x++){
@@ -317,8 +318,9 @@ async function render(time) {
     }
     
     return [score_sums, false]
-  }    
-function board_has(board){
+}   
+
+function board_hash(board){
     let acc1 = 0;
     let acc2 = 0;
     let sm = 1;
@@ -326,10 +328,24 @@ function board_has(board){
         for(let x = 0; x < 7; x++){
             acc1 += board[y][x] == 1 ? sm : 0;
             acc2 += board[y][x] == -1 ? sm : 0;
-            sm *= 2;
+            sm = sm*2;
+            // console.log(y*7 + x, sm)
         }
     }
+    // console.log(acc1,acc2,sm)
     return [acc1,acc2]
+}
+function is_sym(board){
+    var i = 1;
+    while(i < 4){
+        var y = 0;
+        while(y < 6){
+            if(board[y][3-i] != board[y][3+i]) return false;
+            y+=1;
+        }
+        i+=1;
+    }
+    return true;
 }
 async function min_max(board, pl, depth, max_d, turns, alpha, beta, eval_func){
     // console.log(depth);
@@ -344,9 +360,19 @@ async function min_max(board, pl, depth, max_d, turns, alpha, beta, eval_func){
   }
   var best_choice = 0;
   var best_score = -490000000000*pl;
-  for(let ch = 0; ch < 7; ch++){
-      var i = (ch+3)%7
-      
+  var max = 7;
+  if(is_sym(board)) max = 4;
+  var mult = 1;
+  for(let ch = 0; ch < max; ch++){
+      var i = 1;
+      if(max == 4){
+        i = (ch+3)%7;
+      }else{
+        i = (mult * Math.ceil(ch/2) + 3)%7;
+        mult = mult*-1;
+      }
+    //   var i = (mult * ch+3)%7;
+        
       var y_put = make_move(board, i);
       
       if  (y_put >= 0){
@@ -355,12 +381,13 @@ async function min_max(board, pl, depth, max_d, turns, alpha, beta, eval_func){
             board[y_put][i] = 0;
             return [4100000000*pl, i];
           }
-          let ret_hash = board_has(board);
-          let ret = 0;
+        //   console.log(board)
+          let ret_hash = board_hash(board);
+          
           let tmp = evals[ret_hash[0]] != undefined ? evals[ret_hash[0]][ret_hash[1]] : undefined;
-          tmp = undefined;
-          if(tmp != undefined && tmp[1] <= depth){
-            // board[y_put][i] = 0;
+        //   tmp = undefined;
+          if(tmp != undefined){
+            
             
             ret = tmp[0];
           }else{
@@ -368,21 +395,21 @@ async function min_max(board, pl, depth, max_d, turns, alpha, beta, eval_func){
             ret = ret[0]
           }
           
-        //   if(evals[ret_hash[0]] == undefined){
-        //     evals[ret_hash[0]] = {}
-        //   }
-        //   if(tmp == undefined || tmp[1] > depth){
-        //     evals[ret_hash[0]][ret_hash[1]] = [ret, depth]
-        //   }
-          if(depth == 0){
-            console.log(ret, board)
+          if(evals[ret_hash[0]] == undefined){
+            evals[ret_hash[0]] = {}
           }
+          if(tmp == undefined){
+            evals[ret_hash[0]][ret_hash[1]] = [ret, depth]
+          }
+        //   if(depth == 0){
+        //     console.log(ret, board)
+        //   }
           if (pl == 1 && ret > best_score){
               best_choice = i 
               best_score = ret
-              if(depth == 0){
-                console.log(ret, i)
-              }
+            //   if(depth == 0){
+            //     console.log(ret, i)
+            //   }
           }else if(pl == -1 && ret < best_score){
               best_choice = i 
               best_score = ret

@@ -160,7 +160,7 @@ Thus the ORCA cycle is kept, however it does not define the intelligent agent. I
 
 			</div>
 
-<figure class="text-left bg-white p-3 rounded">
+			<figure class="text-left bg-white p-3 rounded">
                     <blockquote class="blockquote">
                       
                       <p>"When the dust settled, researchers were left with the realization that building an artificial chess champion had not actually taught them much, if anything, about human cognition. They had learned how to build a chess-playing AI, and neither this knowledge nor the AI they had built could generalize to anything other than similar board games."</p>
@@ -168,7 +168,7 @@ Thus the ORCA cycle is kept, however it does not define the intelligent agent. I
                     <figcaption class="blockquote-footer">
                       <i>On the Measure of Intelligence</i>, François Chollet
                     </figcaption>
-                  </figure>
+            </figure>
 
 			<div style="margin-top: 20px;"></div>
 			<div class="text-left">

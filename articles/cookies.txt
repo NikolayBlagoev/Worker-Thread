@@ -1,0 +1,118 @@
+			<h1>Cookies</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			<p>We all know cookies. Every website bombards us with popups, asking us to accept their cookies (whethever that would mean). 
+			We may have come to understand their uses, such as tracking us on different platforms, 
+			storing our activity... But what are cookies <i>really</i>? From a technical perspective how are they stored, 
+			where are they stored, and why do we even need them? This article answers all those questions and provides 
+			some further information about the ubiquitous tool of the modern Internet.</p>
+
+			<h3>Why cookies?</h3>
+
+			<p>By default the HTTP protocol (what you use to browse the Internet) maintains no state. A user makes a request to a server 
+			and the server responds with some data (we will ignore redirects and other things for now). Then the user visualises the received data 
+			in some manner (for example HTML on your browser). But what if you wanted to incroporate some content specifically tailored to that user? 
+			This was the problem Lou Montulli faced when trying to develop a solution for e-commerce applications back in 
+			1994 <a href="https://arxiv.org/pdf/cs/0105018.pdf">[1]</a>. The problem they faced was how to store information on what the user 
+			has added so far to the shopping cart as they changed pages. 
+			</p>
+
+			<p>A naive solution would be to remember the IP of each request and use that as a means to store the shopping cart on the server. 
+			Each time the request comes in, check the IP, see what this IP has in the cart, and then modify the response to include this information. 
+			However, that solution has a few flaws. For starters, due to Network Address Translation, some users on the same Network may have the same 
+			public IP. Second, some users may be behind a proxy, in which case the same IP would appear for requests originating from different devices 
+			(an issue similar to the previous point). Lastly, with the emergence of mobile devices, a user may change their IP several times 
+			while browsing a website. Thus this solution is not sufficient to fully address the problem.</p>
+
+			<p>Ok, so a second approach that may come to mind is to embed this information within the URL of the requests. That does address the problems 
+			raised in the previous paragraph. Some modern applications make use of this of certain activities. This has been made somewhat viable 
+			due to developments in the JavaScript language. At the time, though, it was seen as an insufficient solution. If a user pressed the back button, 
+			they would return to a previous state. Imagine you add something to your shopping cart, go back a few pages and you notice your item was gone. 
+			You probably would not be too happy with this. An upgraded version of this approach would be to store only an identifier about the user in the URL 
+			and the server keeps the bulk of the data. This solution is more robust as now users, when going back through pages, would not end up accidentally 
+			removing items from their shopping cart. Still, this is not enough. Imagine a user shops for awhile, closes the browser, and a bit later opens the website again. 
+			The URL identifier would now be lost (unless the user remembered it) and so the user would have an empty shopping cart. Additionally, this would make 
+			sharing of pages between users an absolute nightmare. You see a product you like, you send it to your friend and bahm - now they have your whole 
+			shopping cart.</p>
+
+			<p>Probably the easiest solution is to store some information on the user's machine. Hence, how cookies were born. They are simple 
+			name-value pairs stored on the user machine, which the user sends with each request to the website. Cookies can be set 
+			by both the user (locally the user adds a new cookie) or by the server (in a response the server sends a cookie, however 
+			the user may choose not to set it). And that is all cookies are. Let us run a short example to see how they work. </p>
+
+			<p>Alice visits Amazon for the first time on a certain device. Amazon's server, receiving no cookie in the request, sends one (or multiple) 
+			back in its response. Essentially, the server says : <i>Hey here is a cookie with name "SOME NAME" and value "SOME VALUE"</i>. 
+			Then Alice (or her browser rather) can store this cookie locally. Each page she opens from the server from now on, Alice will send 
+			these cookies as well when requesting the page. The server will read the cookies and modify its response based on their values. 
+			Additionally, Alice can at some point, by herself, change their values, delete them, or add new cookies. This can end up 
+			modifying the behaviour of the website.</p>
+
+			<h3>Types of cookies</h3>
+
+			<p>Cookies can be distinguished between <i>session cookies</i> and <i>persistent cookies</i>. The former is stored temporarily, 
+			only while the user is currently interacting with a website. As soon as they close all tabs of it, these cookies should be deleted. 
+			Persistent cookies, on the other hand, are stored as long as their Expiration Date field is valid. This can be a few minutes, 
+			a few years, etc. Some other cookie properties are listed below:</p>
+
+			<ul class="mr-2">
+			<li>Cookies must be of size at least 4096 bytes (4 KBs).</li>
+			<li>Cookies can only be read by the domain that created them. For example this website can only access cookies created by the domain 
+			"theworkerthread.com". A website or the JavaScript code it provides cannot access external cookies.</li>
+			<li>Some browsers have a special tag "HttpOnly" which prevents JavaScript code from modifying them.</li>
+			<li>Cookies should be sent with each request to the server of the appropriate domain (subject to some filtering with the path property)</li>
+			</ul>
+
+			<h3>Applications</h3>
+
+			<p>Simple tools see broader applications. We saw this in <a href="/article/hash">Hashing</a>. And cookies are very simple as an idea. 
+			A simple name value pair, stored on the user site. As such they see a span of applications: </p>
+
+			<p><b>Authentication</b>. For both security reasons and ease of access, it is best not to require your uses enter their credentials each time. 
+			Which is where cookies come to the rescue. Not only does the user not need to authenticate on each page change (due to session cookies), but 
+			you can also store a persistent cookie, which the user provides to the server instead of authenticating. Thus, when a user has to log in 
+			as they have just opened your page (after logging in some previous time), they can authenticate with the cookie they obtained on their last 
+			log in.</p>
+
+			<p><b>Storing state</b>. The obvious intended use of cookies. You can store everything directly on the client (by partioning it 
+			if it is above 4096 bytes) or store some identifier, based on which you can retrieve the data on the server. For example, many news article websites 
+			(The Guardian, Medium, and so on) make use of cookies as a simple counter. That way if you have read their articles more than 5 times in a month, 
+			they will stop you from reading any further and ask you to subscribe/pay to continue reading. A very trivial way to circumvent that is to 
+			just clear your cookies for that website (see how to do it on <a href="https://www.makeuseof.com/clear-chrome-firefox-edge-cookies-specific-site/">Chrome</a>, 
+			<a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox">Mozilla</a>, and for Edge is the same but I couldn't find a 
+			good website that explains it :/). That way you can keep reading article ad infinitum, but you did not hear it from me.</p>
+			
+			<p><b>Tracking</b>. Yes cookies can be used also to track your activity. This follows from the above usage (each time a user with certain cookie 
+			requests certain page, store it as part of their state on the server). You can also update these cookies client side to keep track of what 
+			they looked where, how long, etc. This becomes especially problematic because of <b>Third Party cookies</b> (see below).</p>
+
+			<p>Here you can see a very simple usage of cookies. Below you can see the number of times you have read this article. THIS COOKIE IS NOT 
+			STORED IN ANY FORM ON THE SERVER! IT IS PROCESSED CLIENT-SIDE ONLY! If you want to try it, you can clear your cookies, refresh the page, 
+			and the counter will be back to 1:</p>
+			<b id="cookie-display">Times Visited: 1</b>
+			<div style="margin-top: 20px;"></div>
+			<h3>Third Party Cookies</h3>
+			<p>So we established that cookies can only be accessed by the domain that created them. That's great for our security... But then 
+			how do third party tracking cookies, like those used by google, even work?</p>
+
+			<p>Well they make use of a nasty little HTML tag - <b>"<  iframe>"</b>. Normally this allows you to embed other HTML code, which may not 
+			even be on your domain, into your page. However, in order to get that content, your browser needs to make a request to the embedded server. 
+			So it is essentially like you opening their site 
+			within the current page you are looking. And that second server can read their cookies as well as the URL of the page the request was made from. 
+			Thus they can build a browsing profile thanks to the huge amount of data presented to them.</p>
+
+			<p>There are valid reasons to desire this functionality (for example embedded player which remembers how far you were in the video). However, 
+			it does easily result in user's activity being tracked across different pages. So as some solution, CHIPS ("Cookies Having Independent Partitioned State") have been proposed 
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Privacy/Partitioned_cookies">[2]</a>. They are nothing too complex. They are same as the cookies we are 
+			familiar with so far, except that now they have two domains that set them together (the page and the embedded one). Then the cookie 
+			can be read <i>only</i> by the embedded instance inside that page. If the same embedded content is available on a different page, it 
+			would not have access to the other cookie.</p>
+			<h3>Zombie Cookies</h3>
+			<p>Despite their cool name, zombie cookies are something rather simple. In order to negate cases (such as the one described above 
+			for infinite free articles on news media websites) some websites encode information about cookies in other places, so that it can 
+			be recovered. Where they store this information depends on how through they want to be. They can store some of it in the URL, 
+			the browser database, or even check the most recent same IP request made. The term zombie cookie means that it just refuses to die. 
+			No matter how many times you delete it, the website manages to restore it.</p>
+			</div>
+			

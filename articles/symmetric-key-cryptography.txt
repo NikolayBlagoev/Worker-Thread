@@ -171,11 +171,17 @@
   <input type="text" id="keyVign1" size="7" value="goose"></input>
   
   <input type="button" onclick="onClickDecrVign1()" value="DECRYPT"></input>
+  
  </div>
  <div>
   
   <p>Encrypted Text:</p>
   <textarea  id="vign1_d" rows="4" style = "width: 100%"></textarea>
+  <div style="margin-top: 20px;"></div>
+  <div class="table-responsive">
+  <table class="table table-bordered table-responsive" id= "vign1">
+  </table>
+  </div>
 </div>
   
 </form>
@@ -244,7 +250,7 @@
 <td>v</td>
 <td>i</td>
 <td>l</td>
-<td>X</td>
+<td>█</td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +258,7 @@
 
 			<div style="margin-top: 20px;"></div>
 			<div class="text-left">
-				The capital 'X' here marks an empty cell. We would then read the columns in the order specified on top - first we read the last column: "s ", which contains only one space (since the last cell there is empty). Then we write the first column: "d e". At the end we obtain the message: "s d euavcrikel"
+				The '█' here marks an empty cell. We would then read the columns in the order specified on top - first we read the last column: "s ", which contains only one space (since the last cell there is empty). Then we write the first column: "d e". At the end we obtain the message: "s d euavcrikel"
 			</div>
 
 			<div style="margin-top: 20px;"></div>
@@ -283,25 +289,25 @@
 </b>
 </tr>
 <tr>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
 <td>s</td>
 </tr>
 <tr>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
 </tr>
 </tbody>
 </table>
@@ -332,24 +338,24 @@
 
 <tr>
 <td>d</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
 <td>s</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
 <td>e</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
+<td>█</td>
 </tr>
 </tbody>
 </table>
@@ -384,6 +390,11 @@
   
   <p>Encrypted Text:</p>
   <textarea  id="dec_transp_1" rows="4" style = "width: 100%"></textarea>
+  <div style="margin-top: 20px;"></div>
+  <div class="table-responsive">
+  <table class="table table-bordered table-responsive" id= "transp">
+  </table>
+  </div>
 </div>
   
 </form>

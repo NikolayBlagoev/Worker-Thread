@@ -1,0 +1,9 @@
+.navbar {
+    background-color: black;
+}
+
+@media (min-width: 700px) {
+    .nav-item:has(.active){
+        box-shadow: 0 2px 0 #fff;
+    }
+}

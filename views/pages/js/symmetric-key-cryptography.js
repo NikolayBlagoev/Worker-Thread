@@ -7,31 +7,102 @@ const modulo = (z-a)+1;
 function onClickEncrVign1(){
     
     var out = document.getElementById("vign1_d");
-    var a = document.getElementById("vign1_e").value.toLowerCase();
+    var vignin = document.getElementById("vign1_e").value.toLowerCase();
     var keys = getKeysVign1();
 
     if(keys.length==0){
         out.value = "INVALID KEY! IT NEEDS TO BE LATIN CHARACTERS WITH NO SPACES"
         return;
     }
-    
-    out.value = encryptVign(a, keys);
-    
+    var k1_vi = document.getElementById("vign1");
+    k1_vi.innerHTML = "";
+    const tr1 = k1_vi.insertRow();
+
+    var i = 0;
+    while(i<vignin.length){
+        const td = tr1.insertCell();
+        td.appendChild(document.createTextNode(vignin[i]));
+        i+=1;
+    }
+    const tr2 = k1_vi.insertRow();
+    i = 0;
+    var chr = 0;
+    while(i<vignin.length){
+        c=vignin.charCodeAt(i);
+        if(c>=a && c<=z){
+            const td = tr2.insertCell();
+            
+            td.appendChild(document.createTextNode(String.fromCharCode( keys[chr] + a)));
+            chr = (chr + 1) % keys.length;
+
+        }else{
+            const td = tr2.insertCell();
+            td.appendChild(document.createTextNode(" "));
+        }
+    //     const td = tr2.insertCell();
+    //     td.appendChild(document.createTextNode(String.fromCharCode((i+keys[0])%modulo + a)));
+        i+=1;
+    }
+    out.value = encryptVign(vignin, keys);
+    const tr3 = k1_vi.insertRow();
+
+    i = 0;
+    while(i<out.value.length){
+        const td = tr3.insertCell();
+        td.appendChild(document.createTextNode(out.value[i]));
+        i+=1;
+    }
 
 }
 
 function onClickDecrVign1(){
     
     var out = document.getElementById("vign1_e");
-    var a = document.getElementById("vign1_d").value.toLowerCase();;
+    var vignin = document.getElementById("vign1_d").value.toLowerCase();;
     var keys = getKeysVign1();
     if(keys.length==0){
         out.value = "INVALID KEY! IT NEEDS TO BE LATIN CHARACTERS WITH NO SPACES"
         return;
     }
+    var k1_vi = document.getElementById("vign1");
+    k1_vi.innerHTML = "";
+    const tr1 = k1_vi.insertRow();
+
+    var i = 0;
+    while(i<vignin.length){
+        const td = tr1.insertCell();
+        td.appendChild(document.createTextNode(vignin[i]));
+        i+=1;
+    }
+    const tr2 = k1_vi.insertRow();
+    i = 0;
+    var chr = 0;
+    while(i<vignin.length){
+        c=vignin.charCodeAt(i);
+        if(c>=a && c<=z){
+            const td = tr2.insertCell();
+            
+            td.appendChild(document.createTextNode(String.fromCharCode( keys[chr] + a)));
+            chr = (chr + 1) % keys.length;
+
+        }else{
+            const td = tr2.insertCell();
+            td.appendChild(document.createTextNode(" "));
+        }
+    //     const td = tr2.insertCell();
+    //     td.appendChild(document.createTextNode(String.fromCharCode((i+keys[0])%modulo + a)));
+        i+=1;
+    }
     console.log(keys);
-    out.value = decryptVign(a, keys)
-    
+    out.value = decryptVign(vignin, keys)
+    const tr3 = k1_vi.insertRow();
+
+    i = 0;
+    while(i<out.value.length){
+        const td = tr3.insertCell();
+        td.appendChild(document.createTextNode(out.value[i]));
+        i+=1;
+    }
 
 
 }
@@ -101,6 +172,45 @@ function onClickEncr_transp1(){
         return;
     }
     
+    var k1_vi = document.getElementById("transp");
+    k1_vi.innerHTML = "";
+    const tr1 = k1_vi.insertRow();
+    var i = 0;
+    var key_display = [];
+    while(i<keys.length){
+        key_display.push(0);
+        i+=1;
+    }
+    i = 0;
+    while(i<keys.length){
+        key_display[keys[i][0]] = i+1;
+        i+=1
+    }
+    i = 0;
+    while(i<keys.length){
+        const td = tr1.insertCell();
+        td.appendChild(document.createTextNode(key_display[i]));
+        i+=1;
+    }
+    console.log(keys)
+    i = 0;
+    while(i < a.length){
+        const tr2 = k1_vi.insertRow();
+        var k = 0;
+        while(k < keys.length){
+            const td = tr2.insertCell();
+            if(i < a.length){
+                td.appendChild(document.createTextNode(a[i]));
+            }else{
+                
+                td.appendChild(document.createTextNode("█"));
+            }
+        
+            i += 1;
+            k += 1;
+        }
+    }
+
     out.value = encryptTransp(a, keys)
     
 

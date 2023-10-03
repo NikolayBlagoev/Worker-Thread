@@ -3,6 +3,7 @@
 }
 html{
 	margin: 0;
+	padding: 0;
 }
 @media (max-width: 1400px) {
 .side-left-items{
@@ -65,3 +66,18 @@ display: none;
 	border: none;
 }
 
+
+
+.img-inner{
+	object-fit: cover;
+	object-position: center;
+	overflow: hidden;
+	height:50vh;
+}
+
+.carousel-item {
+	object-fit: cover;
+	object-position: center;
+	height: 70vh;
+	
+}

@@ -330,7 +330,7 @@
                 			<div class="col-xs-10 col-md-8">
 					
 					<div class="text-left">
-						a<sup>Phi(n)</sup> mod n = a 
+						a<sup>Phi(n)+1</sup> mod n = a
 					</div>
 					
 					</div>

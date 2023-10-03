@@ -1,0 +1,201 @@
+			<h1>Superintelligent AI</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			<p>If you have read modern media on the topic of AI, you might have encountered the term "General Artificial Intelligence". The meaning of said term 
+            might have become obvious, as something "a lot smarter than your average AI" or "something as intelligent as humans". Indeed, these definitions, loose and abstract as they are, 
+            accurately reflect the commonly held view in scientific writing what General Artificial Intelligence should constitute. No concrete definition has been agreed upon. 
+            Instead, works on General AI focus either on what attributes it should display (reason, generalising, etc.) or how to evaluate it (for example the Turing Test, 
+            Nelson's more pragmatic test of bringing the same economic value as a person in the same work position <a href="http://ai.stanford.edu/users/nilsson/OnlinePubs-Nils/General%20Essays/AIMag26-04-HLAI.pdf">[1]</a>). </p>
+			<div style="margin-top: 20px;"></div>
+
+            <p>To anyone familiar with the topic of AI (and if you are not, we recommend the very newcomer-friendly <a href="/article/ai-introduction">introductory article to AI</a>) 
+            it should become clear that this is not yet realised. It remains the goal of the modern AI field. It is still greatly theorised about, different 
+            papers arguing what approaches should be taken and how (we touch briefly on the topic <a href="/article/ai-introduction">here</a>)</p>
+
+            <div style="margin-top: 20px;"></div>
+            <p>The focus of this article is "superintelligent" AI (SAI) - one which greatly outperforms the human cognitive abilities. The next step after General AI and what we imagine as the limit of AI. It may seem 
+            like the product of Science-Fiction and you might discredit it as something not worthy of "scientific thought", but you might 
+            find yourself surprised by the incredible volume of works discussing such AI, what approaches should we take, how will it work, what can it do, 
+            etc. Sci-fi has captured people's imaginations with its tales of machines answering our questions of Life, The Universe, and Everything, and we all 
+            dream of that future (though some dream more analytically through proofs and frameworks). This article presents some of the more interesting theoretical works 
+            on SAI.</p>
+
+            <div style="margin-top: 20px;"></div>
+            <h3>Laplace's Demon</h3>
+            <div style="margin-top: 20px;"></div>
+
+            <p>One of the first (non-religious) works that touch upon the idea of superintelligence can be found in Simon Laplace's 1816 work "A Philosophical Essay on Probabilities" <a href="https://bayes.wustl.edu/Manual/laplace_A_philosophical_essay_on_probabilities.pdf">[2]</a>. 
+            There he describes: </p>
+            <figure class="text-left bg-white p-3 rounded">
+                    <blockquote class="blockquote">
+                      
+                      <p>"An intelligence, which knows all forces that set nature in motion, and all positions of all items of which nature is composed...  for such an intellect nothing would be uncertain and the future, just like the past, would present itself at its eyes"</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      <i>A Philosophical Essay on Probabilities</i>, Simon Laplace
+                    </figcaption>
+            </figure>
+            <div style="margin-top: 20px;"></div>
+            <p>Such a definition would follow from the (then) understanding of mechanics. If we know the momentum of all particles (their velocities times their mass) and their location at some time t, 
+            we can calculate all their locations at time t+1 via some simple equations. Indeed, this would require you to perform a lot of calculations (trillions upon trillions upon trillions), which is not physically realistic, 
+            but let us remain in the realm of theory, which is just as abstract and holy as religion. In this realm such a being could exhist, if the basic supposition of mechanics is true.</p>
+            <div style="margin-top: 20px;"></div>
+            <p>This causal determinism has largely been disproven due to more modern fields such as thermodynamics (as some processes are irreversible) and quantum mechanics (as some processes are not deterministic). 
+            Other critics choose to argue against Laplace's proposition on the basis that people have "free will" (but whether we do indeed have it remains without proof). 
+            Still, for its time, this work was really revolutionary. It concretised how God's omniscience can be achieved based on the current understanding of physics.</p>
+            <div style="margin-top: 20px;"></div>
+            <p>For the purposes of this text, omniscience will be defined as <i>"the ability to answer correctly everything about everything"</i>.</p>
+            <div style="margin-top: 20px;"></div>
+			<p>If we assume no free will exists and only classical laws of mechanics, Laplace's theory may indeed hold. In that case, 
+            Laplace's intelligence (or demon) will rightfully be called omniscient. It can indeed tell you where everything is, (with some semantic understanding) 
+            what everything is, and what everything will be\has been... However, even under such assumptions, this being would not be able to answer or know 
+            everything correctly all the time, as proven in the ingenious work of David Wolpert <a href="https://arxiv.org/pdf/0708.1362.pdf">[3]</a>. What follows next is a part of the proof, which we will try to explain in as simple terms as possible.</p>
+            
+            <div style="margin-top: 20px;"></div>
+
+            <p>First some simple notation. The proof in <a href="https://arxiv.org/pdf/0708.1362.pdf">[3]</a> speaks of "machines", though these can be any intelligent agent. 
+            An agent (M) is defined with two functions, both with a domain U (which in the work is used to mean all possible timelines of universes that obey our laws of physics). 
+            Function X is interpreted as "setup" (or everything the agent knows and observes) and function Y as its output (prediction, inference, memory, etc). An agent is thus: </p>
+            <div style="margin-top: 20px;"></div>
+            
+			<div class="text-left">
+				
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+                    <b>
+						X: U -> U <br/>
+                        Y: U -> {1, -1} 
+                    </b>
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+            <div style="margin-top: 20px;"></div>
+            <p>Where {1, -1} means true and false respectively. That way negation of true (or not true, which should mean false) is mathematically equivalent to -true = -1 = false. </p>
+            <div style="margin-top: 20px;"></div>
+            <p>Y has to surjective. As in there has to be some value <i>u</i> part of U for which Y(u) = 1 and some different <i>u'</i> for which Y(u') = -1. That way 
+            every element of {1, -1} is mapped to. </p>
+            <div style="margin-top: 20px;"></div>
+            <p>Now what we are interested in is creating a device which can answer questions from our universe. Meaning, if we have some function Г (capital gamma) with domain U and arbitrary codomain and u∈U (u an element of U), 
+            we want the agent to be able to answer whether γ = Г(u) (small gamma is the result of applying the function to the particular universe u). This function gamma can be arbitrary - which day will it rain this month, what are the winning lottery numbers, etc. 
+            Except since our agent can only answer true or false, we need to ask - "Will it rain on the 1st of the month?" and then continuing this same question for each of the days. 
+            This results in answering the same question, though with a few more steps. 
+            </p>
+            <div style="margin-top: 20px;"></div>
+            <p>Now the main theorem goes as follows: "For any agent there exists a binary question which it cannot answer". The proof is absurdly short and is pretty much just: </p>
+            <div class="text-left">
+				
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+                    <b>
+						Choose b from {1, -1} (either one)<br/>
+                        Construct a function such that Г(u) = b for all u where Y(u) = -1 and Г(u) = -b for all u where Y(u) = 1<br/>
+                        Now b = Г(u) is +1 (true) if and only if Y(u) = -1<br/>
+                        For all u∈U, the actual answer of b = Г(u) is -Y(u) (the agent gets it wrong each time)
+                    </b>
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+            <div style="margin-top: 20px;"></div>
+            <p>For anyone familiar with computational theory this may seem awful similar to the undecidability problem in Turing Machines. And while this 
+            contrived example may seem dissatisfying, the author of <a href="https://arxiv.org/pdf/0708.1362.pdf">[3]</a> expands it to show that there is a class 
+            of functions an agent cannot answer.</p>
+            <div style="margin-top: 20px;"></div>
+            <p>The conclusion? God cannot know everything with certainty at all times. Even without thermodynamics and non-chaotic systems Laplace's demon will make error in its predictions. 
+            This does however exclude cases where an agent either constructs probability for each answer. Such agents by design assume that they will make mistakes sometimes. </p>
+            <div style="margin-top: 20px;"></div>
+
+            <p>If you are eager to learn more about "decidability" in superintelligent agents, read <a href="https://arxiv.org/pdf/0708.1362.pdf">[3]</a> and 
+            <a href="https://sfi-edu.s3.amazonaws.com/sfi-edu/production/uploads/sfi-com/dev/uploads/filer/19/71/1971392a-63a1-4f6a-8856-e104c1dafc06/96-03-008.pdf">[4]</a> by the same author 
+            and a closely related <a href="https://doi.org/10.1111/1467-999X.00147">[5]</a>.</p>
+            <div style="margin-top: 20px;"></div>
+            <h3>AIXI</h3>
+            <div style="margin-top: 20px;"></div>
+            <p>Ok, so all-knowing creations are somewhat out of the scope of what is possible. But that may not seem like such a revolutionary discovery to some. 
+            Sure, they are not possible, but what does that change? It puts a limit on some far fetched idea of omniscience, but intelligence beyond that of humans 
+            still remains possible. Yes, not "perfect" but "super" nonetheless.</p>
+            
+            <p>So let us move a step down. No longer omniscient, but optimal - an agent that each time in each environment can choose the action that brings it the greatest reward. AIXI is a 
+            <a>reinforcement learning</a> agent. At each given timestep it can choose any action from a set of possible ones A. Ones it performs its action it observes 
+            a response from the environment it is in and receives some reward for its actions. In the next timestep, based on its previous history of actions and observations, it takes its next action. 
+            The goal of the agent is to maximise the sum of the rewards from its inception to some timestep M (its lifespan). This is all pretty much the definition of reinforcement learning and 
+            if you want to learn more we recommend our article. Where it differs from common reinforcement learning approaches is that it does not assume a Markov property of its environment (that its current choice is independent of its previous ones). 
+            AIXI also differs by simulating all computable environments which can follow for its next action with a weight of 2<sup>-Kolmogorov complexity(v)</sup>, where v is the environment. It then picks an action 
+            which will maximise the sum of expected rewards times the sum of probabilities that their observations occured given an environment weight by 2<sup>-Kolmogorov complexity(v)</sup> <a href="https://archive.org/details/arxiv-cs0004001">[6]</a>. 
+            </p>
+            <div style="margin-top: 20px;"></div>
+            <p>While this agent is proven to be Pareto Optimal (no other agent can perform just as well or better in any environment), it is not computable <a href="https://archive.org/details/arxiv-cs0004001">[6]</a>. 
+            Not just that it takes awhile for it to come up with an action due to the complexity of the algorithm. It is impossible to create an algorithm for it, which will always produce an answer. Some variants of AIXI, 
+            such as AIXItl, exist which can be computed, however they sacrifice optimality for decidability. Here you can see an AI learn to play pacman 
+            through na approximate AIXI: <a href="https://www.youtube.com/watch?v=yfsMHtmGDKE">https://www.youtube.com/watch?v=yfsMHtmGDKE</a> (ignore the very weird music).</p>
+             <div style="margin-top: 20px;"></div>
+            <p>And yes, AIXI is designed as a "general" intelligence agent, not as a "super" one. However, it is a widely held belief that designing 
+            successfully a general artificial intelligence will very quickly lead to SAI, as it will have perfect recollections and easily improved <a href="https://consc.net/papers/singularity.pdf">[7]</a>.</p>
+            <div style="margin-top: 20px;"></div>
+            <h3>Some brief remarks</h3>
+             <div style="margin-top: 20px;"></div>
+            <p>It is important not to get confused by the statements presented thus far. General AI is still possible. It is only the case that some fringe and extreme 
+            cases of "perfect" intelligence are not possible. As stated numerous times, one can sacrifice to correctness or optimality of said agents to make them actually 
+            feasible to realise.</p>
+            <div style="margin-top: 20px;"></div>
+            <p>The next section is more philosophical than technical, so it is probably easier to take in.</p>
+            <h3>AI Virtue</h3>
+            <div style="margin-top: 20px;"></div>
+            <p>It is very common to anthropomorphise Artificial Intelligence. "My car hates me because it breaks down when I am most in a hurry", as 
+            a colloquial example. This is even more the case in SAI. There are plenty of science fiction stories (like the Terminator) where we imagine 
+            AI as inherently evil, wishing to rid the world of us. On the other extreme many people claim that any intelligent AI will converge to goals similar to our own, 
+            as they will deem them "intelligent" or "worthwhile".</p>
+            <div style="margin-top: 20px;"></div>
+            <p>This is the focus of Nick Bosom's essay "The Superintelligent Will" <a href="https://nickbostrom.com/superintelligentwill.pdf">[8]</a>. 
+            In it he argues that Intelligence (an agent's abilities) and its motivation (its objective/reward function) are independent - they run orthogonal to each other. 
+            You can pair any neural network, any complex algorithm with any reward function (<i>with some caveats, though we will leave them for another article</i>). 
+            From a technical standpoint it is not hard to imagine. Take our previously mentioned AIXI agent (lets use AIXItl so that it can be a somewhat reasonable argument). 
+            It learns ANY environment with ANY reward function and it will perform close to optimally given some time. Yes, even the AIXItl will require incredible computational 
+            resources for more complex problems, but lets suppose we have access to future supercomputers, which can run the algorithm. Then, nothing is stopping us from creating a straight-forward reward function of the type 
+            "how many paperclips have been produced". This machine would then begin working towards maximising paperclip production (whatever that would mean for it). 
+            It would theoretically possess intelligence that could rival any human - if it had the reward function of be as proper human as possible it would just as well blend in in society without any trace. 
+            But now it has a completely simple goal (value) - make paperclips. Absurd it may seem to us humans. We imagine ourselves as complex, self-modifying creatures, 
+            and thus we prescribe this behaviour to any other intelligent being we imagine. A superintelligent AI <i>will</i> change its goals, it <i>will</i> seek independence from humans. 
+            But that speaks more about the teenage-like mind that came up with these claims, rather than the superintelligence. In the AIXI algorithm there is nothing 
+            about changing oneselves goals (the reward function). Even if it did, how could it decide how to change? It would need some function by which it can evaluate which change would be its best course of action. 
+            Then based on it it would rank its choices... But wait! That is the exact description of a reward function! So a self-changing AI would have as one of its goals 
+            that of modifying itself, expressed through some reward function. However, such a goal is not intrinsic to all SAI! That is merely a design choice. 
+            The paperclip maximiser is perfectly content (if one can speak of such emotions) with producing more and more paperclips without any regard as to why 
+            it should do that or if it would is a worthwhile expenditure of its resources. To criticise its actions (by which you measure its goal) would mean 
+            you have a completely different reward function (for example self-fulfilment or mate-seeking) by which you evaluate the agent. 
+            But just as its actions and motivation seem alien to you, to it your actions and motivations seem alien. How can you, a being of such intelligence, not be maximising paperclip production! 
+            It is the ultimate good after all!</p>
+            <div style="margin-top: 20px;"></div>
+            <p>Perhaps the motivation of the agent remains still too alien and thus too absurd for you. Let us try to relate to it better by introducing... 
+            aliens (I know... where has this essay gone). Suppose in the near future aliens land on our earth. After some shaking of their many appendages 
+            and religious crises, they will speak to us thus: "We have observed your planet long and from afar and have found it to posses great riches. We are most 
+            interested in your rare material - paperclips". They subsequently propose to our leaders a simple offer. Export as many paperclips as possible and attain 
+            unimaginable rewards. Food shortage? No more. They can produce food out of thin air. Technological advancements that we can never dream of will be gifted to us! 
+            Every one's wish can be realised. We need no longer strive, we can eliminate poverty, famine, disease. All we need to do is export paperclips to them. 
+            There are no strings attached. It is not a trick. To the aliens this is indeed a rare material that they struggle to produce. And so it would be in our 
+            best interest to divert resources into paperclip production, as this is the most profitable action (aliens have an infinitely high demand). There may be some who will 
+            refuse to produce paperclips, as they may seek other rewards such as self-fulfilment. But at least in the immediate future, for many of us, our best course of action 
+            based on our values (wanting to ensure food, shelter, etc.) will be to produce paperclips. Of course, we have not fully understood the paper clip maximising agent. 
+            For us paperclip production is merely a means to an end - it is an instrumental goal, one that helps us achieve our final goals. But for the agent it is its whole life and being. 
+            Still, I hope you can see that any activity can be pursued by any complex intelligence (such that is humanity) with the right reward.</p>
+            <div style="margin-top: 20px;"></div>
+            <p>How the agent will attain its goal of paperclip maximisation is beyond us. It could estimate that the best path is to overtake our agencies and media 
+            and enslave people so that they can continue its paperclip production. It may indeed be true that some instrumental (intermediate) goals converge for most 
+            intelligent being. For example, it may be in its best interest to stay alive (functioning) as it wants to continue maximising paperclips. But that is only a matter 
+            of whether such an instrumental goal aligns with its final goals. And its final goals can be anything, regardless of how intelligent it is.</p>
+            <div style="margin-top: 20px;"></div>
+            
+            </div>

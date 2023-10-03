@@ -85,8 +85,8 @@
 				This provides at least some basic validity of the two fields. SPF, however, fails when mails are forwarded/relayed and it dos not protect the "From" field, which is what ultimately gets displaye to the user <a href="https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf">[2]</a>.</p>
 				<div style="margin-top: 20px;"></div>
 				<p>The next level of security is provied by DomainKey Identified Mail (DKIM) - again a defacto standard. The DKIM protocol requires that an email 
-				has the from, to, part of the body, and some other headers hashed and <a href="/article/signatures">signed</a> by the mailing service <a href="https://datatracker.ietf.org/doc/html/rfc8463">[3]</a>. 
-				The recipient then checks the signature and verifies it using the public key of the domain specified in the DKIM fields (see <a href="/article/signatures">Digital Signatures</a> for more details). 
+				has the from, to, part of the body, and some other headers hashed and <a href="/article/digital-signatures">signed</a> by the mailing service <a href="https://datatracker.ietf.org/doc/html/rfc8463">[3]</a>. 
+				The recipient then checks the signature and verifies it using the public key of the domain specified in the DKIM fields (see <a href="/article/digital-signatures">Digital Signatures</a> for more details). 
 				This protocol guarantees that parts of the email have not been tampered with since it has been signed and that the domain has authorised the sending of this email. 
 				The DKIM protocol is what is repsonsible for the "signed-by" field.</p>
 				<div style="margin-top: 20px;"></div>

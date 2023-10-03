@@ -13,7 +13,7 @@ let views_cof = 0;
 var smtp_relay = nodemailer.createTransport({
   
   host: "",
-  port: 25,
+  port: 0,
   auth: {
     user: '',
     pass: ''
@@ -124,7 +124,16 @@ app.get('/demo/fakebook', (req, res) => {
 	res.render("pages/fakebook");
 });
 app.get('/explanatory', (req, res) => {
+  // box-shadow: 0 4px 0 #fff;
 	res.render("pages/explanatory");
+});
+app.get('/hilberts-gallery', (req, res) => {
+  // box-shadow: 0 4px 0 #fff;
+	res.render("pages/hilberts-gallery");
+});
+app.get('/hilberts-gallery/*', (req, res) => {
+  // box-shadow: 0 4px 0 #fff;
+	res.render("pages/hilberts-gallery");
 });
 app.get('/tools', (req, res) => {
 	res.render("pages/tools");

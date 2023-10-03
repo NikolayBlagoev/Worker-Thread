@@ -1,0 +1,315 @@
+			<h1>Answering Book's Questions</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+            <p>On his <a href="https://www.thepourquoipas.com/post/crypto-nft-dao-web3-questions">website</a>, Adrien Book, writer for "We Are Developers", "AI writer of the year", and "Technology Contributor of the Year", poses 
+            some questions to "Crypto, NFTs, DAOs & Web3 fans". Now I am not a fan of these technologies, but I do have to work with them for my projects and 
+            research. So, after accidentally stumbling upon his questions, I decided to answer them here, as many of you might share the same sentiments as Book. 
+            Granted his work is, as the rest of his website is, terribly written. I will do my best to dig up the logic he was trying to present in his arguments.</p>
+			<p>He begins by writing: "I’ve thought about [distributed applications], created them, sold them, bought them and written about them. I still don’t really get it". How he could have 
+            written and created them without understanding them is beyond me. "Instead of looking for answers, I have resigned myself to asking questions instead". And 
+            I will be happy to answer them. "By being specific about what’s being asked, I’m hoping to create an environment within which a discussion can be had". 
+            He is never specific about what is being asked. Read his original article. It is just question after question. The statements he makes are 
+            without ground and nonsensical.</p>
+            <h3>What is wrong with centralisation?</h3>
+            <div style="margin-top: 20px;"></div>
+            <p>This is the first main question Adrien Book poses in his article. You will notice a common trend throughout his writing... it lacks any coherent structure. 
+            Instead of explaining his question or what he would like to know specifically (wrong as in ethically wrong? As in functionally wrong?) he barages you with questions. 
+            The first in this onslaught is "Is decentralization a safe word for the tech community?". Not sure what he means by "safe" here (I hope he is not 
+            referring to the term "safe word", which has a very... particular connotation). I presume he 
+            means safe as in do people feel calm about using it. Something like "He-who-shall-not-be-named" from Harry Potter would suggest that "Voldemort" 
+            is not a safe word. So do people feel comfortable using the word "decentralisation"? If you read the article by Book you will find 
+            he provides a link to a Google Trends page which compares the usage of "decentralisation" vs "centralisation" <a href="https://trends.google.com/trends/explore?date=today%205-y&q=decentralization,centralization">[1]</a>. 
+            He then elaborates: "If that’s the case, the regularity at which it’s uttered is proof no one aboard the good ship Web3 is feeling very safe".</p>
+            <div style="margin-top: 20px;"></div>
+            <p>We are two sentences in and we already have a lot to unpack. Book's argument is as follows</p>
+            <div style="margin-top: 20px;"></div>
+            <div class="text-left">
+				
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+                    <ul>
+                    
+                    <b>
+						<li>Safe word is one that people feel comfortable about</li>
+                        <li>Decentralisation is used more often compared to centralisation</li>
+                        <li>Therefore no one is feeling safe</li>
+                        
+                    </b>
+                    </ul>
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+            <div style="margin-top: 20px;"></div>
+            <p>The mental gymnastics required to make sense of this are beyond me. I would say that the fact that the word is used a lot shows that people feel safe using it. 
+            If they didn't then you would see people using it a lot less often. Also, the fact that people have used the term "decentralisation" <i>slightly</i> more often 
+            than "centralisation", does in no way mean that they do not feel safe about decentralisation. It makes no sense to infer the sentiment of a term 
+            simply from its usage. If you wanted to analyse the bulk of the population's opinion on decentralisation and centralisation, you could 
+            run a simple sentiment analysis over their statements regarding either. As someone "crowned "AI Write (? did you skip an r in your title) of the Year" by Hackernoon" <a href="https://www.thepourquoipas.com/about-adrien-book">[2]</a> 
+            you should understand what sentiment analysis is. You should also be capable of understanding that sentiment hardly ever correlates with frequency of use. 
+            I have no idea what claim he was trying to put forth in those two sentences. If my interpretation above is correct then it is a nonsensical argument.</p>
+            <div style="margin-top: 20px;"></div>
+            <p>Let us move forward through the trenches. "I understand that in the context of Web3, decentralizing means having the freedom to own one’s data, and the freedom to choose what to do with it, across a galaxy of applications". 
+            That is not quite true. I am not sure he understands how Web3 work or what decentralisation is. Decentralisation means that the information, functions, computations, and control are distributed 
+            across a set of nodes, which can operate independently if needed. Decentralisation is the step before distribution, where the previously mentioned properties are 
+            spread across all nodes in the system. Web3 by design is closer to being defined as "distributed" than "decentralised", but these terms are usually used 
+            interchangeably. As for, Web3, a bit below he has more concrete questions about it, so I will speak about it there so as to not repeat myself. In brief, 
+            Web3 is the (still mostly theoretical) next step in the workings of the Internet. In Web3 control and hosting is distributed. As to how this is (or will be) achieved... 
+            Well it is a bit hazy. It is an idea still being developed. The common trends across different explanations are that Web3 will make use of a blockchain 
+            to facilitate consensus across the network, identities will be the public keys of users (so one authentication across all platforms), and content 
+            will be distributed, via for example IPFS. The whole goal of Web3 is to remove the central server, the one through which you obtain your page content. 
+            A part of the idea is to incorporate incentives to create and be rewarded for your work inside the system itself. No ads or selling user data. 
+            Crowdsourcing but now integrated in the design of the system itself. It can even allow communities to "update" their platform, by voting on which change they want to integrate. 
+            No central authority needed to enact the change. The system does it by itself. These are hand-wavy explanations as Web3 is still more of a prototype 
+            than a realised solution. </p>
+            
+            <p>He then writes, "That’s great. But must we be so adamant about it?"... He describes a positive, something that we would all probably agree is 
+            desirable - increased privacy. Then asks if we should be so adamant about privacy? Yes! A 100% yes! We need to defend our privacy as our right. 
+            I do see that it is possible that what his statement refers to is a bit ambiguous (arising from his poor writing). The "it" could refer to decentralisation, rather than 
+            to "the freedom to own one’s data". If that is the case then we should examine the following paragraph in his article, which lists what he believes to be 
+            the negatives of decentralisation</p>
+            <p>"Is centralization such a bad thing?". Well good and bad are relative terms. You need to make certain ethical assumptions, adapt a particular 
+            moral framework and then according to it judge whether something is good or bad. This is a simple fact deriving from Hume's is/ought problem <a href="https://plato.stanford.edu/entries/hume-moral/#io">[3]</a>. 
+            Across all frameworks and ethical assumptions everything is equally bad and good (a sort of an ethical "No Free Lunch"). Centralisation has its 
+            functional benefits, and so does decentralisation. For the sake of simplicity, I will assume that Book's operates under some "Common Ethical Framework" 
+            that is shared by the majority of the population. As we will see, his normative claims will support this fact</p>
+            <p>"I like that the government centralizes trash collecting". Ok, so centralisation is good because the government (a centralised organisation) deals with trash collection. 
+            I do believe he means "deals with" when he speaks about "centralising" trash collection, as not all countries have an in-house waste management service. For example, 
+            municipalities in germany have the ability to choose what waste management service to use, whether in-house or a private one <a href="https://link.springer.com/article/10.1007/s11151-021-09843-w">[4]</a>. 
+            In the USA many municipalities make use of private companies for waste management. Thus the government doesn't <i>always</i> handle trash collection by itself. Sometimes it 
+            acts as a mediator between the citizens it represents and a specialised company. Building from this a truly distributed trash collecting is not hard to imagine. 
+            The only thing that would need to change is citizens can have the right to choose which waste management company they want to use for their household. If they want to negotiate prices, 
+            they can always group together in neighbourhoods to collectively sign a contract. The building blocks are already there - we only need to give people 
+            the power to decide for themselves what and who they want to dispose of their trash. Of course this puts a greater burden on each individual - to familiarise 
+            themselves with each option and consiously decide on who will handle their disposal. You can always wave your right and instead let either the government or 
+            some other intermediary make that decision for you. The only reason to "like that the government centralizes trash collecting" is that one 
+            doesn't need to burden themselves with making a choice, arranging a contract, etc. This is abstracted away from the citizens. 
+            But at the same time they are given less power in deciding what suits best their needs and less information how their waste is handled and 
+            for what costs. Decentralised/distributed systems would merely hand more of that power in the hands of the actual people. However, 
+            with great power comes great responsibility. One becomes burdened with the responsibility of choosing. But as said, you can always choose to wave that 
+            and let someone else handle it for you. 
+
+            </p>
+
+            <p>If the system of decentralised waste management outlined in the previous paragraph seems too absurd to you, you can consider that in 
+            Netherlands one can choose the energy company, which they want to use, just like how one would choose an Internet Service Provider <a href="https://www.expatica.com/nl/living/household/utilities-netherlands-100581/">[5]</a>. 
+            And in some countries the government (the centralised authority) can be too corrupt or inefficient to deal with waste management. Hence why 
+            community-driven (decentralised) trash collecting projects exist <a href="https://doi.org/10.1016/j.scp.2022.100914">[6]</a> <a href="https://doi.org/10.1016/S0197-3975(98)00045-9" >[7]</a>.</p>
+            
+            <p>Ok, I know my writing may seem a bit too exhaustive to many. Spending whole two paragraphs on one sentence is a bit too much. But 
+            I want to answer all of his concerns (and maybe some of yours) in an as detailed and factual manner as possible.</p>
+
+            <p>So... Moving on. "I like living in a place that has a centralized set of laws, like age of consent". Very interesting argument to make! 
+            Considering that the author lives in France, a country which <b>only recently</b> decided it is time to consider  
+            intercourse with a minor under the age of 15 as rape <a href="https://www.politico.eu/article/france-sets-age-of-consent-at-15/">[8]</a>. 
+            Something that many of its citizens had been fighting for for years prior <a href="https://www.france24.com/en/europe/20210212-finally-france-seeks-to-establish-age-of-consent-at-15">[9]</a>. 
+            This will become important in a second. For now I want to clarify that the author has a fundamental misunderstanding of decentralised systems. 
+            They do not mean lawless, as many of you like him might imagine. It is very much possible to have a voting system across <b>ALL</b> participants in the system 
+            and if, lets say, more than 66% agree that a law should be passed, it comes into effect. An idea mirroring many distributed algorithms (see for example 
+            <a href="https://pmg.csail.mit.edu/papers/osdi99.pdf">[10]</a> and <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/paxos.html">[11]</a>). 
+            I think the case of France with the law for age of consent is an example of the government being rather inefficient. It took several major 
+            events for the <i>intellectuals</i> to consider that maybe a 13 year old cannot consent. I do believe that the majority of French citizens 
+            already believed that the age of consent should be stricter than what it was prior to 2021 (but hey, I could be wrong 
+            <a href="https://www.liberation.fr/checknews/2020/01/02/matzneff-les-signataires-d-une-petition-pro-pedophilie-de-1977-ont-ils-emis-des-regrets_1771174/">[12]</a>). 
+            So in a decentralised system already in 2017 (or whatever year prior) all participating citizens could have been asked if they support 
+            the change proposed. If a great majority of them supported it it gets added to the constitution (the ledger) and from then on all cases 
+            are judged according to the new law. Existence of laws is not if and only if we live in a centralised system. In fact, you could live in pre-2013 
+            Saudi Arabia and have no age of consent <a href="https://english.alarabiya.net/News/middle-east/2013/12/16/New-Saudi-law-to-set-marital-age-of-consent-at-18">[13]</a>. 
+            There is much more to be said on the topic of emergence of laws (whether top-down, government imposed, or bottom-up, societally imposed). I will leave out this discussion 
+            so that this article can be more focused on the main topic at hand.</p>
+            
+            <p>"I like that Google centralizes my search result". Ok, I guess... that is a personal preference? I can ask why one likes it and I am surprised 
+            that the "AI Writer of the Year" does not use Duck-Duck-Go, but that is besides the point. You are free to enjoy a search engine of your choice. 
+            I am not sure what he means by "centralizes my search result", though. That Google keeps a track of all your searches and profiles you based on them? 
+            And sells that data to third parties? Is that what he means? What is the convenience of it? I can think of a few. First, you get results and suggestions relevant to you, 
+            based on your interests. However, this is not something inherent to centralisation. You can have a personalised recommender that stays only on your system and 
+            no outside party gets access to it. You can then choose to share it across certain devices. Second, you can continue your search history from device to device. 
+            But again.. you can do that without the central authority. Peer-to-peer connection between your devices and you are good to go. Third, 
+            he derives some irrational pleasure from knowing that Google collets all data about him. Something like a digital exhibitionist? In which case I have no argument against it.</p>
+            <p>"Heck, you may as well call the United States the Centralized States of America, as it’s how the supposèd land of the free came about". Why? 
+            I wasn't aware of this. I find the USA to be quite decentralised in that each state can operate with some independence (for example 
+            tax laws differ, etc). I don't know what he means by this.</p>
+            <p>"Isn’t centralization a spectrum anyway?" Yes you can think of it that way, I guess. It is not quite accurate, but you can have 
+            hybrid systems where some control is distributed across the nodes. "I’m sure many of the arguments promoting crypto would be better heard if people on Twitter were not so binary about the topic." 
+            I am not sure what the arguments are on the topic, because I really don't care what babble happens on Twitter (now X). </p>
+            <p>One thing I want to point out is that all of his discussion on centralisation in his article has been in terms of GOVERNMENTS rather than systems. 
+            Indeed, you can use them as an analogy when trying to explain the concept of decentralisation, but the two systems are very different. What works 
+            well for machines may not always work well for people. There are inherent benefits to both practices (regardless if we speak about people or about machines). 
+            Decision making in centralised systems can happen a lot faster due to smaller overhead. One does not need to ask all or a set of participating nodes for 
+            their vote, doesn't need to consider Byzantine failures. You have one central authority that says this is the new law/decision and we follow it. 
+            It is why armies have a clearly defined hierarchy to be most efficient in situations when quick decisions need to be make. Algorithms are 
+            much easier to be designed for centralised and permissioned systems. Trust me, you do not want to have to deal with distributed heterogeneous networks where 
+            Byzantine failures can occur. On the other hand, decentralised/distributed systems can be very easily scalable and offer greater resilience. 
+            The Internet was made to be decentralised. No central authority. Part of the network fails? No problem! The rest can continue functioning just fine. Your country 
+            gets invaded? Part of it gets bombed? Not an issue for your communications. If you are government, you can shut down Internet traffic within your 
+            territory, sure <a href="https://circleid.com/posts/egyptian_government_shuts_down_most_internet_and_cell_services">[14]</a>, but the whole 
+            network can operate without you. The problem highlighted in the Egyptian situation <a href="https://circleid.com/posts/egyptian_government_shuts_down_most_internet_and_cell_services">[14]</a> 
+            is that Internet is still dependent on hardware. ISPs need to provide the service of connecting you physically to their network. And ISPs, as any 
+            organisation, answer to the local governments. Hopefully, though, in the future we will be able to connect via satellite solutions if 
+            we need to.</p>
+
+            <h3>Who wants to build and own a platform?</h3>
+            <p>Me! Me! Me! I want to! And probably most people (judging by the abundance of Instagram profiles, Facebook pages, etc). This is fully possible with decentralisation. 
+            You have one standard protocol through which machines communicate and you display the contents retrieved. Whether you connect to one (set of) centralised servers 
+            or other peers in the network doesn't matter. In fact, one of my unviersity projects was to built Distributed TikTok. Everything TikTok has to offer - 
+            watching videos, uploading videos, profiles, and so one, except with no central server. Just distributed ledgers and torrent protocols. It is 
+            very doable. Making a profile or using the application is not even that difficult for a user. To them it feels no different than making a regular 
+            TikTok account. They do not need to set up their own servers, or build their own pages (they could if they wanted to).</p>
+            <p>"One of Web3’s core idea is that we own our digital assets, not the companies in/on/for which said assets have been created". Ok so this chapter 
+            I guess is specifically about Web3 so I will try to keep my answers specifically around the design of it. Do bare in mind that 
+            at least currently, Web3 is still more of a half-realised concept. So there can be different interpretations about how it should work. "In order to fully own your data, you’d have to store it locally, in your own home, right?" 
+            No. You store it on the ledger. Or at least some proof of it. Then the actual data is stored off the chain for example on <a href="https://ipfs.tech/">IPFS</a> 
+            (though you can also store it locally). If you want a somewhat good overview of Web3, I recommend this <a href="https://arxiv.org/pdf/2304.06111.pdf">[15]</a>. 
+            I do take an issue with some of their explanations, for example III.A, but I am too lazy to write my own explanation. So <a href="https://arxiv.org/pdf/2304.06111.pdf">[15]</a> is <i>good enough</i>. 
+            "That would mean owning and operating your own servers, right?" Nope. As already said distributed file systems exist, peer-to-peer content sharing, etc. 
+            If you want to just browse the web without hosting any content, then you can store anything locally (like you already do with cookies).</p>
+            <p>"I’m an adult." Good for you! "I pay taxes." Ok? "I own cryptocurrencies and create NFTs." Wow! Look at you go! 
+            "I do not want to run my own servers". For what do you need them? It could be that I am confused and you are speaking about a very 
+            particular function for which you need to host a server. But I do not understand what it is from the writing. Also, these few sentences were hilarious to read. 
+            "I AM AN ADULT! I PAY TAXES! I DONT WANNA HOST A SERVER!" Reads more like a child having a tantrum than someone trying to put forth a claim. 
+            Reminds me of the "I AM A SURGEON" joke... but yeah. Whatever. I just had a good laugh when I first read those lines.</p>
+            <p>"Even organizations building software full time do not want to run their own servers". Yeah server hosting is a decent expense. 
+            For anyone to read this website I need to host a server (granted I have outsourced it to DigitalOcean, but it is still 10 euros per month 
+            for essentially nothing). One could hook up a Raspberry Pi to an ethernet cable and let that host the server, but that had some issues of its own. 
+            Anyways, besides the point. Hosting a server is not something most people want to do. You do not need specialised equipment, as 
+            you can have it running as a background task. Depending on your needs it is sufficient. Yet it does require some engineering. 
+            But peer-to-peer content distribution is surprisingly lightweight and abstracts a lot of the process for its users. One small issue is 
+            that you will always download more than you can upload. "As such, we will continue to rely on corporations to build APIs that can plug into existing tools so that we may access various blockchains". 
+            Wait... What? Why? Do you mean that you need a process running to connect to blockchain network? You can launch one in the background while you are browsing, it doesn't 
+            consume that much processing power or bandwidth (if you don't run a full node). You can still choose to connect to an API, but we don't need to rely on corporations to run 
+            RPC endpoints. If you are curious about that you can read <a href="https://support.metamask.io/hc/en-us/articles/5378119120667-How-does-MetaMask-connect-to-a-blockchain-network-">here</a>. </p>
+            <p>"I struggle to understand how that’s different from Web2". Feel free to read above. "Is it a question of choice again?" Partially. "I can choose to create my own API if I want?" You don't need to 
+            "build it", you can just run it. Granted Web3 is still developing so solutions are developed on making the user experience (whether just one surfing or 
+            one hosting) a lot easier. "I’d like to understand how we aim to convince the majority to use anything more complex than a browser". With good User Experience. 
+            If all of this is abstracted away from you, you would not feel the difference. Browsers are already very complex. You just don't see it because they 
+            are very well made. "If you’ve ever spoken to anyone over the age of 50, you know what I’m talking about". Despite being in his late 30s, Adrien Book writes like 
+            an angsty teenager. The generation that is now 50 knows how to use the Internet quite well. Most of my professors in Computer Science are around that age 
+            and trust me they do know how to use a browser. Ok, biassed sample. But still, I have a grandma that is 70 years old and can use a browser just fine. 
+            Browsers focus a lot on user experience to make it as easy as possible to surf the web. I also don't see what this argument is supposed to mean? 
+            We should stop progress because people above 50 something something?</p>
+            <p>As of writing this article, Web3 is still <i>mostly</i> a wet dream. Yes it has already some applications built on it, but it is not fully realised. 
+            And it is far from being usable. Still, I don't see how that should discourage use. Rome was not built in a day. The first distributed file sharing 
+            protocols like GNutella and Napster failed. Only later did BitTorrent make peer-to-peer file sharing actually viable. Is Web3 hype? Yes. 
+            Is it good hype? No. Will it succeed? Maybe.</p>
+
+            <h3>Is Web3 really decentralized?</h3>
+            <p>That is a very good question. It was also raised as a point by the creator of Signal in <a href="https://moxie.org/2022/01/07/web3-first-impressions.html">[16]</a>, which 
+            Adrien Book seems to have been heavily influenced by. <a href="https://moxie.org/2022/01/07/web3-first-impressions.html">[16]</a> does raise a lot of good points. 
+            But I wouldn't call them deal breakers, rather problems that need to be overcome. One of the major issue he raises is that blockchains cannot run on mobile devices. 
+            And a lot of research is being poured into that.</p>
+            <p>"Let’s assume decentralization is good, and that we should work in that direction. Then why are platforms like Coinbase and OpenSea, which cater to Web3 fans, so prominent?" Good question. 
+            Tendency of markets to centralise? Or it could be that we still operate on Web 2. But even with web3, platforms may become "somewhat" centralised. 
+            As in users develop a preference for a particular platform/community. The control of the platform and its information can still be decentralised. 
+            However people come to that platform a lot more often compared to others. Decentralisation doesn't mean that each platform/service will see 
+            an equal amount of users. "Are they not a centralizing force in an universe that claims to want none?" Indeed they have unfortunately functionally 
+            became one due to the poorly thought out Web3 design. In <a href="https://moxie.org/2022/01/07/web3-first-impressions.html">[16]</a> the author tells 
+            an interesting experience he had with his NFT which was de facto removed from the distributed system due to the decision of OpenSea. That is something 
+            that has to be reworked if Web3 is to become a viable system. "Are they not able to remove users if they break the rules? Could they not launch competing assets alongside those of their users?" 
+            Yes, unfortunately, as we <i>use</i> Web3 now it is possible. They may not be able to stop you on the blockchain, but they can stop you from using 
+            their services. <a href="https://moxie.org/2022/01/07/web3-first-impressions.html">[16]</a>'s NFT is still on the Ethereum blockchain. 
+            It is just to the overdependence on OpenSea that he couldn't see it. </p>
+            <p>"It’s impossible to access a blockchain on one’s own browser or mobile." Not quite true. 
+            You can access it, store it, append to it. Certain ledgers have been designed with mobile devices in mind. Our TikTok application made use of a 
+            custom blockchain that ran fully on the mobile device. However, Ehtereum and BitCoin have become functionally too large for many devices. 
+            Poor engineering choices rather than a fundamental flaw with these technologies. "So, we have to rely on APIs, as described above." Mmmm... no. 
+            You can subscribe to a community owned API. "The best APIs, from the best companies, will gain more clients and become the standard for the industry." 
+            Standard? Not really. Everyone may end up using them, but that doesn't affect the underlying protocol. You would still be able to use 
+            another service if you want to and interact with the same blockchain. However, it is possible that their APIs will filter out your blocks. 
+            In which case it will be up to the users to severe ties with that provider and move to another one. Of course, this is all if we stick to the current 
+            API set up. As I said above, some improvements have been made towards blockchains that run fully on mobile devices. "Sure, new companies can be created to access the underlying asset that is the blockchain. But will they be able to compete against the brand recognition of established player? That would be assuming perfect information in the market, something we know does not exist in the real world." 
+            That is a good counter to my argument. Hopefully we can move away from the API-centered vision. Hurdle to overcome. Not necessarily a deal breaker. It shouldn't be an NP-hard problem.</p>
+            <p>The next paragraph lists some figures to show how Ethereum and Blockchain have become largely owned by a few parties. To this I say... Capitalism :/. 
+            Crypto currencies are still largely viewed as speculative investments, not even assets. And of course those with means in the real financial world would 
+            want a piece of the pie. A very sizable piece. So they will own a majority of the crypto assets. But that doesn't affect the decentralisation of the system. 
+            The next point however does. " 0.1% of Bitcoin miners are responsible for half of all mining output" meaning most blocks are approved by a small fraction of nodes. 
+            Indeed that is one of the problems with Proof of Work algorithms as a basis for consensus. Proof-of-Stake (PoS which surprisingly matches the abbreviation of 
+            an insult) would be even worse in such a situation. There is also a lot of ongoing research into alternatives to PoW that hopefully will not be as bad as 
+            they hyped up PoS <a href="https://eprint.iacr.org/2018/239.pdf">[17]</a> <a href="https://arxiv.org/pdf/1912.04065">[18]</a>. But who has the time 
+            to read all these papers...</p>
+            <p>"Smart people will argue that decentralization is not a key feature of Web3". Is it that they are smart and they argue it or is it because 
+            they argue it that they are smart (notice how he didn't write <i>some</i> smart people. Clever little fox). "For them, I have more difficult questions". 
+            Ah! Then the next onslaught is not for me. But I am too egotistical to stop so I will answer them nonetheless.</p>
+            <h3>Is it really the “early days”?</h3>
+
+            <p>Oh, nevermind this seems to be about me.</p>
+            <p>"People proudly chanting that we’re still in “the early days” do so in the hope that more people will buy their assets, as it’s the only way they will go up in value". 
+            I don't own any crypto or NFTs. So I guess not all people? Weird way to start your argument - with a logical fallacy. 
+            "This is the very definition of a pyramid scheme, and I’m tired of pretending we’re not all seeing it". Yeah... I don't see it. But I guess this 
+            hinges on the fact that everyone who claims we are in the early days owns assets and is trying to up their price. Projecting much? "I’ve thought about them, created them, sold them, bought them and written about them" - Adrien Book.</p>
+            <p>"Bitcoin has a trillion-dollar market cap and is the 10th most valuable asset in the world". Mhm. Small recommendation - next time provide a source, helps a lot. 
+            "Ethereum is #15. Large companies are now buying these assets. That’s not a sign of being “early”". The mental gymnastics here are beyond me so I have no response. 
+            "And yet, I’ve never used Bitcoin and Ethereum for anything other than to make a quick buck". Ah! So you were projecting! Maybe that is why you never tried to understand them? 
+            You saw them as a mere speculative investment and not cared to know about the technology behind.</p>
+            <p>"Bitcoin has been around for a decade". That is almost correct. "When the web was the same age, it had half a billion users around the world". Well, 
+            the WWW was created in the late 80s. 14 odd years later it had slightly more than that. "VR headsets first came out 2 decades ago". Ok. Point being? 
+            (spoiler - there is no point... He was just very proud of knowing that fact). "The idea for blockchains is 30 years old". The idea of a computer is from the 1930s 
+            <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/abs/10.1112/plms/s2-42.1.230">[19]</a>. It took awhile to be fully realised for commercial use. 
+            Maybe things take different time to become viable? Who knows. "If it was ever going to be anything but a speculative asset, we’d know about it. Wouldn’t we?" 
+            Stop projecting. Blockchains have found a decent number of applications. One that comes to mind right now is <a href="https://ieeexplore.ieee.org/document/8894364">[20]</a>. 
+            Unfortunately, there is a gap between the research world and the real world. All of these ideas are never implemented, because the researchers care more about 
+            putting out a paper than producing a working tool. Still. Point stands.</p>
+
+            <h3>What’s up with the scams and thefts?</h3>
+            <p>A small story. 2 years ago I created a pseudo-crypto coin that could be arbitrarily stolen by me (technically anyone). The project was of course 
+            never released, because I do not want to be remembered like some fellow people from my country <a href="https://edition.cnn.com/2023/01/22/business/ruja-ignatova-cryptoqueen-fbi-most-wanted-cec/index.html">[21]</a>. 
+            It was just funny to make.</p>
+            <p>"I’m sorry, it appears there are use cases for Web3’s building blocks" Yes, there are. "Money laundering, tax evasion, scams and outright theft"... 
+            Other than that there are other ones (see above). "Also, drugs". Oh, no! You can get high over Web3??? He follows this with a picture of the Silk Road (which he censored for some reason, maybe 
+            thinking some of his readers may be interested in the above mentioned activities). This is a somewhat interesting argument to make. Decentralisation bad because 
+            decentralised technology can be used for bad things. I can make the same claims about the american dollar, which lets you perform the same activities. 
+            This is a common argument people make when they want to argue in favour of "Big Brother" (see <a href="/article/privacy">this article on privacy</a>). 
+            This technology can be used for bad things -> this technology bad. It's not the sole thing it can be used for. Every piece of technology is just a tool. 
+            The activities you use it for are up to you. You can read the above linked papers for some interesting other uses of cryptocoins. There are 
+            many others and I will try to provide a comprehensive list somewhere else (as I don't want to make this article too long).</p>
+            <p>"Is there anything else? I’m actually asking." Yes, feel free to read above. "Has anyone purchased anything with cryptocurrencies, except other crypto, dollars, or NFTs?" 
+            Yeah... there was this guy awhile ago who purchased pizza with bitcoins <a href="https://www.youtube.com/watch?v=j28hkTJMuTA">video</a>. 
+            "Has anyone used NFTs for anything other than wild greed?" Please stop projecting. Ok, I will admit it, the general use case of blockchain-related 
+            technology was speculative investments. And that is saddening. I do hope we can move beyond and recognise the usefulness of this new tool, 
+            hopefully after we have calmed down with our crypto bubbles. I hate the NFT and crypto world as much as the next guy, but I do know 
+            how useful this technology is. </p>
+
+            <h3>Is it inevitable or are you working for someone else to make it true?</h3>
+            <p>The only people paying me for this website are friends and family. These opinions are my own.</p>
+            <p>"Many large investors have been making headlines recently because of their wild investments. They’ve got a lot of money riding on Crypto, NFTs, DAOs & Web3. Dozens of billions." 
+            Mhm. They are trying to inflate the bubble so they can sell before it bursts. Elon Musk is no exception. Terrible greedy acts, I agree. 
+            "Logically then, they will do everything in their power to facilitate a widespread adoption of these technologies". No they won't. 
+            They will hype it up and then just let it burn. It is just another resource to exploit for them. They have no interest in anyone using 
+            this technology just that they keep buying it. "And they’ve got a lot of power. A lot of money and influence, too". Mhm. Are you 
+            by chance a fan of Marx? We can discuss him if you want. He seems to be talking a lot about concentration of wealth and power and saying how it is bad, 
+            while also saying he likes centralisation. He makes no sense to me.</p>
+            <p>"This should make us question whether these technologies are truly revolutionary, or if they’re being driven forward by people who have put millions of dollars into ensuring its success, and cannot afford to see it fail". 
+            Yes there is a lot of hype around these technologies. And it is bad hype. It is for all the wrong reasons. The market will crash and people will get 
+            disappointed, forever putting a stigma on decentralisation. Maybe that's the ultimate plan? Who knows. I am heavily against the crypto craze. 
+            I would rather society focuses on its many other aspects which can really revolutionise our lives as small end users. Hence why this website exists. 
+            Distribution of knowledge.</p>
+            <p>"Amazingly, even as millions are (unknowingly) doing Venture Capitalists’ bidding… they’re still failing to turn a profit" Are they? 
+            I thought Elon Musk made a fortune off of schmuks who inflated DogeCoin. "Doesn’t that tell us everything we need to know about the industry’s health?" 
+            You are confusing your terminology now. Are we talking about the crypto industry or the crypto technology. The industry is one thing. I am against 
+            speculative investments. Technology is another. It has many benefits. The success of Web3 as a tool is independent of the health of the 
+            crypto industry (other than maybe how people will perceive Web3).</p>
+            <h3>Do you think it’s the next big thing… or do you need it to be?</h3>
+            <p>I do think so. Specifically distributed AI learning benefits a lot from blockchains. Distributed technology is not new. It has been around for decades. 
+            Before even Bitcoin or cryptcoins in general. It is a great and wonderful thing.</p>
+            <p>"These technologies are fascinating. But people aren’t dropping everything because they believe it’s the future. They need the premise of a new paradigm to be true." Which paradigm is that? 
+            I feel like his questions went from decentralised technology to specifically about trading cryptocoins. Did he maybe lose a lot from NFTs? Is he salty? 
+            "They need it to be true because the world absolutely sucks". Yeah I don't know in what sense that is. The world always has some problems, but that it sucks? 
+            Now that's something. "We can’t afford homes". Yeah... Capitalism. Increasing value of land. "The world is burning". I hope he means figuratively. 
+            "We live on platforms that literally thrive on anger and discontent". That is true. "Corporations post memes on Twitter as they enslave children abroad". 
+            Hard facts. "We wish upon shooting stars that are actually billionaires going to space for fun". Wow, a poet are we? "We laugh at cows wearing VR headsets, while letting Netflix automatically play the next episode". 
+            Just don't use Netflix.</p>
+
+            <p>"There is nothing to do except gamble". So he DID LOSE MONEY! He had a gambling addiction and lost. "Web3 offers an escape. A community in a world that’s sorely lacking them". 
+            I suppose that is true for many people. I personally don't engage with communities on the Internet, so these opinions here are my reflection on the scientific papers I have read. 
+            "A place where we could build a better world. Or at least gamble it all, because what have we got to lose anyway?" Definitely a gambling addiction. </p>
+            
+            <p>Reading the last two questions I feel like you have a problem with Capitalism, not with blockchains. Can I interest you in 
+            anarcho communism by chance? You might find it interesting. Anyways I feel like you needed to let it out. You seemed stressed. 
+            Those two questions were more emotional than logical. It's ok... It's all ok now.</p>
+            </div>

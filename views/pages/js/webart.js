@@ -1,5 +1,6 @@
 
 let flag = true;
+document.getElementById("rand_img").src = `imgs/art${Math.floor(Math.random()*4) + 1}.jpeg`
 $(document).ready(function(){
   
   load_content();
