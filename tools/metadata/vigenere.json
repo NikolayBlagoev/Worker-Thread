@@ -1,5 +1,13 @@
 {
     "css": "symmetric-key-cryptography",
     "js": "symmetric-key-cryptography",
-    "title": "Vigenere Cipher"
+    "title": "Vigenere Cipher",
+    "link": "",
+    "ldescr": "",
+    "shrtdescr": "Polyalphabetic encryption and decryption based on the Vigenere Cipher",
+    "titbit": "",
+    "tags": ["Vigenere", "Encryption", "Tools"],
+    "img": "",
+    "views": 10,
+    "interest": 3
 }

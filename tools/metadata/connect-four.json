@@ -1,5 +1,13 @@
 {
     "css": "chess-solvers",
     "js": "chess-solvers",
-    "title": "Connect Four"
+    "title": "Connect Four",
+    "link": "",
+    "ldescr": "",
+    "shrtdescr": "Play Connect Four against a bot or against a human, while learning about Artificial Intelligence",
+    "titbit": "",
+    "tags": ["Connect Four", "AI", "Tools"],
+    "img": "/imgs/cof.jpg",
+    "views": 10,
+    "interest": 3
 }

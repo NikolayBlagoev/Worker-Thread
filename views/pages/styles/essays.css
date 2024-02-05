@@ -170,3 +170,7 @@ a:link {
   
   overflow: hidden
 }
+
+.card:hover{
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+{
+    "css": "caesar-cipher",
+    "js": "caesar-cipher",
+    "title": "Caesar Cipher",
+    "link": "",
+    "ldescr": "Break the Caesar cipher automatically. Decrypt any text encrypted with the Caesar cipher",
+    "shrtdescr": "Break the Caesar Cipher",
+    "titbit": "",
+    "tags": ["Caesar", "Encryption", "Tools", "Breaker"],
+    "img": "/imgs/breaker.jpg",
+    "views": 15,
+    "interest": 2
+}

@@ -1,0 +1,109 @@
+<h1>Email Spoofing</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+				<p>In <a href="/article/phishing">[Phishing]</a> we explained how attackers can get your login credentials or other such private 
+				information without needing to "hack" anything. Instead they rely on social engineering to get you to enter your information 
+				on a website they own. One way that they can distribute their phishing links is via spoofed emails.</p>
+				<div style="margin-top: 20px;"></div>
+				<p>Email spoofing is a broad term referring to the act of constructing a fraudulent email that appears legitimate. There are 
+				many ways one can go about it. They can use IDN domain spoofing or similar spellings of popular companies just like in <a href="/article/phishing">[Phishing]</a>. 
+				However, when it comes to emails there are much easier and much more convincing ways to do it.</p>
+				<div style="margin-top: 10px;"></div>
+				<img class="img-fluid" src="/imgs/articles/spoofed1.png" />
+				<div style="margin-top: 20px;"></div>
+				<p>The entire mailing system uses the SMTP protocol to pass the mails between various platforms in a unified manner. Thanks to this protocol 
+				a person using Outlook can email a person using Gmail, without any issues. So when two parties want to exchange an email (for example an outlook server sending to Gmail), they will follow the procedure: </p>
+				<div style="margin-top: 20px;"></div>
+				<div class="row .me-5">
+					<div class="col-xs-1 col-md-1"></div>
+					<div class="col-xs-10 col-md-10"><ol class="list-group list-group-numbered">
+						<li >A connects to B</li>
+						<li >B greets A</li>
+						<li >A introduces themselves to B (with the HELO command... I am not kidding this is the actual terminology). For exampe - HELO mail.outlook.com</li>
+						<li >A defines who the email is from - MAIL FROM: alice@outlook.com</li>
+						<li >A defines who the email is for - RCPT TO: bob@gmail.com</li>
+						<li >A provides the data (the contents of the email). Here they can also specify additional headers (for example "From: Alice alice@outlook.com")</li>
+						<li>If needed B relays through the same protocol the email to C if B is not the domain of RCTP TO (in this case gmail.com)</li>
+						<li>Bob can read their email by requesting it through the IMAP or POP3 protocol</li>
+					</ol></div>
+					<div class="col-xs-1 col-md-1"></div>
+				</div>
+				<div style="margin-top: 20px;"></div>
+				<p>Simple enough right? For something invented in the 80s you shouldn't expect too complex engineering. But the whole internet is built upon it.</p>
+				<div style="margin-top: 20px;"></div>
+				<p>Where is the flaw though? Well B never confirms whether the contents are indeed correct. A can put anything they want in the MAIL FROM, the HELO greeting, and in the FROM header. 
+				B does not verify this by sending some message to the mail specified in any of these fields. This is equivalent to sending a 
+				letter to someone and simply changing the information on whom it is from. Consider the email below (which has been spoofed):</p>
+				<div style="margin-top: 10px;"></div>
+				<img class="img-fluid" src="/imgs/articles/spoofed2.png" />
+				<div style="margin-top: 20px;"></div>
+				<p>Obviously The FBI has not emailed me (yet). The contents of this mail were spoofed by simply changing the MAIL FROM and the FROM header. It is quite trivial to do. 
+				All you need is an SMTP relay to connect to and the rest you can do via telnet. I blame google for their poor design on the phone. If I had opened the same 
+				email on their browser client the scam would be a bit more evident.</p>
+				<div style="margin-top: 10px;"></div>
+				<img class="img-fluid" src="/imgs/articles/spoofed3.png" />
+				<div style="margin-top: 20px;"></div>
+				<p>You can see a little 'via sendinblue.com', which Gmail shows when some security checks fail (you can read about them a bit later in the article). Indeed this tells you that Gmail 
+				received this message NOT from the domain you can see in the FROM fields (gov.com), but from sendinblue.com. It is a tad small and easy to miss. In fact, 
+				I have had friends who have fallen to such scams because they did not receive proper feedback from the User Interface to inform them of this subtelty. Outlook is an 
+				even bigger offender <b>AS IT DID NOT DISPLAY ANY INFORMATION</b> about the security of the message. And considering how a lot of businesses and universities use outlook 
+				for their mailing system (for God knows what reason), imagine the fun you can have :). You can take it even to an extreme and make the mail appears as if it has 
+				been sent by the recipient: </p>
+				<div style="margin-top: 10px;"></div>
+				<img class="img-fluid" src="/imgs/articles/spoofed4.png" />
+				<div style="margin-top: 20px;"></div>
+				<p>Fortunately, Gmail this time warns the user about the possible fraudulent mail with a very obvious warning. Outlook, again, provided no feedback on this. If you want 
+				to try it for yourself, enter your email below and receive a mail from the FBI (obviously fake): </p>
+				<div style="margin-top: 20px;"></div>
+
+				<div style="display:inline">
+  					
+ 					<input type="email" id="mailUser" size="30" placeholder="example@example.com"></input>
+  
+  					<input type="button" onclick="fakeMail()" value="SEND"></input>
+					<p class="text-muted" style="display: none;" id="sent">Sent!</p>
+				</div>
+				<div style="margin-top: 20px;"></div>
+				<h3>Security</h3>
+				<div style="margin-top: 20px;"></div>
+				<p>So if Gmail knows something is phishy (enough to give warnings), why not just block these emails? Well there are many valid reasons to use 
+				message relays (some advertisement campaigns for example make use of them). Spam filters are also <i>good enough</i> to sieve out some scams. 
+				Still, many can go through. I was successfully able to send a phishing email for facebook (though I could not use "facebook" in either the domain or the 
+				title of the email), without it falling into spam.</p>
+				<div style="margin-top: 20px;"></div>
+				<p>Unlike with <a href="/article/phishing">[Phishing]</a> there are already various security measures on top of the SMTP protocol and spam filters, 
+				which verify the contents of the email. It is because of them that Gmail dispalyed the little "via" keyword. In fact if you look at the TLS signature of 
+				your email you can see all the information on the securty verification of the mail. This is why it is completely beyond me why 
+				some mailing systems <b>DO NOT DISPLAY THIS INFORMATION</b> (such as Outlook). It is as if they want people to get scammed.</p>
+				<div style="margin-top: 20px;"></div>
+				<p>The first security improvement is the Sender Policy Framework (SPF), which has become pretty much a standard in all mailing systems. 
+				Through SPF email domains (what comes after the @, example gmail.com), specify IPs which are allowed to send mails on behalf of them <a href="https://datatracker.ietf.org/doc/html/rfc7208">[1]</a>. 
+				When a server receives a request to send email, it checks the domain of the HELO and the MAIL FROM commands to find the list of allowed IPs 
+				and the policy it should enforce <a href="https://datatracker.ietf.org/doc/html/rfc7208">[1]</a>. If the IP doesn't match the policy it can reject or soft fail a message <a href="https://datatracker.ietf.org/doc/html/rfc7208">[1]</a>. 
+				This provides at least some basic validity of the two fields. SPF, however, fails when mails are forwarded/relayed and it dos not protect the "From" field, which is what ultimately gets displaye to the user <a href="https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf">[2]</a>.</p>
+				<div style="margin-top: 20px;"></div>
+				<p>The next level of security is provied by DomainKey Identified Mail (DKIM) - again a defacto standard. The DKIM protocol requires that an email 
+				has the from, to, part of the body, and some other headers hashed and <a href="/article/digital-signatures">signed</a> by the mailing service <a href="https://datatracker.ietf.org/doc/html/rfc8463">[3]</a>. 
+				The recipient then checks the signature and verifies it using the public key of the domain specified in the DKIM fields (see <a href="/article/digital-signatures">Digital Signatures</a> for more details). 
+				This protocol guarantees that parts of the email have not been tampered with since it has been signed and that the domain has authorised the sending of this email. 
+				The DKIM protocol is what is repsonsible for the "signed-by" field.</p>
+				<div style="margin-top: 20px;"></div>
+				<p>Lastly we have the Domain-based Message Authentication, Reporting and Conformance (DMARC). While SPF protected to some extent the MAIL FROM and HELO domains 
+				and DKIM provided some validity to the message headers and contents, the "From:" header can still be forged. This is where DMARC comes in. 
+				When a recipient receives an email it checks the "From:" header's domain against either the DKIM one or the SPF one. If either one matches, the mail is accepted. 
+				If neither match, then the domain of the "from:" header is queried to see the action that needs to be taken <a href="https://datatracker.ietf.org/doc/html/rfc7489">[5]</a>. </p>
+				
+				<div style="margin-top: 20px;"></div>
+				<p>You can think of the whole verification process as a pipeline. SPF comes first, which checks HELO and MAIL FROM domains against the IP of the sender. Then DKIM checks the signatures of the email, ensuring some integrity to it. Lastly DMARC ensures that what the user sees as "from" is indeed someone valid based on SPF or DKIM. If one step fails completely (for example unauthorised domain in SPF), the email is rejected.</p>
+				
+				<div style="margin-top: 20px;"></div>
+				<p>I don't know why most articles do not cover these security aspects of emails, but always say how SMTP is vulnerable to spoofing? I guess they are too lazy to explain it. 
+				But even with all these guarantees, emails can be completely spoofed to the point that they not even fail any of the checks (no "via" keyword appearing - the mailing system beleives it to be completely valid). 
+				For this read: <a href="https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf">[2]</a> and <a href="https://shenkaiwen.com/files/papers/A_Large_scale_Analysis_of_Email_Spoofing_Attacks_USENIX_2021.pdf">[7]</a>. 
+				Last major spoofing vulnerability was revealed in <a href="https://forum.defcon.org/node/245722">[8]</a>, which should still work in theory.</p>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+				
+			</div>
+			<div style="margin-top: 20px;"></div>

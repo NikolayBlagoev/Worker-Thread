@@ -1,0 +1,13 @@
+{
+    "css": "",
+    "js": "key-exchange",
+    "link": "/article/key-exchange",
+    "title": "Key-Exchange",
+    "ldescr": "",
+    "shrtdescr": "Learn about protocols for exchanging a common secret, such as Diffie-Helman.",
+    "titbit": "",
+    "tags": ["Cryptography", "Explanatory", "Interactive"],
+    "img": "/imgs/hand.png",
+    "views": 27,
+    "interest": 5
+}

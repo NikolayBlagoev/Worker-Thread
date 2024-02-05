@@ -4,7 +4,7 @@ html{
   padding: 0;
 }
 a:link {
-      text-decoration: none;
+  
 	color: inherit;
 }
 .thumbnail {
@@ -170,4 +170,8 @@ a:link {
   justify-content: center;
   align-items: center;
   overflow: hidden
+}
+
+.card:hover{
+  cursor: pointer;
 }

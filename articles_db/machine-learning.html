@@ -1,0 +1,200 @@
+			<h1>Introduction to Machine Learning</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+				<p>Machine Learning. The big buzzword that every company likes to use. "We use Machine Learning for this! 
+					We use Machine Learning for that! Machine Learning!" What is it? What hides behind this word? 
+					What great and skillful magic must be in there that lets us perform all these cool things like 
+					image generation, text processing, forecasting, etc?</p>
+				<p>In this article I will be demystifying some of the concepts behind Machine Learning and providing you with the 
+					very basics to make use of it. If you want to learn more about Artificial Intelligence, I recommend our 
+					noob-friendly <a href="/article/ai-introduction">Introduction to AI</a>.
+				</p> 
+				<h3>Terminology</h3>
+				<p>Machine Learning (ML) terms the act of programs exhibiting new behaviour without explicit instructions based on data 
+					they have seen before about this task. It is simply the act of extracting patterns from your objects, from which you can 
+					extract more meaningful results. In general the task of ML is to find a function f' which approximates some real 
+					underlying function f, which we do not know. While usually literature specifies "function" as the thing that is being approximated, 
+					this is simply due to Mathematicians being quirky. You can think of Machine Learning as also approximating some algorithm or 
+					some instructions for a task. Thus formally we have:
+				</p>
+				<div class="text-left">
+					
+					<div class="row .me-5">
+								<div class="col-xs-1 col-md-2"></div>
+								<div class="col-xs-10 col-md-8">
+						
+						<b>
+							f'(x) ~ (approximately the same as) f(x) 
+						</b>
+						
+						</div>
+						<div class="col-xs-1 col-md-2"></div>
+					</div>
+				</div>
+				<div style="margin-top: 10px;"></div>
+				<p>Imagine you have the task of creating a program that needs to recognise where a human face is in an image. 
+					The traditional approach is creating a specialised algorithm which can, based on the pixel data, specify the locations 
+					of the faces. But such an algorithm may be difficult to code by hand. Faces may be under different angles, 
+					under different lighting conditions, or just in general different - we all have unique features. With Machine Learning 
+					approaches you would compile a dataset containing many pictures of faces, which you will use as examples your model 
+					can learn from about what constitutes a face. And thus we come to the next important term - "model". Models are 
+					a combination of parameters (depending on what you use these parameters may mean different things), which can 
+					be adjusted or "learnt". When a model is "learning" or "training" in general it means that these parameters are being changed 
+					based on some "training algorithm" and a "loss function". The training algorithm merely specifies how we change the parameters. 
+					The loss function tells the algorithm given some behaviour the model exhibits currently on the data, how good or bad it is. For example, 
+					if we wanted our model to discern what is cat and what is dog, we would pick one suited for this, compile a dataset of images of cats and dogs, 
+					and then when "training" you will specify how each bad or good prediction is penalised/reward. The goal of the algorithm is to find the 
+					model configuration with the lowest loss score. So everything that you choose - data (features), loss function, algorithm, model - will affect the end result.
+				</p>
+
+				<p>Sometimes these 4 choices may not be chosen explicitly. If you choose a k-Nearest Neighbour approach (more on that later) there is no loss 
+					or algorithm by which you optimise. Still, generally, Machine Learning constitutes these 4 things. A model, whose parameters to optimise 
+					via some algorithm based on a loss function given some data (features). 
+				</p>
+
+				<p>In Machine Learning, 3 distinct approaches can be identified - Supervised, Unsupervised, and Reinforcement (though there exist 
+					also things like self-supervised, semi-supervised, etc., but we won't get into it here). Additionally, based on what you estimate, you can 
+					differentiate between Generative and Discriminative models.
+				</p>
+				<h3>Supervised Machine Learning</h3>
+				<p>In supervised Machine Learning all data has some "label" or "output" attributed to it. Thus the goal is, given some input, to determine 
+					what the output would be (with some probability). We can differentiate between classifiers, which predict a discrete class 
+					label (for example cats or dogs) and regressors, which estimate a continuous value (given the current prices of currencies, what would be the price of the dollar tomorrow). The simplest supervised model is k-Nearest Neighbour. The model stores all available 
+					training data and then, when a new unseen input is presented to it, it finds the k most-similar other ones it had seen before, 
+					looks at the labels of them, and assigns the same class to the new object. If you set k to 1, it is just nearest neighbour search
+					and if you set it tooooo high, you will predict each object as the most common one you had seen before (if you had been trained on 
+					200 cats and 400 dogs with k of 600, you will predict each new object as a dog). 
+				</p>
+				<p>Let us look at one of the most universal models which, despite its simplicity, is still used today in many applications (yes even CHAT-GPT). 
+					The Linear Regressor. If you remember your highschool math classes, you might remember the following function:
+				</p>
+				<div class="text-left">
+					
+					<div class="row .me-5">
+								<div class="col-xs-1 col-md-2"></div>
+								<div class="col-xs-10 col-md-8">
+						
+						<b>
+							y = mx + b
+						</b>
+						
+						</div>
+						<div class="col-xs-1 col-md-2"></div>
+					</div>
+				</div>
+				<div style="margin-top: 10px;"></div>
+				<p>Meaning your output (y) is a slope (m) times your input plus some bias or offset. m and b in this case are constants. 
+					Extended to a multidimensional case (where x can be a vector - have multiple values), m is a NxD matrix, where 
+					N is the size of the output and D the size of the input and b is a vector of size N. The goal 
+					of this model is to predict some y given an x, assuming a linear relationship between the two. As the name would suggest, you would 
+					use this for regression tasks... However, you can employ a little trick to make it work for classifiers too. Let us assume we are trying to 
+					perform classification in the 2-class problem (so we have only 2 kinds of labels). We will encode one label with 1 and the other with -1 
+					in our data. Then during training you will attempt to predict classes with the rule: if y is less than 0, we will assume the object is of class 
+					-1 and if greater than -> of class 1. Then using an algorithm and loss function of your choosing, you can find the m matrix and b bias term which minimises the loss. 
+					
+				</p>
+				<p>Below is an interactive example for this type of classification. The x (input) per each object consists of 2 values (features) which are its location 
+					in the 2-D space. You can input objects of class 1 (1 label) or class 2 (-1 label) by clicking in the gray are. You can switch which class you input 
+					with the buttons on top. The gray line visualises the decision boundary (where y = 0). On one side of the line objects will be predicted as class 1, 
+					on the other - as class 2. For this specific example I used the Minimum Square Loss, which 
+					aims to minimise the sum of all (y<sub>predicted</sub> - y<sub>true</sub>)<sup>2</sup>, as this results in a very easy to compute solution.
+				</p>
+				<div class="flex-row justify-content-between">
+					<input type="button" onclick="cls1()" value="CLASS 1" class="btn btn-primary" id="cls1"></input> 
+					<input type="button" onclick="cls2()" value="CLASS 2" class="btn btn-secondary" id="cls2"></input>
+				</div>
+				<div style="margin-top: 20px;"></div>
+				<canvas style="width: 80%; height: 30vh;" id="supervised"></canvas>
+				<p>As you might have experienced if you played around with the example, not all problems can be separated with a linear decision. This results 
+					in some objects being misclassified - the wrong label is predicted for them. This is because our model was too simple - we assumed linear relationship 
+					between input and output. But there are some problems where that may not be the case (imagine trying to predict y=a*x<sup>2</sup> with m*x + b. Regardless of the values you choose 
+					for a > 1, no m and b combination will result in a correct approximation). Fortunately, this model can easily be extended without modifying too much 
+					our current work. As I said, our x currently contains two features - its location in the 2-D space. We can easily add more features which present some combination 
+					of these two (for example feature 1 * feature 2 or feature 1<sup>2</sup>). Then, when making the predictions for new objects, we need to remember to add these new 
+					features. For example, if our training data contained some object with features [4, 6], we will augment them to [4, 6, 4*6 = 24, 4<sup>2</sup> = 16]. We do this for 
+					all objects in the training dataset. When predicting some object [2, 7] we perform the same augmentation to [2, 7, 14, 4].
+				</p>
+				<p>Even without this trick, linear functions are used in Deep Neural Networks. If you have seen "Fully-Connected Layers", "Linear Layers", 
+					or "Multi-Layer Perceptrons", wel... They are all just multiple linear functions nested in each other. In fact, 
+				given enough Linear Layers and some activation function, you can approximate any function <a href="https://cognitivemedium.com/magic_paper/assets/Hornik.pdf">[1]</a></p>
+				<div class="text-left">
+					
+					<div class="row .me-5">
+								<div class="col-xs-1 col-md-2"></div>
+								<div class="col-xs-10 col-md-8">
+						
+						<b>
+							F(x) = M<sub>1</sub>(non-linear activation(M<sub>2</sub>(...non-linear activation(M<sub>n</sub>x + B<sub>n</sub>)) + B<sub>2</sub>)) + B<sub>1</sub>
+						</b>
+						
+						</div>
+						<div class="col-xs-1 col-md-2"></div>
+					</div>
+				</div>
+				<div style="margin-top: 20px;"></div>
+				<h3>Unsupervised Machine Learning</h3>
+				<p>Often it is impractical to label data, as the sheer volume of it would require tremendous amount of hours to go through. Sometimes 
+					labels may not be present, for example in outlier/anomaly detection. In such cases we resort to Unsupervised Learning, which 
+					simply means that all examples do not have an example output. Then the model has to figure out the underlying patterns in the data to 
+					extract some information from it. In the simplest case we have the task of clustering - grouping the data into K-groups of the most similar objects.
+				</p>
+				<p>Here you can play around with an implementation of k-Means Clustering, which attempts to split the data into k Groups, such that each element 
+					is assigned to the cluster, whose center (the average of its locations) is closest to it. As you can see, the definition has a bit of a circular definition - 
+					each element is assigned to the nearest center, which is the average of the objects assigned to it. The algorithm thus presents an "approximate" solution. 
+					We begin by placing the k centers at random in our space. Then we assign each object to its closest center. We recompute the centers based on the 
+					assignment. We repeat this process until the centroids stop moving. Unfortunately, while being a nice idea, it tends to sometimes produce cases 
+					where all elements are assigned to one cluster and all other cannot be moved around (as they have no objects to which they can move). Hence why 
+					you might need to rerun the algorithm several times to make sure you get some stable solution. In the below example k has been set to 2. Place some objects 
+					around and see what pattern the model finds in the data. The two squares show where the centers are.
+				</p>
+				<div class="mt-5"></div>
+				<canvas style="width: 80%; height: 30vh;" id="unsupervised"></canvas>
+				<p>This is the simplest example of unsupervised learning - one you will find in every introductory AI class. It might give you the impression 
+					that this ML approach lacks any applicability and can only be used for clustering. In truth there are many modern models which have been trained in an 
+					unsupervised fashion. One simple example is style transfer. We collect images of two different types (for example photographs and artworks) and adjusts 
+					parameters of some model, so that given a photograph it produces a picture that resembles one from the artworks (kind of what they do in 
+					<a href="https://arxiv.org/abs/1703.10593">[2]</a>). This is not a supervised approach - 
+					we did not have an explicitly expected output per photograph, but we have a rough idea of what an artwork should look like. 
+				</p>
+				<h3>Reinforcement Learning</h3>
+				<p>Last but not least comes my personal favourite approach - Reinforcement Learning. Unlike the previous two approaches, you do not 
+					have a dataset, whether labeled or unlabeled. Instead you have an unknown environment, with which you can continuously 
+					interact. Your agent (model) can make observations on the environment, perform an action, and depending on the result, receives some 
+					reward. Using this reward, it adjusts its believes about the world, so that it can perform better over time. This is what powers a lot of amazing 
+					game-solvers <a href="https://www.youtube.com/watch?v=tfb6aEUMC04">[3]</a> <a href="https://www.youtube.com/watch?v=kopoLzvh5jY">[4]</a>, autonomous vehicles <a>[5]</a>, and the Boston Dynamics Spot <a href="https://www.youtube.com/watch?v=qgHeCfMa39E">[6]</a>. 
+
+				</p>
+				<p>A lot of RL agents assume a Markov Decision Process - meaning what your previous choices were doesn't matter, you don't need to keep a memory. 
+					What matters is only the current state of the environment (the state you are in) and what choice you should make. This greatly simplifies implementations 
+					and for many situations it is sufficient for good enough performance.
+				</p>
+
+				<p>Below you can find an RL agent based on Q-learning, which has the goal of reaching the top part of the screen, while avoiding touching the walls. 
+					You can see how in the early stages it mostly explores what it possibly can do as it learns about the environment, but later it quickly becomes really good 
+					at going upwards. You can add wind which pushes the agent in some direction and watch it adapt to this new challenge:
+				</p>
+				<div class="mt-5"></div>
+				<p>Wind Control:</p>
+				<input type="range" min="0" max="40" value="20" class="slider" id="wind"/>
+				<input type="button" onclick="reset()" value="RESET" class="btn btn-primary"></input> 
+				<div></div>
+				<canvas style="width: 80%; height: 30vh;" id="reinforcement"></canvas>
+				<div style="margin-top: 20px;"></div>
+				<p>Many online articles will give roughly the same definitions for the three types of ML and will necessarily point at their difference. However, 
+					most of them are only superficial. You can convert any Supervised Machine Learning model to a reinforcement one <a href="https://web.engr.oregonstate.edu/~tgd/publications/Barto-Dietterich-03.pdf">[7]</a>, 
+					meaning that supervised ML is just a subset of reinforcement learning. "The loss function of the supervised task can be used to define a reward function, with smaller losses mapping to larger rewards. (Although it
+					is not clear why one would want to do this because it converts the supervised problem into a more difficult reinforcement learning problem)." from <a href="https://web.engr.oregonstate.edu/~tgd/publications/Barto-Dietterich-03.pdf">[7]</a>. 
+				</p>
+
+				<h3>Deep Learning</h3>
+				<p>Everyone nowadays speaks about Deep Learning, which is just the application of Deep Neural Networks (a complex term for what is often 
+					multiple Linear Layers with some Attention at best). What was said here about "traditional" ML applies to the deep one too. The major 
+					difference is that the goal of Deep Learning is also feature extraction. Before Deep Neural Networks, you would typically need to identify 
+					meaningful features. So for example if you were trying to determine if something is a cat or dog based on an image, you would need to preprocess 
+					it and extract some useful information from it (distance between eyes and nose, shape of ears...). With Deep Learning you feed the raw data 
+					to the network and it learns a representation (the features) from it.
+				</p>
+			</div>
+			<script src="https://cdn.jsdelivr.net/npm/mathjs@12.0.0/lib/browser/math.min.js" type="text/javascript"></script>

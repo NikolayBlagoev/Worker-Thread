@@ -18,7 +18,7 @@
 			<div style="margin-top: 20px;"></div>
 			<h3>Evaluation</h3>
 			<div style="margin-top: 20px;"></div>
-			<p>Whenever someone reads an article like that, the should <i>always</i> ask themselves: Does it actually work? Does it do the things it promises it will?</p>
+			<p>Whenever someone reads an article like that, they should <i>always</i> ask themselves: Does it actually work? Does it do the things it promises it will?</p>
 			<div style="margin-top: 20px;"></div>
 			<p> 
 First metric it needs to be evaluated by is whether it successfully blocks ads. To this end you can read the comparative study in <a href="https://ceur-ws.org/Vol-1873/IWPE17_paper_23.pdf">[3]</a>. AdNauseum there is shown to contact less third-party websites compared to other adblockers. On <a href = "https://adblock-tester.com/">[4]</a>, AdNauseum scores 78/100, while AdBlock scores 86/100. From personal experience - on most sites, regardless of the ad volume, AdNauseum has successfully blocked all ads.  </p>

@@ -1,0 +1,13 @@
+{
+    "css": "",
+    "js": "caesar-cipher",
+    "link": "/article/caesar-cipher",
+    "title": "Caesar Cipher",
+    "ldescr": "",
+    "shrtdescr": "Study one of the oldest cipher with an interactive example",
+    "titbit": "",
+    "tags": ["Cryptography","Interactive","Explanatory"],
+    "img": "/imgs/caesar.jpg",
+    "views": 71,
+    "interest": 6
+}

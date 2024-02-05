@@ -1,0 +1,215 @@
+			<h1>Introduction to Artificial Intelligence</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    Artificial Intelligence or commonly abbreviated as AI is the field in Computer Science that deals with a broad range of modern problems. Though, nowadays it has become pretty much a buzz-word almost devoid of all meaning, it is important to still understand the concrete definition used in the scientific literature.
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    Defining Artificial Intelligence is a two-part problem. The first is rather easy - "artificial". In contrast to "natural" intelligence, which is organic and product of evolution, artificial is made, primarily relating to machines ability to perform certain tasks. But what tasks? Well this is where intelligence comes into play and where the definition becomes a bit muddy.
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    IBM's definition of Artificial Intelligence is - "Artificial intelligence leverages computers and machines 
+					to mimic the problem-solving and decision-making capabilities of the human mind" 
+					<a href="https://www.ibm.com/topics/artificial-intelligence">[1]</a>.
+					 This seems to be a very common theme - intelligence as related to <i>mimicking</i> human behaviour and/or abilities.
+					 This answer has two major problems. First, it is very human-centric.
+					 Indeed, we are intelligent, but we are not the only natural intelligence out there.
+					 And there is much beyond our abilities that still has not been explored.
+					 Still, the current goal is indeed to mimic human behaviour with language understanding, vision semantic segmentation, etc. 
+					 Mimicking intelligent behaviour does not imply intelligence, though, as discussed in the criticism section. 
+					 Beyond that the goal is artificial intelligence that surpasses the human - sometimes referred to as Super Intelligence. 
+					 Second, problem-solving and decision-making capabilities is very loose. 
+					 The Scholastic Assessment Test (SAT) used in the US to score high school student's
+					 intelligence and problem solving abilities has already had GPT-4 score better than 96% of students 
+					 <a href="https://study.com/test-prep/sat-exam/chatgpt-sat-score-promps-discussion-on-responsible-ai-use.html#:~:text=ChatGPT%2D4%20improves%20SAT%20Score,incorporating%20responsible%20A.I.%20in%20curricula.&text=On%20March%2014%2C%202023%2C%20OpenAI,takers%20on%20the%20SAT%20exam">[2]</a>
+					 Similarly, ChatGPT has been able to ace the verbal components of the WAIS test 
+					 <a href="https://www.scientificamericasn.com/article/i-gave-chatgpt-an-iq-test-heres-what-i-discovered/">[3]</a>. 
+					 In fact, apart from understanding English, the SAT mathematics portions can be solved by a very simple calculator. 
+					 Is then the calculator artificial intelligence? Most people will adamantly claim no. 
+					 The argument would be that it does not understand the English language, which is a fundamental part of the assessment. 
+					 But if I did not speak English (as I am not a native speaker), would I then have not been considered intelligent? 
+					 The calculator simply speaks a different language, which I too would not be able to fully understand without some training. It is via its interface that we can communicate. 
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Another common definition I have seen <a href="https://www.verywellmind.com/theories-of-intelligence-2795035">[4]</a> (used for example) is that intelligence requires learning from experience - retaining memories and using them for future decisions. This definition, again, has a problem as it would exclude people with memory impairments. Their ability to solve tasks may indeed be present, however they may lack the ability to acquire new knowledge and memories <a href="https://www.newyorker.com/magazine/2007/09/24/the-abyss">[5]</a>. Knowledge acquisition is not necessary for intelligence, though it can be beneficial. Likewise, many other conditions have been added by people for intelligence, such as self-awareness, creativity, emotional intelligence, etc., which are difficult to define and measure.
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			In the field of AI, the most common definition of an intelligent agent is one that can exhibit the following behaviour:
+			<ol class="list-group list-group-numbered">
+  				<li >Acquire information about the environment (through sensors and/or some higher order derivation via processing)</li>
+  				<li >Considers possible outcomes via some search function</li>
+  				<li >Evaluates outcomes via some utility function</li>
+  				<li >Makes a decision autonomously based on its objective function</li>
+  				<li >(OPTIONALLY) Learns from previous choices and outcomes</li>
+			  </ol>
+
+			</div>
+
+	
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The first condition is in place, because in order for a system to be considered intelligent you would need that it somehow can take a given task (for example a chess board position or the current state of the world) and provide its decision. If the system never takes as input some initial state at least, how could it ever engage in meaningful reasoning! The second is the first part of the actual reasoning. The system considers what actions it can take and how would this affect the problem it is presented with. This requires that the system has at least a somewhat accurate model of the task at hand. The third point is merely the act of reasoning what the outcomes are, expressed in a numerical manner for the convenience of the computer. This can be interpreted as how beneficial the outcome is for the given system given its task. The fourth one is the objective function, which is the essence of the system - its goal. It can be something simple as "maximise utility" (pick most preferred outcome), but can also include higher order reasoning, such as "pick the farming plan which produces the most grain, with the constraint that we do not produce more than our neighbour". The last point is about acquiring new information and learning from experience. This definition is simplstic and straighforward, hence its popularity in the AI world, but has been meant by criticism (see the sections below). It is primarily credited to Stuart Russell and Peter Norvig in their book <i>"Artificial Intelligence: A Modern Approach"</i>. 
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 This is a much more practical and less human-centric definition. It focuses on goal-oriented behaviour which can be measured and understood. By this definition, a human is intelligent, as is a dog, an ant, Chat GPT, and a smart air conditioning unit. This may sit wrong with many readers, but consider a chess-solving system, which are commonly referred to as AI <a href="https://www.sas.com/en_si/insights/analytics/what-is-artificial-intelligence.html">[6]</a> and <a href="https://www.quora.com/Is-there-a-difference-between-a-chess-engine-that-uses-a-minimax-algorithm-and-any-sort-of-AI-Or-can-the-chess-engine-be-considered-an-AI-I-just-want-to-know-if-there-is-a-difference-and-if-there-is-some-other">[7]</a>. They employ a very simple cycle of considering the board state (the environment), playing all possible positions some moves ahead (search function), and evaluating their next best move (utility/scoring function). In fact, until 2020, many of them did not even make use of deep learning <a href="https://stockfishchess.org/blog/2020/introducing-nnue-evaluation/">[8]</a>. And this cycle isn't much different than how players think about the game. 
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The intelligence of an agent thus becomes evaluated by its success of attaining desirable results through its functions. For a chess engine, the search function is how many moves ahead it looks and understanding the board evaluation is its evaluation function. For it the objective function is maximising its chances of winning (or more concretely - pick highest utility move). 
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 In this definition, the objective function becomes the ultimate goal of the agent/system. It is its reason for existing. It is essentially its preferences and it is best if they remain unchanging - so for the same environment, search function, and evaluation, the decision should be the same. Choosing a good objective function for your problem is crucial, as it is what defines the behaviour of the agent and thus the outcomes of its choices. It is quite easy to write an AI which learns to play Tetris and give it the goal of "don't lose", only for it to learn to pause the game <a href="https://www.youtube.com/watch?v=xOCurBYI_gY&t=966s&ab_channel=suckerpinch">[9]</a>.
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 <h3>That is not intelligence!</h3>
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The AI effect terms the common occurrence "that every time somebody figured out how to make a computer do something—play checkers well, solve simple but relatively informal problems—there was a chorus of critics to say, 'that's not thinking'" <a href="https://monoskop.org/images/1/1e/McCorduck_Pamela_Machines_Who_Think_2nd_ed.pdf">[10]</a>. For example, when Gary Kasparov was first beaten by Deep Blue, at first he described it as having human-like thinking, but later dismissed saying it was "as intelligent as your alarm clock". It is easy to get disillusioned. We envisage in literature these great and powerful machines that can do all sort of miracles as if through pure magic. But the magic of yesterday is today's technology. Like when a magician reveals their trick, we lose interest once we know how it is done. 
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			  Computers as they are today will never be capable of "miracles" if you know how they operate. A person from 500 years ago upon seeing a computer may call it sorcery, but to us it is an everyday machine. Large Language Models will soon follow the same trend, once we become disillusioned by them.
+
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 All computers can do is a small list of operations - add, subtract, multiply, access memory location, shift bits, and compare. That is all Artificial Intelligence will <b>EVER BE ABLE</b> to do. But the miracle and the magic comes from the clever application of these few operations to create numerous of new inventions. A calculator is already miraculous and intelligent enough.
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 <h3>Criticism</h3>
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Much of the contents of this section are based on the work of <a href="https://arxiv.org/pdf/1911.01547.pdf">[11]</a>. I highly recommend that you read it. It does not contain any technical jargon which would make it inaccessible to the common man. 
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The definition outlined in the first section may leave a bad taste in many reader's mouths. It seems to simplistic. Too practical, even. Intelligence is reduced to a simple observe-remember-compute-act (ORCA) cycle. In fact, learning is not even part of the cycle.
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Indeed the above definition, though quite common in the field of AI, does not consider the act of generalisation or abstraction - transferring information from one task to another via some common higher-order similarity. Transfer learning is indeed a research topic in Deep Learning <a href="https://journalofbigdata.springeropen.com/articles/10.1186/s40537-016-0043-6">[12]</a>, but it still involves a human agent providing new set of (labeled) data. This higher-order thinking capable of acquiring, forming, and utilising abstract concepts independently is something desirable in General Artificial Intelligence. 
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The work of <a href="https://arxiv.org/pdf/1911.01547.pdf">[11]</a> proposes a decoupling of the notions of skill and intelligence. Skill inherits the definition of "performing well in a task" (giving high output success given a specific task). Intelligence obtains the definition of "[able to] generate high-skill solution programs for high generalization difficulty tasks (i.e. tasks that feature high uncertainty about the future) using little experience and priors, i.e. it is a system capable of making highly efficient use of all of the information it has at its disposition to cover as much ground as possible in unknown parts of the situation space. Intelligence is, in a way, a conversion rate between information about part of the situation space, and the ability to perform well over a maximal area of future situation space, which will involve novelty and uncertainty".
+
+			</div>
+
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 
+Thus the ORCA cycle is kept, however it does not define the intelligent agent. It defines a _skill_ program. The intelligent agent, given some task, should produce a novel skill program. To this end the authors of <a href="https://arxiv.org/pdf/1911.01547.pdf">[11]</a> propose the ARC dataset, which bares a striking resemblance to many common IQ tests. The goal is given three pairs of images (examples or training data) for the specific task, given the systems knowledge of prior such questions, should be able to predict the second of the fourth pair of images.
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 This definition of intelligence is born out of the analysis of the development of chess engines. When finally realised it became apparent that no intelligence is required to solve the game of chess - all it takes is a simple algorithm. And thus the property of intelligence should not be prescribed to the system, but to the clever design choices of the team who developed said system. 
+
+			</div>
+
+			<figure class="text-left bg-white p-3 rounded">
+                    <blockquote class="blockquote">
+                      
+                      <p>"When the dust settled, researchers were left with the realization that building an artificial chess champion had not actually taught them much, if anything, about human cognition. They had learned how to build a chess-playing AI, and neither this knowledge nor the AI they had built could generalize to anything other than similar board games."</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      <i>On the Measure of Intelligence</i>, François Chollet
+                    </figcaption>
+            </figure>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 As for the AI effect described above, the authors criticise said view as stemming from an inherently anthropocentric view of intelligence. Simply because an AI system can outperform humans in a task, which for us requires some form of intelligence, does not mean they are intelligent. Consider the calculator, which can easily outperform most of us in calculations. The difficulty and the intelligence should lie in abstracting a given problem into a mathematical equation. Calculations are just a skill. Still, do remember that for all eternity, all a computer will ever be is a glorified calculator (even if non-deterministic).
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 <h3>When Does Learning Come in?</h3>
+
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 Up until now we have discussed different definitions of what Artificial Intelligence should constitute, which would define our goals given that we want to construct an AI system. However, we have not discussed where does learning come into play. When we think of AI we think of these complex systems like the OpenAI's GPTs which have learnt to understand human language through a large corpus of data. But the definition in the first section speaks only about static behaviour, where, even if we give the same environment to the agent, its choices should largely be the same. Some random element may be present, but at least the set of actions performed given the same situation remains unchanged. Thus to extend the behaviour of the intelligent agent, the authors of <i>Artificial Intelligence: A Modern Approach</i> propose the <b>learning agent</b>.
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The learning agent still has the objective, search, and utility function, but now it is extended with 3 new modules. The first is the critic, which provides feedback whether the previous action taken was good or bad (which can be a numeric scale, so it gives some number). The learning module changes the search function (by altering the rleation between an action and an outcome), the utility function (how much does it prefer certain outcomes), and the weight of each of its ojective functions (how much does each goal matter). Lastly, the problem generator can suggest actions which, while potentially suboptimal, can help the agent acquire new knowledge which will be beneficial in the long-term. For example, an agent follows the exact same route to work each morning, but one day it decides to explore a new route. Indeed, this new choice might be slower, but it can teach the agent about the structure of the city, which in the long run can help it find the fastest route. This module of the agent serves to strike a balance between exploitation (using knowledge already acquired) and exploration (discovering new information). 
+
+
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 To anyone familiar with machine learning, the above definition would sound like the one of Reinforcement Learning. Indeed, <i>Artificial Intelligence: A Modern Approach</i> does primarily deal with Reinforcement Learning as a case study of agents. This form of learning uses continuous interaction with the environment to improve the performance of the actions. The other two branches of machine learning are a bit difficult to fit into this defintion. In fact the authors of <i>Artificial Intelligence: A Modern Approach</i>  postulate that "a purely unsupervised learning agent cannot learn what to do, because it has no information as to what constitutes a correct action or a desirable state". Some interpretations of supervised learning can fall under the umbrella of learning agents, where the critic module is the labels of the data and the objective function is the loss minimisation. Still, under supervised learning, an agent would only up to point (the training phase) and after that it becomes frozen - it cannot acquire any knowledge by interacting with its environment. Some forms of supervised learning do not even engage in such an observe, decide, act cylce as an agent would need, but serve more as statistical tools to divide data in classes. For example, nearest neighbour search or linear regression. Both of these algorithms should instead constitute the model of an agent, which is given to it as prior information and (usually) doesn't change.
+
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+  			 The key takeaway is that <b>NOT ALL</b> Machine Learning necessarily leads to intelligence (under the definition provided above). The necessary condition is the ORCA cycle of interaction with the environment with the purpose of acheiving some goal. Indeed, many agents do contain some form of machine learning model within them. For example, chess solvers have a NNUE which evaluates the boards. However this model is not the intelligence, nor does it provide learning capabilities. It is just the agent's fixed understanding of the world.
+
+
+			</div>
+			

@@ -1,0 +1,105 @@
+			<h1>Images</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			<p>Let us take a digital image: </p>
+			<img src="/imgs/pexels-dog.jpg" " width="80%"/>
+			<div style="margin-top: 20px;"></div>
+			<p>And zoom in: </p>
+			<div style="margin-top: 20px;"></div>
+			<img src="/imgs/pexels-dog2.jpg" " width="80%"/>
+			<div style="margin-top: 20px;"></div>
+			<p>Further: </p>
+			<div style="margin-top: 20px;"></div>
+			<img src="/imgs/pexels-dog3.jpg" " width="80%"/>
+			<div style="margin-top: 20px;"></div>
+			<p>MORE! </p>
+			<div style="margin-top: 20px;"></div>
+			<img src="/imgs/pexels-dog4.jpg" " width="80%"/>
+			<div style="margin-top: 20px;"></div>
+
+			<p>We will see some blocky artifacts. These are the pixels comprising your image. A digital 
+			image is nothing more than a grid of pixels of some width and some height.</p>
+			<p>Each pixel has a colour expressed as a combination of the three 
+			pillar colours - Red, Green, and Blue (hence RGB). The colour of the pixel is usually written as (R,G,B) where each of the letters expresses 
+			a number (between 0 and 255 for 24-bit depth), which corresponds to the presence of that "pillar" colour. For example, white has the RGB value of 
+			(255, 255, 255) - we have complete presence of the colours red, green, blue. Purple, as one might expect, is (255, 0, 255), meaning we have full 
+			presence of red and blue, but no green. Orange is an interesting colour to consider. If you have taken paint classes, you might know that you can 
+			mix yellow and red to make orange. However with just RGB we have no yellow to work with. However, we can create orange by having (255, 165, 0), or 
+			255 of red (full contribution), 165 of green (some partial contribution), and none for blue. How can a colour have a partial contribution will become 
+			clear in a minute. For now you can explore what colours you can make by playing around with the RGB value in the interactive example below: </p>
+			<p>R: </p>
+			<div width="50%">
+				<input type="range"  min="0" max="255" step="1" width="100%" id="rval" oninput="rchng(this.value)"/>
+				<label for="rval" class="form-label" style="margin-left: 20px;" value="120" id="rlb">120</label>
+			</div>
+			<p>G: </p>
+			<div width="50%">
+				<input type="range"  min="0" max="255" step="1" width="100%" id="gval" oninput="gchng(this.value)"/>
+				<label for="gval" class="form-label" style="margin-left: 20px;" value="120" id="glb">120</label>
+			</div>
+
+			<p>B: </p>
+			<div width="50%">
+				<input type="range"  min="0" max="255" step="1" width="100%" id="bval" oninput="bchng(this.value)"/>
+				<label for="bval" class="form-label" style="margin-left: 20px;" value="120" id="blb">120</label>
+			</div>
+
+			<canvas style="width: 50%; height: 2%;"></canvas>
+			<div style="margin-top: 20px;"></div>
+			<h3>Why three colours is enough?</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>How is it possible that we can represent all colours (with some exceptions)? The rainbow has so many more colours - we all remember the 
+			ROYGBIV (red, orange, yellow, green, blue, indigo, violet). Some claim we can see up to 16 million colours. So how can we do it with just 3?</p>
+			
+			<p>Well, let us see how colour itself is formed. What we typically call "light" refers to just a small part of the electromagnetic spectrum, 
+			between 380 and 700 nanometres. WiFi is a bit higher on the spectrum, at 120 mm to 60 mm. When the light from a source (sun, lamp, etc.) hits 
+			an object, part of the light gets absorbed, the other gets reflected. That reflected light, when it comes in contact with our eyes, becomes the colour 
+			we see for the object. Inside our eyes we have two types of "sensors" for light (photoreceptive cells) - cones and rods. Rods are mostly 
+			responsible for vision in low-light settings and cannot perceive colours. Cones on the other hand are responsible for colour perception. 
+			Our eyes have three types of cones (though some people may have 4 - a condition called tetrochromia), for long, short, and medium length. 
+			As you can see on the graphic below, short cone cells (S) have the highest sensitivity for light around 420–440 nm, which roughly corresponds to the colour blue. 
+			Medium ones (M) peak around 534–545 nm, which is roughly green, and long ones (L) - 564–580 nm, which is around the colour red.</p>
+			<div style="margin-top: 20px;"></div>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Cone-fundamentals-with-srgb-spectrum.svg"></img>
+			<div style="margin-top: 20px;"></div>
+			<p>Thus you can think of the three RGB values as how much excitation there is for each cone. The higher R-value your colour has, the more 
+			light your Long cone cells will register, making you see the colour red.</p>
+			<div style="margin-top: 20px;"></div>
+			<h3>Other colour representations?</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>If you have used image manipulation software before, you might be familiar 
+			with other colour encodings used. Here are some 
+			of the more interesting encodings. This list is by no 
+			means exhaustive, as there are too many to list.</p>
+			<div style="margin-top: 20px;"></div>
+			<ol class="list-group list-group-numbered">
+			<li>Black and White - often called "grayscale", 
+			encodes an image with one value per pixel, between 0 and 255. 
+			0 encodes black and 255 is white. In-between values 
+			represent some gray value. Typically these represent 
+			"lightness" of each pixel - how much rod activation there is. 
+			A common formula used to convert RGB images to 
+			grayscale ones is via the formula: 0.299 * R + 0.587 * G + 0.114 * B</li>
+			<div style="margin-top: 20px;"></div>
+			<li>Lower-bit images - sometimes you might encounter images 
+			encoded with values per pixel less than 24-bit length. 
+			RGB in "true-colour" uses 8 bits per colour, resulting 
+			in 24-bits per pixel. However, some images encode pixel values 
+			with 1 bit, 5 bits, etc. The trick here lies in identifying 
+			some group of colours (a palette), indexing them, and then per pixel 
+			encoding which value of the palette to use. For 1-bit 
+			images, each pixel is either foreground or background. 
+			In 5 bit ones, you can use a palette size of 32 colours, and so on.</li>
+			<div style="margin-top: 20px;"></div>
+			<li>Hue, Saturation, Brightness (HSV/HSB) - 
+			for some artistic application, the RGB colour representations may be a bit too confusing to work. There is no direct correlation 
+			between saturation/brightness and the colour knobs you turn. So what if you want to make a "slightly desaturated green" or 
+			"same brightness yellow". Well Hue, Saturation, Brightness/Value encoding comes to the rescue. Here, Hue represents 
+			a 360 degree disc, encompassing the entire visbile spectrum, with 0 degrees representing red, 120 is green, and 240 is blue. Saturation represents 
+			how much gray is added to the "pure colour", with 1 value for saturation being only the pure colour, and 0 - only gray. Value/Brightness 
+			roughly corresponds to the grayness of the colour, with higher brightness representing white, while lower ones - black.</li>
+			</ol>
+			</div>
+			

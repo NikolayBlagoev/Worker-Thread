@@ -18,6 +18,8 @@
     "express-ws": "^5.0.2",
     "jquery": "^3.7.0",
     "nodemailer": "^6.9.4",
+    "troika-three-text": "^0.49.0",
+    "validator": "^13.11.0",
     "ws": "^8.13.0"
   }
 }

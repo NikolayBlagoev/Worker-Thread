@@ -158,7 +158,7 @@
 			<div style="margin-top: 20px;"></div>
 			<h3>Cryptographic Hash Functions</h3>
 			<p>There isn't much to add to what has already been said about hash functions. Cryptographic Hash Functions are not <i>particularly</i> special, but rather they exemplify the qualities of hash functions. 
-			Cryptographic Hash Functions must provide the following guarantees (notice that they are not keyed): </p>
+			Cryptographic Hash Functions must provide the following guarantees (notice that they are not keyed - as in no key is used for the digest generation unlike in the keyed-hash functions): </p>
 			<div style="margin-top: 20px;"></div>
 			<div class="row .me-5">
 					<div class="col-xs-1 col-md-1"></div>
@@ -173,6 +173,6 @@
 					<div class="col-xs-1 col-md-1"></div>
 				</div>
 			<div style="margin-top: 20px;"></div>
-			<p>Cryptographically secure hash functions are SHA-2, SHA-3, Whirpool.</p>
+			<p>Some (and the most important ones) cryptographically secure hash functions are SHA-2, SHA-3, and Whirpool.</p>
 			</div>
 			<div style="margin-top: 20px;"></div>

@@ -1,0 +1,171 @@
+			<h1>Key-Exchange</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			<p>In <a href="/article/introduction-to-cryptography">Introduction to Cryptography</a>, we explained one of the biggest issues with 
+			"traditional" cryptography (more appropriately called Symmetric-Key Cryptography). If two or more parties wish to communicate 
+			in a secure manner (without anyone being able to eavesdrop on or modify their messages), the will need to somehow exchange the 
+			agreed upon secret key with which they will encrypt their messages (you can read <a href="/article/symmetric-key-cryptography">Symmetric-Key Cryptography</a> 
+			for more in-depth explanation on symmetric key cryptography). This exchange requires a secure channel through which the key can be sent, 
+			as if someone was able to get access to their key, they will be able to decrypt all future messages. Back in the day people would meet 
+			secretly to exchange their keys. But in the modern age, where the volume of communication is too great, it is impractical to have to go through 
+			all these hoops to be able to send securely messages with someone else. This is where the revolutionary paper by Whitfield 
+			Diffie and Martin Hellman comes in all the way back in 1976 <a href="https://ee.stanford.edu/%7Ehellman/publications/24.pdf">[1]</a>. It was 
+			the first publicly available paper, which described a protocol through which two parties can agree on the same secret key through an 
+			unsecure channel, without anyone else being able to get ahold of their keys.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>Nowadays with the development of Asymmetric-Key Cryptography, which doesn't necessitate the two parties to use the same key, 
+			key-exchange protocols may seem obsolete. However, they still find uses in End-to-End encryption protocols as they provide 
+			"forward secrecy" - if one of your messages gets decrypted by a third party, they may not be able to always decrypt following ones. As 
+			such it is important to be familiar with these protocols as well, in order to understand current more advanced concepts and algorithms. 
+			Additionally, if one doesn't want to bother with some of the complexity that comes with public key distributions and deletions, 
+			key-exchange protocols allow for a simple alternative.</p>
+			<div style="margin-top: 20px;"></div>
+
+			<h3>The Key-Exchange Problem</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>Let us focus on the key-exchange problem through a simple story about our favourite trio - Alice, Bob, and Eve. Eve is the 
+			<i>reallllyyyy</i> jealous ex-wife of Bob and wants to sabotage all future relationships of his. Fortunately for her, 
+			she works at the post office, so she can read and modify all of Bob's messages. Bob has recently met a girl, with whom he regularly 
+			exchanges letters. Bob is aware of his ex-wife's intentions, hence why he wants to encrypt his communication with Alice.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>If Bob and Alice met beforehand somewhere, they could have agreed on a secret key between them and continue to send their letters, 
+			without a worry. However, they are rather forgetful (and in love) so they spaced out that they need to do that during their last date. 
+			Bob thinks about sending the secret key to Alice in his next letter. However, Eve will surely read it, write down the key, and continue to monitor 
+			their conversation. Thus this simple solution would not work.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>While thinking about this at his art studio, Bob has an idea how to agree on a key with Alice, without Eve being able to find out what it is. 
+			Bob quickly takes out a pen and paper and begins writing his plan. First, they will both buy some paint colour that they can both agree on 
+			(the specific colour doesn't matter too much and it is fine if Eve knows it too). Then, each of them, will buy another paint colour without telling the 
+			other one what it is. At home they will mix their own paint colour with the agreed upon one and send it in a letter to the other. Then, when they 
+			receive each other's letters, they will mix the received paint with their own paint. Whatever the colour of the result is will be their secret key. 
+			This hinges on three properties of paint. Most important one of them is that figuring out what the two paints used to create this colour is 
+			decently hard (anyone who has had to repaint a wall can understand the struggle). This means that Eve, while being able to see the resultng colour, as 
+			well as the originally agreed upon one, she will need a lot of time to figure out which specific paint colour each one used in secret. 
+			Second property of paint is that the order of mixing doesn't matter - whether Bob mixes yellow, green, blue or blue, green, yellow, doesn't matter - 
+			the result will be the same. Third - mixing the same colours will always produce the same result (there is no randomness in the process). Below 
+			you can find an illustration of this process from <a href="https://commons.wikimedia.org/wiki/File:Diffie-Hellman_Key_Exchange.svg">[2]</a>: </p>
+			<div style="margin-top: 20px;"></div>
+			<div class="overflow-scroll">
+				<img class="mx-auto d-block" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Diffie-Hellman_Key_Exchange.svg" />
+			</div>	
+			<div style="margin-top: 40px;"></div>
+
+			<h3>Diffie-Hellman Key-Exchange</h3>
+			<div style="margin-top: 20px;"></div>
+
+			<p>The previous analogy explains the Diffie-Hellman Key-Exchange protocol. Naturally, in the world of cryptography we don't use paint, but 
+			rely on prime fields (as seen below) or elliptic curves. The operations in either rely on the fact that currently, we have no 
+			efficient way of computing the discrete logarithm problem (inverting the paints in the analogy). Below are the steps of the Diffie-Hellman protocol: </p>
+			<div style="margin-top: 20px;"></div>
+			<ol class="list-group list-group-numbered">
+  				<li >Bob and Alice agree on a very large prime (p) - for example one send to the other in a public channel</li>
+  				<li >Bob and Alice agree on a number 1<g<p, such that g is a generator of the prime field F<sub>p</sub>. This means that as we 
+				raise g to powers 1, 2, 3... modulo p, we will see each number 1≤g≤p-1 at most ones, i.e. g<sup>a</sup> mod p = g for no other 1≤a≤p-1 other than 1.</li>
+  				<li >Bob chooses a secret sB and Alice chooses a secret sA. Both sB and sA are greater than 1 and less than p</li>
+				<li >Bob calculates g<sup>sB</sup> mod p = mB and sends it to Alice</li>
+				<li >Alice calculates g<sup>sA</sup> mod p = mA and sends it to Bob</li>
+				<li >Bob receives Alice's message and calculates mA<sup>sB</sup> mod p = k, where k is their common secret</li>
+				<li >Alice receives Bob's message and calculates mB<sup>sA</sup> mod p = k, where k is their common secret</li>
+				<li >This holds because (g<sup>sB</sup> mod p)<sup>sA</sup> mod p = (g<sup>sA</sup> mod p)<sup>sB</sup> mod p = 
+				g<sup>sA*sB</sup> mod p</li>
+				
+			  </ol>
+			<div style="margin-top: 20px;"></div>
+			
+			<p>Bob and Alice can now continue their communication using some form of <a href="/article/symmetric-key-cryptography">Symmetric-Key Cryptography</a> and 
+			Eve will not be able to read their messages, as she: </p>
+			<div style="margin-top: 20px;"></div>
+			<ol class="list-group list-group-numbered">
+  				<li >Has g, p, mB (g<sup>sB</sup> mod p), and mA (g<sup>sA</sup> mod p)</li>
+				<li>She cannot realistically obtain sB from mB</li>
+				<li>She cannot realistically obtain sA from mA</li>
+				<li>She cannot compute g<sup>sA*sB</sup> mod p = k from the information she has</li>
+				
+			  </ol>
+			<div style="margin-top: 20px;"></div>
+			<p>Below you can find an interactive example (obviously for the sake of understanding we work with small numbers here. Normally they would be really really large):</p>
+				<div style="margin-top: 20px;"></div>
+				<input type="button" onclick="on_click_gen()" value="GENERATE P AND G"></input>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						
+						<th scope="col">Bob</th>
+						<th scope="col">Alice</th>
+						<th scope="col">Eve</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						
+						<td>Chooses p = <p style = "display: inline;" id="p1"></p></td>
+						<td>Chooses p = <p style = "display: inline;" id="p2"></p></td>
+						<td>Sees p = <p style = "display: inline;" id="p3"></p></td>
+						</tr>
+
+						<tr>
+						
+						<td>Chooses g = <p style = "display: inline;" id="g1"></p></td>
+						<td>Chooses g = <p style = "display: inline;" id="g2"></p></td>
+						<td>Sees g = <p style = "display: inline;" id="g3"></p></td>
+						</tr>
+
+
+						<tr>
+						
+						<td>Chooses sB = <input type="text" id="sb1" size="3" value="3" onchange="chngd()"></input></td>
+						<td>Chooses sA = <input type="text" id="sa1" size="3" value="4" onchange="chngd()"></input></td>
+						<td></td>
+						</tr>
+
+
+						<tr>
+						
+						<td>g<sup>sB</sup> mod p = <p style = "display: inline;" id="mb1"></p></td>
+						<td>g<sup>sA</sup> mod p = <p style = "display: inline;" id="ma1"></p></td>
+						<td></td>
+						</tr>
+
+						<tr>
+						
+						<td>Sends <p style = "display: inline;" id="mb2"></p></td>
+						<td>Receives <p style = "display: inline;" id="mb3"></p></td>
+						<td>Sees <p style = "display: inline;" id="mb4"></p></td>
+						</tr>
+
+						<tr>
+						
+						<td>Receives <p style = "display: inline;" id="ma2"></p></td>
+						<td>Sends <p style = "display: inline;" id="ma3"></p></td>
+						<td>Sees <p style = "display: inline;" id="ma4"></p></td>
+						</tr>
+
+						<tr>
+						
+						<td>Calculates mA<sup>sB</sup> =  <p style = "display: inline;" id="k1"></p></td>
+						<td>Calculates mA<sup>sB</sup> =  <p style = "display: inline;" id="k2"></p></td>
+						<td></td>
+						</tr>
+
+						<tr>
+						
+						<td>Continues secret communication</td>
+						<td>Continues secret communication</td>
+						<td>Can't do a thing</td>
+						</tr>
+					</tbody>
+				</table>
+			<div style="margin-top: 20px;"></div>
+			<h3>Drawback of Diffie-Hellman</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>The protocol described above works great if the attacker can only listen to messages. If they can also modify messages, well 
+			the protocol fails. Suppose Eve listens on the shared g and p, and chooses her own secret - sE. Then to Bob and Alice she sends 
+			g<sup>sE</sup> mod p, pretending she is the other intended party. Bob and Alice continue the protocol with Eve, thinking their doing it with each other instead. 
+			At the end of it, Eve will have two secret keys - one for communication wiht Bob and the other for communication with Alice. Whenever she receives an encrypted 
+			message from Bob, she decrypts it, reads its contents, and encrypts with the key for Alice before sending it to her. The two lovers remain none the wiser.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>This problem can be remedied if Bob and Alice have some way to prove their identity to each other, for example via <a href="/article/digital-signatures">Digital Signatures</a>.</p>
+			</div>
+			

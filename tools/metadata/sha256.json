@@ -1,0 +1,13 @@
+{
+    "css": "hash",
+    "js": "hash",
+    "title": "SHA256 Calculator",
+    "link": "",
+    "ldescr": "Compute the SHA256 hash value of any string and verify its correctness",
+    "shrtdescr": "Compute the SHA256 hash value",
+    "titbit": "",
+    "tags": ["SHA256", "Encryption", "Tools", "Hashing"],
+    "img": "/imgs/hash.jpg",
+    "views": 24,
+    "interest": 2
+}

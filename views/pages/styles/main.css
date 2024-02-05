@@ -81,3 +81,7 @@ display: none;
 	height: 70vh;
 	
 }
+
+.card:hover{
+	cursor: pointer;
+  }

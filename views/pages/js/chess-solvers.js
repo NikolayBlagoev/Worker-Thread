@@ -208,7 +208,7 @@ async function start(){
     console.log(players[2], players[3])
     if(turn>0){
         turn = 0;
-        requestAnimationFrame(render)
+        
     }
 }
 async function render(time) {
@@ -250,8 +250,8 @@ async function render(time) {
             
         }
     }
-    if(is_won) return;
-    if(started){
+    
+    if(!is_won && started){
         
         let disc = turn % 2 == 0 ? red : yellow;
         if(particle == undefined){

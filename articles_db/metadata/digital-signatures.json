@@ -1,0 +1,13 @@
+{
+    "css": "",
+    "js": "digital-signatures",
+    "link": "/article/digital-signatures",
+    "title": "Digital Signatures",
+    "ldescr": "",
+    "shrtdescr": "A short interactive article on one of the most essential modern cryptographic concepts",
+    "titbit": "",
+    "tags": ["Cryptography","Explanatory","Interactive"],
+    "img": "/imgs/dssign0000.jpg",
+    "views": 31,
+    "interest": 5
+} 

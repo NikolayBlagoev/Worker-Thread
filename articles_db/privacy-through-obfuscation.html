@@ -1,0 +1,122 @@
+			<h1>Privacy Through Obfuscation</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    As noted in a previous essay: "privacy is a subset and a necessary condition of security". However, encryption is not enough to ensure privacy. 
+                  </div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    Consider the boxes and locks example of <a href="/article/introduction-to-cryptography">Introduction to cryptography</a>. While Eve may not know the contents of the box, she still knows that Bob is sending something to Alice. This reveals the problem. Most traditional secure protocols encrypt only the <i>contents</i> of the message, but not the <i>metadata</i>. Metadata in this case can constitute anything that is associated with the communication, but not the contents of it directly. For example, who the participants are, how often do they exchange information, what is the volume of data exchanged, protocols used, etc. 
+                  	</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Metadata is revealing enough. <a href="https://www.pnas.org/doi/full/10.1073/pnas.1508081113">[1]</a> shows that there based on phone call metadata alone one can make very clear inferences about a person's personal information. For example, from the same study:
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						"Participant B received a long phone call from the cardiology group at a regional medical center, talked briefly with a medical laboratory, answered several short calls from a local drugstore, and made brief calls to a self-reporting hotline for a cardiac arrhythmia monitoring device."
+					</div>
+					<div style="margin-top: 20px;"></div>
+					<div class="text-left">
+						"Participant E made a lengthy phone call to her sister early one morning. Then, 2 days later, she called a nearby Planned Parenthood clinic several times. Two weeks later, she placed brief additional calls to Planned Parenthood, and she placed another short call 1 month after."
+					</div>
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+			</div>
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    		In fact, the metadata of encrypted traffic (such as the one used over HTTPS or VPN protocol), which can include amount and frequency of packets, can be revealing about the application and protocol used <a href="https://www.researchgate.net/publication/354164057_A_Novel_Way_to_Generate_Adversarial_Network_Traffic_Samples_against_Network_Traffic_Classification">[2]</a> and <a href="https://jis-eurasipjournals.springeropen.com/articles/10.1186/s13635-023-00141-4">[3]</a>. 
+                  	</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				HTTPS and End-To-End Encrypted messages both suffer from the same issue. Source and destination and time of packets/messages are accessible to everyone in the chain. Considering that ISPs in Australia are <b>MANDATED</b> to keep your metadata for at least 2 years <a href="https://ia.acs.org.au/article/2021/metadata--vpns--and-tor.html#:~:text=Metadata%20retention&text=There%20are%20six%20categories%20of,equipment%20used%20during%20the%20communication">[4]</a>, this should tell you how viable this information is. WhatsApp, likewise, also maintains a good log of your metadata. It is why they do not need to provide backdoors for your communication. They already know who you talk to, how frequent, and how much you talk with them, thus they can accurately form a social graph of their users. 
+
+			</div>
+
+			
+		
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Consider the example of boxes and locks. Eve may not know what Bob and Alice talk about, but their frequency of messages in late hours of the day (especially if the letters are quite long requiring bigger boxes) is revealing enough of their relationship. Likewise, law enforcements can identify other people of interest based on this metadata. 
+
+			</div>
+
+			
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Thus, encryption is not enough. The metadata needs to also be obfuscated in such a manner that profiling becomes near impossible. Obfuscation here terms the act of adding deliberate noise to one's activity such that profiling and analysing of their behaviour becomes increasingly more complex.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				In the old days of radio communication, all messages were being actively broadcasted. Thus the recipient becomes unknown, though the content frequency, volume, as well as the source can be somewhat known. On top of that, flooding the internet with packets when trying to communicate with another end-point will result in too much traffic, essentially throttling the infrastructure. A simpler and more efficient solution is multicasting - sending only to certain addresses. Thus every time you speak with person 1, you also send the same encrypted message to person 11, 111, etc. Since they do not possess the decryption key they cannot discern what the contents are. The destination becomes obfuscated.
+
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Onion Routing (implemented in TOR) employ a message encapsulation technique for the traffic on the network. When a message has a specific destination, it is first rerouted through to 2 other nodes, before reaching the destination <a href="https://ieeexplore.ieee.org/document/668972">[5]</a>. Let us see how this works in the boxes and locks example. Bob puts a secret message for Alice and puts in a lock, which can only be opened by Alice. He then puts this box in another box, which he locks with a lock, which can only be opened by Charlie. He proceeds to do for his next few friends - Dave and Greg. When done, he sends the box to Greg. Greg opens it and sees inside another box addressed to Dave. He sends the box to Dave (so he appears to now be the source). This process continues until finally Charlie sends the final box to Alice. The security of this relies on the fact that each of the people in the chain may be sending or forwarding many other boxes to many other people. Thus it becomes quite difficult to tell what the source and true final destination of a message is. Eve is left confused. Still, such systems have vulnerabilities. A very obvious one would be if some people on the chain were Eve's friends and informed her of the sender of each box they forward. This will allow Eve to discern the entire route of a message.  Other attacks exist as well, which can hinder the privacy of the communication <a href="http://www.cypherspace.org/adam/pubs/traffic.pdf">[6]</a>.
+
+			</div>
+
+			<figure class="text-left bg-white p-3 rounded">
+                    <blockquote class="blockquote">
+                      <p>Where does a wise man hide a leaf? In the forest. But what does he do if there is no forest? … He grows a forest to hide it in.</p>
+                      
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      G. K. Chesterton, “The Sign of the Broken Sword”
+                    </figcaption>
+                  </figure>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>Legislation on Metadata</h3>
+			</div>
+
+
+		
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				As established, metadata can be enough to reveal private information about people. Yet, governments to not consider metadata personally identifiable and often they do not need a court order to acquire such information. In the US in 2013, the chairman of the Senate Select Committee on Intelligence, said "Our courts have consistently recognized that there is no reasonable expectation of privacy in this type of metadata information and thus no search warrant is required to obtain it". As noted, ISPs and telephone companies are required to store metadata for at least 2 years and provide it upon request by the authorities. 
+
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				The European Union has made progress in that regard, stating in a Court of Justice ruling in 2020 that Member States cannot on individual basis mandate indiscriminate traffic retention. Still  for the purposes of "national security", member nations are permitted to engage in "targeted retention, limited in time to what is strictly necessary, of traffic and location data, which is limited, on the basis of objective and non-discriminatory factors, according to the categories of persons concerned or using a geographical criterion".
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Regardless, ensuring privacy remains each individual's responsibility and continuous fight by being technically adapt and remaining aware about changes in legislation, which can affect his ability of privacy.
+				
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>Further Reading</h3>
+			</div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<i>Obfuscation: A User's Guide for Privacy and Protest</i> by Finn Brunton and Helen Nissenbaum
+				
+			</div>
+			

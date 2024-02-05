@@ -1,0 +1,13 @@
+{
+    "css": "",
+    "js": "chess-solvers",
+    "link": "/article/chess-solvers",
+    "title": "Chess Solvers",
+    "ldescr": "Have you wondered how Stockfish and Alpha zero beat humans with ease? How do they work? This interactive article explains the innerworkings of chess (and other similar game) solvers. As a concrete example we provide fully functional Deep Learning and Heuristic-based Connect Four AIs. All code is available for this project.",
+    "shrtdescr": "",
+    "titbit": "",
+    "tags": ["AI","Explanatory","Interactive"],
+    "img": "/imgs/chess.jpg",
+    "views": 79,
+    "interest": 7
+}

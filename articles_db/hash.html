@@ -1,0 +1,241 @@
+<h1>Hashing Function</h1>
+<div style="margin-top: 20px;"></div>
+<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+<div style="margin-top: 10px;"></div>
+<div class="text-left">
+	<p>Hashing is the process of translating an input of arbitrary length to a fixed length digest (though some modern
+		functions
+		like SHA-3 can create variable-length digets). To keep it simple we will focus only on the fix-length case.
+		Mathematically a hash
+		function is: </p>
+	<div class="row .me-5">
+		<div class="col-xs-1 col-md-1"></div>
+		<div class="col-xs-10 col-md-10"><b>h: {0,1}<sup>*</sup> => {0,1}<sup>n</sup></b></div>
+		<div class="col-xs-1 col-md-1"></div>
+	</div>
+	<div style="margin-top: 20px;"></div>
+	<p>What does this mean? Well if we have a binary input (since everything is binary in computer), which is the {0,1}
+		part,
+		regardless of its size, the <sup>*</sup>, we want to create a binary output which will always be of length n,
+		{0,1}<sup>n</sup>.
+		That way regardless if you have the single digit '8', a short text, or a vide that is several GBs in size, the
+		function will give you
+		an output always of length n-bits. For example, if you used SHA-256, all inputs (including the above three) will
+		give you
+		a digest of 256 bits (0s or 1s). You can try playing around with SHA-256 below: </p>
+	<div style="margin-top: 20px;"></div>
+	<hr class="mt-2 mb-2" />
+	<div style="margin-top: 20px;">
+		<p>Text:</p>
+		<textarea id="original-sha256" rows="4" style="width: 100%"></textarea>
+	</div>
+
+	<div>
+
+		<p>Hashed value bits:</p>
+		<textarea id="bits-sha256" rows="4" style="width: 100%" readonly></textarea>
+		<p>Hashed value hexadecimal:</p>
+		<textarea id="hex-sha256" rows="4" style="width: 100%" readonly></textarea>
+	</div>
+	<hr class="mt-2 mb-2" />
+
+	<div style="margin-top: 20px;"></div>
+	<p>One thing to remember is that hashing <b>DOES NOT</b> produce a unique result. It is possible that file A and
+		file B produce the
+		same digest. This stems out of the simple fact that the input space is much larger than the output one.
+		Try to enumerate all numbers with only n numbers. Regardless of how large n is, there will always be a number
+		(n+1) which needs
+		to be mapped to somewhere between 1 and n, where another number already has been mapped to. When a hash function
+		produces the same value for two different inputs, we say we have a collision</p>
+	<div class="row .me-5">
+		<div class="col-xs-1 col-md-1"></div>
+		<div class="col-xs-10 col-md-10"><b>collision: A != B and h(A) = h(B)</b></div>
+		<div class="col-xs-1 col-md-1"></div>
+	</div>
+	<div style="margin-top: 20px;"></div>
+	<p>Collisions are unavoidable. Depending on your application they can really break everything. Usually we want the
+		probability of finding a
+		collision to be low enough that we dont need to worry about it too much (for example 1 in 2<sup>n/2</sup>).</p>
+
+	<div style="margin-top: 20px;"></div>
+	<h3>Hash Function Applications</h3>
+	<div style="margin-top: 20px;"></div>
+	<p>There are <i>toooooo</i> many applications of hash functions to exhaustively explain. It is a simple idea that
+		sees great utility
+		in many systems and fields. Here I will focus on the main ones (the rest can be derived from these): </p>
+	<ol class="list-group list-group-numbered">
+		<li><b>Indexing</b> - since hash functions produce fixed-length results they are used in a lot of structures
+			(databases, hashtables, etc) to
+			efficiently store and retrieve elements. Consider a hash table of size m (where m cannot be larger than
+			2<sup>n</sup>). When a new element needs to be added
+			(for example a new profile to facebook, based on username), you calculate the hash, then take it modulo m
+			(so it is between 0 to m-1), which gives you some number index (or its identifier).
+			Then you store this profile, its likes, any comments, etc. at location index in your system (for example on
+			the index-th memory location).
+			When someone wants to retrieve information about this profile, you calculate the hash modulo m (of the
+			username), to get index again, and retrieve it from location index.
+			What happens when there is a collision? Well, you store it in a "bucket" (list of elements). Then when you
+			get a profile with some index, you check the
+			index-th bucket and traverse all elements in the list to find the one that is with the same username. This
+			is significantly faster than each time checking ALL profiles
+			you have stored. You only need to calculate the hash (and then potentially check a small number of elements
+			with the same hash value). </li>
+		<div style="margin-top: 20px;"></div>
+		<li><b>Comparison</b> - some algorithms use hashing to compare large elements in a quick and efficient manner.
+			That way one needs to compute the hash
+			only once and then compare it with other hashes (rather than each time going through the entire large object
+			to compare each bit with another large one).
+			This does not guarantee that two elements are the same (as collision exist). Still it gives you a high
+			proability that the two elements are the same.
+			Locality-Prserving Hashing functions extend this functionality even further <a
+				href="https://bcmi.sjtu.edu.cn/home/meijincheng/pdf/Locality%20Preserving%20Hashing.pdf">[1]</a>.
+			With LPH if A is more similar to B than C (given some metric), then the hashes of h(A) and h(B) should be
+			closer than those of h(A) and h(C) or h(B) and h(C).
+			This sees use in plagirism detection (if someone stole your image and slightly modified it). </li>
+		<div style="margin-top: 20px;"></div>
+		<li><b>Password Authentication</b> - very similar to the previous point. Normally when logging in, instead of
+			sending your password to the server
+			and risking it being stolen, you would send a hash of it. Then the server merely compare it to the hash it
+			has stored of it. If they match you get access.
+			This ensures some security as, given a hash, it is difficult to invert it to find what the original was.
+			Here it is best to use Cryptographic Hash Functions (see below),
+			which unlike LPH, should create vastly different digests for two similar inputs.</li>
+		<div style="margin-top: 20px;"></div>
+		<li><b>Error Detection</b> - you can transmit a message in conjunction with its hash. When the recipient
+			receives the message, they
+			calculate the hash and compare it to the one you have sent. If there is a mismatch, there was an error in
+			transmission (whether in the hash or the message sent).
+			One can build on top of this with Keyed-Hashing functions. They are essentially hashing functions mixed with
+			<a href="/article/symmetric-key-cryptography">symmetric-key cryptography</a>.
+			This way when one sends the "encrypted" hash (message authentication code), it is guaranteed to some extend
+			that the message has not been modified
+			(as an attacker would need to break the key to modify the message). Let us examine this a bit further.
+			Consider Bob sending to Alice the message "I love you".
+			Bob and Alice have a secret key shared between them "942". Bob then calculates the keyed-hash of the message
+			and sends it to Alice. Upon receiving,
+			Alice calculates the keyed-hash of the message and checks it against the sent one. If there is a mismatch
+			someone has modified the message (or there was an error).
+			If Eve wants to modify the message to "I don't love you", she needs the secret key to compute a new valid
+			message authentication code, as otherwise
+			Alice will not trust the message. It is still possible to contruct two different messages whit same
+			keyed-hash! You can play around with HMAC (a type of keyed cryptographic function), below:</li>
+	</ol>
+
+	<div style="margin-top: 20px;"></div>
+	<hr class="mt-2 mb-2" />
+	<div style="margin-top: 20px;">
+		<p>Text:</p>
+		<textarea id="original-hmac" rows="4" style="width: 100%"></textarea>
+	</div>
+	<div style="display:inline;">
+
+		<p style="display: inline">Key:</p>
+		<input type="text" id="key1" size="3" value="942"></input>
+
+
+	</div>
+
+	<div>
+
+		<p>HMAC value bits:</p>
+		<textarea id="bits-hmac" rows="4" style="width: 100%" readonly></textarea>
+		<p>HMAC value hexadecimal:</p>
+		<textarea id="hex-hmac" rows="4" style="width: 100%" readonly></textarea>
+	</div>
+	<hr class="mt-2 mb-2" />
+	<div style="margin-top: 20px;"></div>
+	<h3>The Birthday Paradox</h3>
+	<div style="margin-top: 20px;"></div>
+	<p>Did you know that the chance for at least 2 people to have the same birthday in a group of 23 people is about
+		50%? Why? Well, let us look at the math: </p>
+	<div style="margin-top: 20px;"></div>
+	<p>In a year there are 365 (366 on a leap year, but it won't affect the conclusion). Let us try to construct a group
+		of 23 such that <i>THEY ALL HAVE DIFFERENT BIRTHDAYS</i>.
+		This is the opposite case of the one we state above. Since probabilities always sum to 1, we will know that:
+	</p>
+	<div class="row .me-5">
+		<div class="col-xs-1 col-md-1"></div>
+		<div class="col-xs-10 col-md-10"><b>P(same birthday of at least 2 people) = 1 - P(all different birthdays)</b>
+		</div>
+		<div class="col-xs-1 col-md-1"></div>
+	</div>
+	<div style="margin-top: 20px;"></div>
+	<p>Where P(_) denotes the probability of a given event. So in our group of 23 people, the first person we consider
+		(doesn't matter what is the order) can be born on any of the 365 days.
+		Since they are the first person we don't need to worry about collisions yet. The second person can be born on
+		any day EXCEPT the one that person is born on.
+		This leaves them with 364 days to be born on. Since there are 365 days in a year, the probability of someone
+		being born on any 364 days is 364/365.
+		The third person can be born on any of the days except the days of person 1 and 2 (since we are trying to have
+		no collisions). This leaves them with 363 days.
+		The probability of that is 363/365. This goes on and on, until we have: </p>
+	<div class="row .me-5">
+		<div class="col-xs-1 col-md-1"></div>
+		<div class="col-xs-10 col-md-10"><b>P(all different) = <sup>365</sup>&frasl;<sub>365</sub> *
+				<sup>364</sup>&frasl;<sub>365</sub>
+				* <sup>363</sup>&frasl;<sub>365</sub> * <sup>362</sup>&frasl;<sub>365</sub> *
+				<sup>361</sup>&frasl;<sub>365</sub> * <sup>360</sup>&frasl;<sub>365</sub> ... </b>
+
+			<div style="margin-top: 20px;"></div>
+			<b>P(all different) = 0.4920....</b>
+			<div style="margin-top: 20px;"></div>
+			<b>P(same birthday of at least 2 people) = 1 - 0.4920..</b>
+			<div style="margin-top: 20px;"></div>
+			<b>P(same birthday of at least 2 people) = 0.5079...</b>
+		</div>
+		<div class="col-xs-1 col-md-1">
+		</div>
+	</div>
+	<div style="margin-top: 20px;"></div>
+	<p>So what does this mean? If you take a random group of 23 people 100 times, you should expect about 50 of those
+		times to have at least 2 people with the
+		same birthday. Of course in reality the results are slightly skewed in favour of the paradox, as people aren't
+		born with uniform probability across the year
+		(on some days more children are born than on others, for... various reasons). </p>
+	<div style="margin-top: 20px;"></div>
+	<p>For our context this means that if a hash function has an output space of n bits (2<sup>n</sup> possible hash
+		values), we need to only consider
+		slightly more than 2<sup>n/2</sup> values to find a collision about half the times. We also want to find <i>a
+			meaningful collision</i>, as it is always possible to find
+		a collision. For example it is possible that the messages: "I love you" and "42if02 cjnf29na nf2ifn" have the
+		same hash values. But sending the latter message,
+		even with the same hash, would be meaningless to Alice. So what Eve does is takes a message she wants to send
+		("I don't love you") with a valid hash to Alice, and
+		finds 2<sup>n/2</sup> small modifications she can introduce that won't change the message (e.g. adding an extra
+		space between two words, sligthly misspelling, them etc).
+		Eve then calculates the hash for all those messages hoping to find a collision. This is called a "Birthday
+		Attack".</p>
+	<div style="margin-top: 20px;"></div>
+	<p>If Bob has used a cryptographically secure hash algorithm with large enough output space (for example SHA-256),
+		Eve will need to check an incredibly
+		high amount of modifications. For SHA-256 it is 2<sup>128</sup>, which is too high for any computer to compute
+		in the next 100s of years. This is of course
+		without the use of specialised algorithms, but even then the search time will be too high to be reasonable.</p>
+	<div style="margin-top: 20px;"></div>
+	<h3>Cryptographic Hash Functions</h3>
+	<p>There isn't much to add to what has already been said about hash functions. Cryptographic Hash Functions are not
+		<i>particularly</i> special, but rather they exemplify the qualities of hash functions.
+		Cryptographic Hash Functions must provide the following guarantees (notice that they are not keyed - as in no
+		key is used for the digest generation unlike in the keyed-hash functions): </p>
+	<div style="margin-top: 20px;"></div>
+	<div class="row .me-5">
+		<div class="col-xs-1 col-md-1"></div>
+		<div class="col-xs-10 col-md-10">
+			<ol>
+				<li>All outputs are equally likely</li>
+				<li>Small changes in the input should result in great changes in the output (it should behave almost
+					pseudo randomly)</li>
+				<li>Finding <b>any</b> two inputs that are different with the same hash value should be infeasible (take
+					too much time)</li>
+				<li>It should be infeasible to "invert" the function, i.e. given a hash value, find the input that
+					produced such output</li>
+				<li>It should be infeasible to given a hash value, find an input which produces it</li>
+				<li>It should be deterministic - one input must always produce same output</li>
+			</ol>
+		</div>
+		<div class="col-xs-1 col-md-1"></div>
+	</div>
+	<div style="margin-top: 20px;"></div>
+	<p>Some (and the most important ones) cryptographically secure hash functions are SHA-2, SHA-3, and Whirpool.</p>
+</div>
+<div style="margin-top: 20px;"></div>

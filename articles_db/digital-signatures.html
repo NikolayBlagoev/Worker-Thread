@@ -1,0 +1,129 @@
+			<h1>Digital Signatures</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			<p>Digital Signatures are used ubiquitously across the internet to provide two guarantees: </p>
+			<div style="margin-top: 10px;"></div>
+			<ul>
+			<li>The contents of the message have not been modified</li>
+			<li>The sender is indeed the one who they claim to be</li>
+			</ul>
+			<div style="margin-top: 20px;"></div>
+			<p>You can think of them as normal signatures, used to "guarantee" identity when signing documents. Except that traditional signatures do not 
+			ensure that the text above them has not been modified. In contrast to traditional signatures, which are easily forgeable, 
+			digital signatures rely on mathematical guarantees to ensure their security. </p>
+			<div style="margin-top: 20px;"></div>
+			<p>Digital Signatures are implemented in almost every application you use on a daily basis. Financial transactions to guarantee you are 
+			the one making the request. End-to-end encrypted conversation to ensure the other party is who they claim to be. Software distribution, 
+			so that a user can be sure that the file has not been tampered with prior to downloading. In the EU and the USA, digital signatures are 
+			admissible in court, just as much as traditional signatures <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.257.01.0073.01.ENG">[1]</a> 
+			<a href="https://www.fdic.gov/resources/supervision-and-examinations/consumer-compliance-examination-manual/documents/10/x-3-1.pdfs">[2]</a>. </p>
+			<div style="margin-top: 20px;"></div>
+			<p>So how do they work? Well, if you have read our article on <a href="/article/hash">Hashing</a>, what was described above may read like 
+			Message Authentication Codes. The only difference is that MACs do not prove who the sender was - anyone with the key can produce a valid 
+			MAC. So we will combine MACs with <a href="/article/introduction-to-cryptography">Asymmetric Encryption</a> to get 
+			Digital Signatures. Let us consider a concrete example</p>
+			<div style="margin-top: 20px;"></div>
+			<p>If you remember RSA from <a href="/article/introduction-to-cryptography">Introduction to Cryptography</a>, you will know it consists 
+			of a public key (e,n) and a private one (d). Everyone has access to the public key and can use it to encrypt a message, which can then 
+			be read only by the person with the private key. The encryption/decryption process worked as follows: </p>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<ol class="list-group list-group-numbered">
+  				<li >Bob finds two very large prime numbers (ideally they would each be 1024 bits, however here for this example we will use much smaller ones) - 23 and 53.</li>
+  				<li >Bob calculates n = 23 * 53 = 1219</li>
+  				<li >Bob calculates phi(n) = (23 - 1) * (53 - 1) = 22 * 52 = 1144</li>
+
+				<li >Bob chooses a public key, such that the greatest common divisor (gcd) of phi(n) and PubKey is 1 (they don't have common divisors). For this example we will choose 3.</li>
+  				<li >Bob finds a private key, such that PubKey * PrivKey mod phi(n) = 1. For our example this gives us PrivKey of 763</li>
+				<li >Bob publishes n and PubKey.</li>
+  				<li >Alice encrypts a message (m = 13 in this example) computing CT = m<sup>PubKey</sup>  mod n  = 13<sup>3</sup> mod 1219 = 2197 mod 1219 = 978</li>
+				<li >Alice sends 978 to Bob</li>
+  				<li >Bob decrypts 978 by computing m = CT<sup>PrivKey</sup>  mod n = 978<sup>763</sup> mod 1219 = 13</li>
+			  </ol>
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<p>This all works because of the simple mathematical property that : </p>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				
+
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					a<sup>e*d</sup> mod n = a
+					
+
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<p>Looking at the equation above, one can easily see that inverting the encryption and decryption process will still result in the original message. 
+			So if Bob used his private key to "encrypt" a message, and Alice - the public one to decrypt it, she will still get the original message. 
+			This is the property used in digital signatures (kind of with some small caveats). Bob will now sign the message with his key, send the signature with the message, and everyone 
+			can decrypt his signature to check if the get the message. If they do get it, they know that Bob was the one who sent the message and that 
+			it has not been tampered with by a third party. However, if one applies this algorithm, they will get a signature as large as the original message, 
+			which is less than desirable (so instead of sending 2 MBs, now you have to send 4 MBs). That is why Bob will sign not the message, 
+			but the <a href="/article/hash"><i>HASH</i></a> of it. That will reduce the signature to only some number between 1 and n-1 (which for RSA-PSS should be 4098 bits or larger). 
+			</p>
+			<div style="margin-top: 20px;"></div>
+			<p>The process described above is more of a "textbook" example. It demonstrates the general idea for constructing digital signatures (hashing + 
+			public-key cryptography). However, it is not secure by itself <a href="https://crypto.stanford.edu/~dabo/papers/RSA-survey.pdf">[3]</a>. Additionally, 
+			most hash functions output digests a lot smaller than the domain of RSA (256 bits vs 4096 bits for example). Improvements have been proposed like the RSASSA-PSS. 
+			To combat how expensive the computations of RSA are, Eliptic-curve-based digital signatures have been proposed. </p>
+			<div style="margin-top: 20px;"></div>
+			<p>Below you can play around with a very simple signature system (RSA with only 32-bits of security):</p>
+			<div style="margin-top: 20px;"></div>
+			<form role="form" class="form-horizontal">
+ 				 <div>
+   					 <input type="button" onclick="onClickGenerate()" value="GENERATE KEYS"></input>
+    					 <p id="p">Prime 1 : p = 23</p>
+    					 <p id="q">Prime 2 : q = 53</p>
+   					 <p id="n">Modulo : n = 1219</p>
+   					 <p id="e">PubKey : e = 3</p>
+   					 <p id="d">PrivKey : d = 763</p>
+
+
+  
+  				</div>
+  				<div>
+    
+    					<p>Message to Sign:</p>
+    					<textarea  id="msg" rows="2" class="form-control"></textarea>
+    
+  				</div>
+				<div>
+						<input type="button" onclick="onClickSign()" value="SIGN"></input>
+    					<p>Message hash:</p>
+    					<textarea  id="hash" rows="2" class="form-control" readonly></textarea>
+    
+  				</div>
+  				<div>
+    					
+    					<p>Signature:</p>
+    					<textarea  id="sign" rows="2" class="form-control"></textarea>
+    
+  				</div>
+
+  				<div>
+    					<input type="button" onclick="onClickVerify()" value="VERIFY"></input>
+    					
+    					
+						<div id="info"></div>
+    
+  				</div>
+				</form>
+			<div style="margin-top: 20px;"></div>
+			<h3>A Note on Security</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>It is <i>very</i> important to realise that with digital signatures your private key is your identity. If someone can get access to 
+			your private key they can impersonate you, sign legally binding documents on your behalf, etc. One should store their keys with great care 
+			and most important of all <b>NEVER LET SOMEONE ELSE GENERATE IT FOR THEM</b>. You should use carefully tested prime number generators to 
+			create your keys. You should use above the recommended key lengths to ensure resistance against brute-force attacks. 
+			Digital signatures by themselves DO NOT provide security against replay attacks. You can sign the message "send 100 euro to B" and send it to your bank. 
+			An attacker can intercept it and then keep sending it to the bank, until you become broke. Additional measures need to be taken to protect against 
+			replay attacks. Lastly, digital signatures are not encryption mechanisms. They only sign the message. You need to use another algorithm to encrypt your message.</p>
+			</div>

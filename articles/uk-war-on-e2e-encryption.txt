@@ -1,0 +1,93 @@
+			<h1>UK Leads War on End-to-End Encryption</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+			
+
+			<p>It hasn't been even two months since I wrote the essay on <a href="/article/privacy">Privacy in a Digital World</a>, 
+			where I pointed out the common rhetoric used by politicians to erode user's privacy. Weaker arguments, as made by the USA <a href="https://wagner.house.gov/sites/evo-subsites/wagner.house.gov/files/Lawful%20Access%20to%20Encrypted%20Data%20Act%20Final%20One%20Pager.pdf">[1]</a>, 
+			speak of protecting "our communities and our national security" by removing encryption. This is too blatant, too lazy of an attempt and any 
+			half-conscious person can realise that the politicians are employing a clever form of doublespeak. "Protecting our national security at the 
+			expense of your individual security". Hence why this bill never received enough support. But the system learns. It now speaks of protecting 
+			"the children" by removing harmful content, regardless if shared in end-to-end encryption fashion. This is a good cause. Of course it is. 
+			No sane politician would choose a morally evil argument to justify the need to erode privacy. But it is still fundamentally flawed as the previous one. 
+			While indeed we need to lead a war against Child Pornography (henceforth called CP), this should not come at the expense of individual privacy. 
+			I want to stress that my disapproval of the UK's Online Safety Act stems out of the implications it has on some privacy preserving technologies. 
+			There are many good ideas it proposes - stronger age verification on websites and sanctions if publicly available <i>illegal</i> content is not 
+			removed (though that was already in place). Before we analyse 
+			the faults of the bill, let us first understand what End-to-End encryption is. </p>
+			<div style="margin-top: 20px;"></div>
+			<h3>End-to-End Encryption</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>Traditional services encrypt your data/information while it is in transit. When sending your messages in instagram, they are first encrypted on your device, 
+			then sent to the server, which in terms decrypts them before encrypting them again and sending them to the recipient. This is great at protecting you 
+			from malicious third parties, which could eavesdrop or modify your data. However, what if the server is malicious? Why would you outright trust the service provider? 
+			In light of the many scandals in the 2010s in regards to data privacy, end-to-end encrypted (E2EE) services, such as Telegram, WhatsApp, and Signal, gained a 
+			lot of popularity. In contrast to the previously explained message encryption protocol, here the message is encrypted via a key that only the sender 
+			and recipient know. The server cannot modify or read what was sent.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>This poses a few ethical concerns. What if the two parties engage in illegal activities on your platform? You would have no way of knowing, 
+			let alone of removing their content/banning them. However, this also means that companies cannot mine your data, nor can governments outright 
+			spy on you.</p>
+			
+			<div style="margin-top: 20px;"></div>
+			<h3>The Tyrant's Cry</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>E2EE is great for the user. But what if you are the very concerned politician, who just has a heart of pure gold and the noble cause to stop the spread of 
+			"terrorism content", "Child Sexual Exploitation and Abuse", and "purchase and hiring of crossbow" (yes it really is in there). Well your noble cause 
+			needs to find a way to circumvent the protection that E2EE provides. You can't ban it, as you will face too much criticism by the public. So you do 
+			the next best thing - Client-Side Scanning <a href="/article/privacy">[2]</a>. You can keep your encrypted messages and everything, BUT we can 
+			scan your content before it is encrypted. Et Voila. The doublespeak is perfected. You can have privacy, while also not having it.</p>
+			<div style="margin-top: 20px;"></div>
+
+			<p>Any sensible person would look at the idea of Client-Side Scanning and realise that it renders E2EE pointless. If you add a module which can read my 
+			unencrypted messages, then why bother with the following steps. Because it is ran on the client only and doesn't share it to the relevant authorities? 
+			That doesn't seem to be the case in the Online Safety Act, where it is written that: </p>
+			<div style="margin-top: 20px;"></div>
+			<figure class="text-left bg-white p-3 rounded">
+                    <blockquote class="blockquote">
+                      <p>For the purposes of subsections (2) and (3), a requirement to use accredited technology may be complied with by the use of the technology alone or by means of the technology together with the use of <b>human moderators</b>.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      Online Safety Act <a href="https://www.legislation.gov.uk/ukpga/2023/50/enacted">[3]</a>
+                    </figcaption>
+                  </figure>
+			<div style="margin-top: 20px;"></div>
+			<p>What is this undefined "accredited technology"? How can the human moderators intervene? This is never fully made clear. </p>
+			<div style="margin-top: 20px;"></div>
+			<p>Services like Signal and WhatsApp have long expressed their disapproval of this Act <a href="https://www.theverge.com/2023/4/18/23687769/whatsapp-encrypted-messaging-apps-uk-online-safety-ofcom-law">[4]</a>. 
+			Signal writes in their open letter "The Bill provides no explicit protection for encryption, and if implemented as written, could empower OFCOM to try to force the proactive scanning of private messages on end-to-end encrypted communication services — nullifying the purpose of end-to-end encryption as a result and compromising the privacy of all users". 
+			The two companies have offered a more realistic alternative to complying with the new UK act - simply terminating operation inside the UK, as they cannot provide 
+			different service for that one country alone. Anyone who tells you that this act does not affect end-to-end encrypted services is lying to you.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>The home secretary of the United Kingdom proudly proclaimed, "This landmark law sends a clear message to criminals – whether it’s on our streets, behind closed doors or in far flung corners of the internet, there will be no hiding place for their vile crimes" 
+			<a href="https://www.gov.uk/government/news/uk-children-and-adults-to-be-safer-online-as-world-leading-bill-becomes-law">[5]</a>. You couldn't make it sound 
+			more ominous and villain-like even if you tried, bringing images of the panopticon to mind. She quickly continues with, "The Online Safety Act’s strongest protections are for children. Social media companies will be held to account for the appalling scale of child sexual abuse occurring on their platforms and our children will be safer". 
+			It is of course all for children. We need to raise this rotten edifice, build the eye of Sauron, to protect the children, of course... No other reason. 
+			Lord Chancellor and Secretary of State for Justice, Alex Chalk said, "Trolls who encourage serious self-harm, cyberflash or share intimate images without consent now face the very real prospect of time behind bars". 
+			I am not sure whether he knows what cyberflashing means as if his statement were to be true, people who send unsolicited dick pictures have now been labeled as criminals. 
+			I would agree to call them perverts or absolute weirdos, who deserved to be shunned from society, but criminals? Was it really such an extreme offence that it would 
+			require the erosion of privacy? The same article written by the UK government calls the bill "world leading". And that is the most worrisome. 
+			Governments have long begun they hatred of E2EE software. Now they have finally perfected their rhetoric to convince you to throw it away. It is a matter of time 
+			before the EU and USA follow suit. 
+			</p>
+			<div style="margin-top: 20px;"></div>
+			<h3>The Mastery of Doublespeak</h3>
+			<div style="margin-top: 20px;"></div>
+			<p>This new campaign of advocating against End-to-End encrypted software began somewhere in the late 2010s, early 2020s. At first it was just 
+			because of any "illegal activities", but governments soon found that emphasising the protection of children (while also targeting all illegal activities) 
+			will get more support for their previously unpopular bills. Now if you argue against them, you are arguing in support 
+			of child sexual content. Because that is the mastery of their rhetoric.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>Many of you might have been left with the impression that I somehow endorse CP by disagreeing with the many statements the politicians made. That 
+			is absolutely not the case. CP is the most vile kind of content and producing it, distributing it, and watching it should rightfully be punished. 
+			However, I am in favour of looking for an alternative solution to this issue, one that doesn't require monitoring of our messages. In truth, 
+			their new bill isn't anything new - it is the same basic premise as the ones from a few years ago, just in a new wrapper. The primary concern 
+			of the governments is not your safety, but their power, as evident by the many similar attempts in years prior <a href="https://www.newscientist.com/article/2140747-laws-of-mathematics-dont-apply-here-says-australian-pm/">[5]</a>.</p>
+			<div style="margin-top: 20px;"></div>
+			<p>Privacy is a universal right and you have every reason to fight for it (see <a href="/article/privacy">Privacy in a Digital World</a> for more). 
+			It is not the case that you have "something to hide". It is more so that you "should not trust the intentions of governments and companies with your 
+			private data".</p>
+			</div>
+			

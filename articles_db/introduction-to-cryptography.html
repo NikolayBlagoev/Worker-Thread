@@ -1,0 +1,489 @@
+			<h1>Introduction to Crpytograhy</h1>
+			<div style="margin-top: 20px;"></div>
+			<footer class="blockquote-footer">By Nikolay Blagoev</footer>
+			<div style="margin-top: 10px;"></div>
+			<div class="text-left">
+                    The following page describes the very basics of modern encryption systems. Though more focus is put on the theory of encryption, a practical example is provided below. We hope this article can serve you as a basis in understanding all our future writings.
+                  </div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+                    The goal of encryption is three-fold:
+			  <ol class="list-group list-group-numbered">
+  				<li >To protect the privacy of the information (a third-party should not be able to read the contents)</li>
+  				<li >To protect the integrity of the information (a third-party should not be able to modify the contents)</li>
+  				<li >To guarantee the data's origin (a third-party should not be able to impersonate or send on behalf of one of the participants)</li>
+			  </ol>
+                  </div>
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				With this in mind, we can define a cryptographic scheme/system with the following information:
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						A domain - the unencrypted (plain text message) - m 
+					</div>
+					<div class="text-left">
+						A codomain - the encrypted (cipher text message) - CT
+					</div>
+					<div class="text-left">
+						An encryption key - k<sub>e</sub>  
+					</div>
+					<div class="text-left">
+						A decryption key - k<sub>d</sub>
+					</div>
+					<div class="text-left">
+						An encryption function - E <sub>k<sub>e</sub></sub>(m) = CT
+					</div>
+
+					<div class="text-left">
+						A decryption function - D <sub>k<sub>d</sub></sub>(CT) = m
+					</div>
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+			</div>
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Based on the keys we distinguish between two types of cryptographic schemes.
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>Symmetric Encryption</h3>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Symmetric Encryption describes a cryptographic scheme where the encryption and decryption key are the same. This encryption process is perhaps the most commonly imagined one.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				To understand how symmetric encryption works (which will apply for all <b>symmetric encryptions</b>), let us suppose Bob wants to send a love letter to Allice. However, Bob is scared that his <i>very jealous</i> ex-wife, Eve, will see the letter when he sends it. Thus, he decides to put the letter in a box and locks it with a padlock (which is the encryption format used, be it AES, Caesar, etc). The key in this analogy is the cryptographic key or secret passcode in the cipher. Then Bob sends the box to Allice.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				While in transit, Eve can see that Bob is sending something to Alice, but cannot see the contents of it, without a key. Ideally, Eve should also not be able to modify the letter sent by Bob (so as to not impede his confession). 
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				When Alice receives the box, she can simply open it with her key (the shared passcode). She is now able to read Bob's love letter without Eve interfering. 
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Formally, a symmetric encryption comprises an Encryption and Decryption function (the locking and unlocking of the padlock), a key, and a domain (the original message) and a codomain (the encrypted message - the locked box). The message before encryption is called a plaintext (PT) and after - ciphertext (CT).
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Mathematically, encryption is:
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						E<sub>k</sub> : PT -> CT 
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				And decryption:
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						D<sub>k</sub> : CT -> PT 
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				It is possible that the message is English but the encrypted message is in Russian (so not even in the same alphabet). As in, the encryption can translate the messge from one set of symbols to another.
+
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>The Limitations of Symmetric Encryption</h3>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				While this approach works perfectly well in practice, it has a fundamental problem - Bob and Alice need to both have a copy of the key. This would require them to have met prior to the message exchange process in order to obtain the same key. However, Eve is <i>REALLY JEALOUS</i> and would definitely try to interfere during such a meeting. Of course, Bob can't just send the key to Alice, as Eve can make a copy for herself.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				A possible solution where no exchange of keys is necessary is as follows:
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Bob puts the message in a box and locks it with his lock. He sends the box to Alice. She puts her own padlock on the box and resends it to Bob (it now has 2 locks that Eve will need to break). Bob unlocks his lock and send it back again. The box now has only Alice's lock. She now removes her lock and reads the love letter.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				While this solution works in our analogy, it is difficult to apply in practice. It requires that the two encryption functions are commutable. As in:
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				D<sub>kB</sub>(E<sub>kB</sub> (m)) = m  ---->  Bob encrypting and then decrypting a message with his key needs to give the original message
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				and:
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+	
+
+				E<sub>kA</sub>(E<sub>kB</sub> (m)) = E<sub>kB</sub>(E<sub>kA</sub> (m))  ---->  Whether Bob or Alice locks the box first, the end result needs to be the same.
+
+			</div>
+
+
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				This, unfortunately is not a property inherit to most systems. Hence a different approach is needed when Bob and Alice cannot meet to exchange keys.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>Asymmetric Encryption</h3>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Asymmetric encryption schemes, or more commonly referred to as <i>public-key encryption schemes</i>, were a revolutionary discovery in the 1970s. As the name would suggest, in such a situation the key for encryption are decryption <b>are different</b> (and one cannot be derived from the other). Thus there is no need to meet to exchange the same key prior to the conversation. 
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Let us return to our analogy of locks and boxes. In order to describe a public-key system, we need to assume that if one has the lock, making the key for said lock is nearly impossible (which is not always the case in the real world, unfortunately). Thus, in order for Bob and Alice to communicate in a secure manner, Alice needs to send her lock before Bob sends her the letter. While in transit, Eve can take the lock and copy it. This is not a problem. Bob receives Alice's package. He then puts his secret letter in the box, which he locks with the padlock received. He sends it to Alice. Now, Eve can see a locked box coming through the postal system. She may have copied the padlock, but has no means of opening it. When Alice receives the package, she opens it with her own key and reads Bob's letter. And what happens next with them is history.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				It is important to recognise in this system that the flow of secure communication is currently one-way, i.e. only Bob can send secure messages to Alice. Alice can lock her box with her padlock, but Bob won't be able to open it without the key. Thus Bob needs to send Alice his own padlock as well. 
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				The system can thus be described formally:
+			</div>
+			
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						E<sub>PubKey</sub> (m) = CT
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+				
+			</div>
+			
+
+						
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				And decryption:
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						D<sub>PrivKey</sub> (CT) = m
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+				
+			</div>
+
+						
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Also:
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						D<sub>PubKey</sub> (CT) =/= m     ----->  Decrypting with the public key should not give you the original message.
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+				
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Here PubKey means Public Key (the padlock) and PrivKey - private key (the secret key to open the padlock with). 
+			</div>
+
+						
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				What happens in the cyber space, is that a user would generate a unique pair of keys PubKey and PrivKey, such that:
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						D<sub>PrivKey</sub> (E<sub>PubKey</sub> (m)) = m       for all messages m
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+				
+			</div>
+									
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				The user would then publish their public key somewhere. Thus essentially anyone can use the metaphorical padlock to message them. Any time they receive an encrypted message, they simply decrypt it with their private key. No one else can see the contents of that message (they can't decrypt it with the public key). However, the private key is never used for encryption, since any message can be decrypted with the public key (in most cryptosystems). Thus it also holds that:
+
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						D<sub>PubKey</sub> (E<sub>PrivKey</sub> (m)) = m       for all messages m in most public-key cryptosystems
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+				
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>A Concrete Example</h3>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				What was said in the previous section sounds wonderful and maybe almost magical. But how can something like this work?
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Let us take a look at a concrete public-key encryption scheme (and the most popular one) - RSA.
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Here I will spare you the math, which proves the security of this system. All you need to remember is that:
+
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div class="text-left">
+						a<sup>Phi(n)+1</sup> mod n = a
+					</div>
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Where:
+
+				<div class="row .me-5">
+                			<div class="col-xs-1 col-md-2"></div>
+                			<div class="col-xs-10 col-md-8">
+					
+					<div style="margin-top: 5px;"></div>
+					<div class="text-left">
+						n = p * q
+					</div>
+
+					<div style="margin-top: 5px;"></div>
+					<div class="text-left">
+						p and q are two very large prime numbers
+					</div>
+
+					<div style="margin-top: 5px;"></div>
+					<div class="text-left">
+						Phi(n) = (p - 1) * (q - 1)
+					</div>
+
+					<div style="margin-top: 5px;"></div>
+					<div class="text-left">
+						mod n is the modulo operation (remainder when dividing by n)
+					</div>
+
+					<div style="margin-top: 5px;"></div>
+					<div class="text-left">
+						a is any whole number less than n
+					</div>
+					<div style="margin-top: 5px;"></div>
+					<div class="text-left">
+						a<sup>Phi(n)</sup> mean a to the power of Phi(n)
+					</div>
+
+
+					
+					</div>
+					<div class="col-xs-1 col-md-2"></div>
+				</div>
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+
+				The RSA system works as follows:
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<ol class="list-group list-group-numbered">
+  				<li >Bob finds two very large prime numbers (ideally they would each be 1024 bits, however here for this example we will use much smaller ones) - 23 and 53.</li>
+  				<li >Bob calculates n = 23 * 53 = 1219</li>
+  				<li >Bob calculates phi(n) = (23 - 1) * (53 - 1) = 22 * 52 = 1144</li>
+
+				<li >Bob chooses a public key, such that the greatest common divisor (gcd) of phi(n) and PubKey is 1 (they don't have common divisors). For this example we will choose 3.</li>
+  				<li >Bob finds a private key, such that PubKey * PrivKey mod phi(n) = 1. For our example this gives us PrivKey of 763</li>
+				<li >Bob publishes n and PubKey.</li>
+  				<li >Alice encrypts a message (m = 13 in this example) computing CT = m<sup>PubKey</sup>  mod n  = 13<sup>3</sup> mod 1219 = 2197 mod 1219 = 978</li>
+				<li >Alice sends 978 to Bob</li>
+  				<li >Bob decrypts 978 by computing m = CT<sup>PrivKey</sup>  mod n = 978<sup>763</sup> mod 1219 = 13</li>
+			  </ol>
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				As you can see, the system can only encrypt whole numbers and only those less than the value of n. Thus some encoding is necessary, with very limited expression. You can play around with the cryptosystem below:
+
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<form role="form" class="form-horizontal">
+ 				 <div>
+   					 <input type="button" onclick="onClickGenerate()" value="GENERATE"></input>
+    					 <p id="p">Prime 1 : p = 23</p>
+    					 <p id="q">Prime 2 : q = 53</p>
+   					 <p id="n">Modulo : n = 1219</p>
+   					 <p id="e">PubKey : e = 3</p>
+   					 <p id="d">PrivKey : d = 763</p>
+
+
+  
+  				</div>
+  				<div>
+    
+    					<p>Message to Encrypt:</p>
+    					<textarea  id="msg" rows="2" class="form-control"></textarea>
+    
+  				</div>
+
+  				<div>
+    					<input type="button" onclick="onClickEncr()" value="ENCRYPT"></input>
+    					<p>Encrypted message (what Eve sees):</p>
+    					<textarea  id="encr" rows="2" class="form-control"></textarea>
+    
+  				</div>
+
+  				<div>
+    					<input type="button" onclick="onClickDecr()" value="DECRYPT"></input>
+    					<p>Decrypted message:</p>
+    					<textarea  id="decr" rows="2" class="form-control"></textarea>
+    
+  				</div>
+				</form>
+			</div>
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				<h3>Comparison</h3>
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				An unfamiliar reader might think to themselves, after reading the above sections, "Why ever use symmetric cryptosystems? Asymmetric ones are clearly superior!" And they might have some grounds to claim that. Indeed, asymmetric schemes remove the need for Bob and Alice exchange a secret key when channels may be unsecure (as internet protocols by themselves are). This makes public key cryptosystems essential in our modern communication. However, they suffer from two major issues.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				First, as some of you might have seen the calculations above (978<sup>763</sup> mod 1219), can be very difficult to solve even by a computer with specialised algorithms and hardware. Imagine what a hassle it would be to calculate if we used 2048-bit keys. And when one considers the fact that a message is rarely less than 2048-bits (as these systems require), this would mean that it would need to be split into chunks and for each of them the computations repeated.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Second, the security of the algorithms is not "proven". They rely on the assumption that some mathematical problems are difficult to compute even by machines (for example given n, it is hard to compute its factors p and q). However, a concrete bound on how long a brute-force attack would take cannot be set. It is believed that this problem requires exponential computations, but this claim cannot be proven. Symmetric key encryptions, on the other hand, have much stronger guarantees about their security.
+
+			</div>
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+				Thus in light of this, the modern world relies on <b>hybrid systems</b>. Initially Alice and Bob use the public-key encryption schemes to agree on some key and establish their identities. Then they use the agreed upon key to communicate in a secure manner via symmetric encryption systems.
+
+			</div>
+			
+
+
+			
+			<div style="margin-top: 20px;"></div>
+			<div class="text-left">
+			</div>

@@ -1,5 +1,13 @@
 {
     "css": "chess-solvers",
     "js": "no-control",
-    "title": "No Control"
+    "title": "No Control",
+    "link": "",
+    "ldescr": "",
+    "shrtdescr": "NoControl emulates a controller with your keyboard, allowing you to play all your favourite games",
+    "titbit": "",
+    "tags": ["NoControl", "Virtual Controller", "Tools"],
+    "img": "/imgs/nocontrol.png",
+    "views": 10,
+    "interest": 3
 }
